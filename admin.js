@@ -24,6 +24,10 @@ function showToast(msg,isError=false){
   setTimeout(()=>t.classList.remove('active'),3500)
 }
 
+// --- CACHE FLAGS ---
+let dashboardLoaded = false;
+let manageLoaded = false;
+
 // --- SIDEBAR NAV ---
 document.querySelectorAll('.sidebar-nav a').forEach(a=>{
   a.addEventListener('click',()=>{
@@ -31,8 +35,8 @@ document.querySelectorAll('.sidebar-nav a').forEach(a=>{
     a.classList.add('active')
     document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))
     document.getElementById('panel-'+a.dataset.panel).classList.add('active')
-    if(a.dataset.panel==='manage')loadManageTable()
-    if(a.dataset.panel==='dashboard')loadDashboard()
+    if(a.dataset.panel==='manage' && !manageLoaded) loadManageTable()
+    if(a.dataset.panel==='dashboard' && !dashboardLoaded) loadDashboard()
   })
 })
 
@@ -41,6 +45,7 @@ document.getElementById('refreshBtn').addEventListener('click',()=>loadManageTab
 
 // --- DASHBOARD ---
 async function loadDashboard(){
+  dashboardLoaded = true;
   const el=document.getElementById('stats')
   el.innerHTML='<div class="spinner"></div>'
   try{
@@ -125,12 +130,12 @@ form.addEventListener('submit',async e=>{
     if(editMode&&editId){
       const{error}=await supabase.from('products').update(productData).eq('id',editId)
       dbError=error
-      if(!error)showToast('<i class="fas fa-check"></i> Product updated!')
+      if(!error) { showToast('<i class="fas fa-check"></i> Product updated!'); dashboardLoaded=false; manageLoaded=false; }
     }else{
       if(!imageUrls.length)productData.images=[]
       const{error}=await supabase.from('products').insert(productData)
       dbError=error
-      if(!error)showToast('<i class="fas fa-check"></i> Product added!')
+      if(!error) { showToast('<i class="fas fa-check"></i> Product added!'); dashboardLoaded=false; manageLoaded=false; }
     }
     if(dbError)throw dbError
     resetForm()
@@ -145,6 +150,7 @@ form.addEventListener('submit',async e=>{
 
 // --- MANAGE TABLE ---
 async function loadManageTable(){
+  manageLoaded = true;
   const wrap=document.getElementById('productsTable')
   wrap.innerHTML='<div class="spinner"></div>'
   try{
@@ -159,7 +165,7 @@ async function loadManageTable(){
         <th>Image</th><th>Name</th><th>Category</th><th>Top Rated</th><th>Date</th><th>Actions</th>
       </tr></thead>
       <tbody>${data.map(p=>`<tr>
-        <td><img src="${p.images?.[0]||'https://picsum.photos/80/60?grayscale'}" style="width:64px;height:46px;border-radius:4px;object-fit:cover;border:1px solid var(--border)" alt=""></td>
+        <td><img src="${p.images?.[0]||'https://picsum.photos/80/60?grayscale'}" loading="lazy" style="width:64px;height:46px;border-radius:4px;object-fit:cover;border:1px solid var(--border)" alt=""></td>
         <td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</td>
         <td><span class="badge badge-orange">${CATEGORY_LABELS[p.category]||p.category}</span></td>
         <td>${p.top_rated?'<span class="badge badge-green">★ Yes</span>':'<span class="badge badge-grey">No</span>'}</td>
@@ -204,6 +210,7 @@ async function loadManageTable(){
           const{error}=await supabase.from('products').delete().eq('id',btn.dataset.id)
           if(error)throw error
           showToast('<i class="fas fa-trash"></i> Product deleted')
+          dashboardLoaded=false
           loadManageTable()
         }catch(e){showToast('<i class="fas fa-times"></i> Delete failed: '+e.message,true);btn.disabled=false;btn.innerHTML='<i class="fas fa-trash"></i>'}
       })

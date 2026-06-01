@@ -228,7 +228,7 @@
     .search-no-results { padding: 1.5rem; text-align: center; color: var(--grey); font-size: .85rem; }
 
     /* hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; padding: 4px; }
+    .hamburger { display: none; flex-direction: column; gap: 6px; background: none; padding: 12px; margin-right: -8px; cursor: pointer; z-index: 1001; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white2); transition: var(--trans); border-radius: 2px; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -238,17 +238,19 @@
       display: none;
       position: fixed;
       top: var(--nav-h); left: 0; right: 0;
+      height: calc(100vh - var(--nav-h));
       background: rgba(8,8,8,.98);
       backdrop-filter: blur(28px);
-      padding: 1.5rem 1.5rem 2rem;
-      flex-direction: column; gap: 1.25rem;
+      padding: 2rem 1.5rem;
+      flex-direction: column; gap: 1.5rem;
       border-bottom: 1px solid var(--border2);
       z-index: 999;
+      overflow-y: auto;
     }
     .mobile-menu.active { display: flex; animation: fadeDown .3s ease; }
     .mobile-menu a {
-      font-size: .9rem; font-weight: 700;
-      color: var(--grey);
+      font-size: 1rem; font-weight: 800;
+      color: var(--white);
       letter-spacing: 2px; text-transform: uppercase;
       transition: color .3s;
     }
@@ -1305,8 +1307,8 @@
       .section, .about-section, .services-section,
       .categories-section, .portfolio-section,
       .featured-section, .contact-section { padding: 4rem 1.2rem; }
-      .section-title   { font-size: 1.6rem; letter-spacing: -.8px; margin-bottom: 2.5rem; }
-      .section-label   { font-size: .58rem; }
+      .section-title   { font-size: 1.6rem; letter-spacing: -.8px; margin-bottom: 2.5rem; line-height: 1.1; }
+      .section-label   { font-size: .58rem; margin-bottom: .8rem; }
 
       /* Stats */
       .stats-bar       { padding: 2rem 1.2rem; gap: 1.2rem; justify-content: center; }
@@ -1377,7 +1379,9 @@
       .categories-grid { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       .product-grid    { grid-template-columns: 1fr; }
       .product-card    { flex: 0 0 85vw; }
-      .hero h1         { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+      .hero-content    { padding: 0 1rem; }
+      .hero h1         { font-size: clamp(2.2rem, 8vw, 2.6rem); letter-spacing: -1.5px; }
+      .hero-tagline    { font-size: .65rem; letter-spacing: 1.5px; }
       .about-section, .services-section,
       .categories-section, .portfolio-section,
       .featured-section, .contact-section { padding: 3rem 1rem; }
@@ -1393,8 +1397,8 @@
       .logo-mark       { font-size: 1.1rem; }
       .logo-mark .num  { font-size: 1.25rem; }
       .logo-mark .sub  { display: none; }
-      .hero h1         { font-size: 1.75rem; }
-      .categories-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+      .hero h1         { font-size: 1.85rem; }
+      .categories-grid { grid-template-columns: 1fr; gap: .5rem; }
       .category-card   { padding: 1.2rem .5rem; }
       .product-card    { flex: 0 0 90vw; }
     }
