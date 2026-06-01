@@ -784,7 +784,9 @@
 
     /* ─── FEATURED CAROUSEL ─────────────────────────────────────── */
     .featured-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); background: var(--black2); border-top: 1px solid var(--border); }
-    .carousel-wrapper { position: relative; overflow: hidden; padding: 0 0 1rem; }
+    /* Outer holds buttons; inner clips the track */
+    .carousel-outer  { position: relative; padding: 0 56px; }
+    .carousel-wrapper { overflow: hidden; padding: 0 0 .5rem; }
     .carousel-track {
       display: flex;
       gap: 1.25rem;
@@ -794,20 +796,29 @@
     }
     .carousel-track.dragging { cursor: grabbing; transition: none; }
     .carousel-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 44px; height: 44px;
+      position: absolute; top: 50%; transform: translateY(-60%);
+      width: 48px; height: 48px;
       border-radius: 50%;
       background: var(--black3);
       border: 1px solid var(--border2);
       color: var(--white2);
-      font-size: .9rem;
+      font-size: 1rem;
       display: flex; align-items: center; justify-content: center;
       z-index: 10;
       transition: var(--trans);
+      box-shadow: 0 4px 20px rgba(0,0,0,.5);
     }
-    .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--black); }
-    .carousel-btn.prev { left: -22px; }
-    .carousel-btn.next { right: -22px; }
+    .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--black); transform: translateY(-60%) scale(1.1); }
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+    @media (max-width: 768px) {
+      .carousel-outer { padding: 0 44px; }
+      .carousel-btn   { width: 40px; height: 40px; font-size: .85rem; }
+    }
+    @media (max-width: 480px) {
+      .carousel-outer { padding: 0 36px; }
+      .carousel-btn   { width: 34px; height: 34px; font-size: .75rem; }
+    }
 
     /* ─── PRODUCT CARD ──────────────────────────────────────────── */
     .product-card {
@@ -1785,9 +1796,11 @@
         <section class="featured-section">
           <div class="section-label">Hand-Picked Selection</div>
           <div class="section-title">Featured <span>Equipment</span></div>
-          <div class="carousel-wrapper">
+          <div class="carousel-outer">
             <button class="carousel-btn prev" id="carPrev"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-track" id="carTrack">${spinner()}</div>
+            <div class="carousel-wrapper">
+              <div class="carousel-track" id="carTrack">${spinner()}</div>
+            </div>
             <button class="carousel-btn next" id="carNext"><i class="fas fa-chevron-right"></i></button>
           </div>
         </section>
