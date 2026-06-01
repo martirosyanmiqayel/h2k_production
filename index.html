@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="H2K Production — Premium professional production equipment. Cameras, lights, sound, drones and more for world-class creators.">
+  <meta name="keywords" content="H2K Production, camera rental, lighting equipment, professional production, drones, sound equipment Armenia">
+  <title>H2K Production — Premium Equipment</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ─── RESET & VARIABLES ─────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:    #080808;
+      --black2:   #0f0f0f;
+      --black3:   #161616;
+      --black4:   #1e1e1e;
+      --black5:   #242424;
+      --gold:     #e8520a;
+      --gold2:    #ff6b1a;
+      --gold-dim: rgba(232,82,10,.18);
+      --gold-glow:rgba(232,82,10,.08);
+      --red:      #c0392b;
+      --red2:     #e74c3c;
+      --white:    #ffffff;
+      --white2:   #ececec;
+      --grey:     #888;
+      --grey2:    #555;
+      --border:   rgba(255,255,255,.07);
+      --border2:  rgba(232,82,10,.3);
+      --nav-h:    76px;
+      --ease:     cubic-bezier(.4,0,.2,1);
+      --trans:    all .35s var(--ease);
+      --r:        10px;
+      --r-sm:     6px;
+      --r-lg:     18px;
+      --shadow:   0 8px 40px rgba(0,0,0,.6);
+      --shadow-lg:0 24px 80px rgba(0,0,0,.8);
+      --shadow-gold:0 0 40px rgba(232,82,10,.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white2);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; outline: none; font-family: 'Inter', sans-serif; }
+    input, textarea { font-family: 'Inter', sans-serif; outline: none; }
+    ul { list-style: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ─── VIDEO PARALLAX ─────────────────────────────────────────── */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 120%;
+      top: -10%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* ─── LOGO ──────────────────────────────────────────────────── */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -1.5px;
+      color: var(--white);
+      display: flex;
+      align-items: baseline;
+      line-height: 1;
+    }
+    .logo-mark .num {
+      color: var(--gold);
+      font-size: 1.7rem;
+      transition: color .3s;
+    }
+    .logo-mark .sub {
+      font-size: .38rem;
+      letter-spacing: 3.5px;
+      color: var(--grey);
+      text-transform: uppercase;
+      font-weight: 700;
+      align-self: flex-end;
+      margin-left: 4px;
+      margin-bottom: 2px;
+    }
+    .logo:hover .num { color: var(--gold2); }
+
+    /* ─── NAVBAR ────────────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      gap: 2rem;
+      transition: background .5s var(--ease), border-color .5s var(--ease), backdrop-filter .5s;
+      /* Start fully transparent over video */
+      background: transparent;
+      border-bottom: 1px solid transparent;
+    }
+    .navbar.scrolled {
+      background: rgba(8,8,8,.96);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-bottom-color: var(--border2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      margin-left: auto;
+    }
+    .nav-links a {
+      font-size: .75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.65);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color .3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width .35s var(--ease);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: 2rem;
+    }
+
+    /* search */
+    .search-container { position: relative; }
+    .search-input {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: .45rem 1rem .45rem 2.2rem;
+      color: var(--white2);
+      font-size: .78rem;
+      width: 190px;
+      transition: var(--trans);
+    }
+    .search-input::placeholder { color: var(--grey); }
+    .search-input:focus {
+      border-color: var(--gold);
+      width: 240px;
+      background: rgba(201,168,76,.06);
+    }
+    .search-icon {
+      position: absolute; left: .75rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--grey); font-size: .8rem;
+      pointer-events: none;
+    }
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 10px); left: 0; right: 0;
+      background: var(--black3);
+      border: 1px solid var(--border2);
+      border-radius: var(--r-sm);
+      max-height: 360px;
+      overflow-y: auto;
+      display: none; z-index: 200;
+      box-shadow: var(--shadow-lg);
+    }
+    .search-dropdown.active { display: block; animation: fadeDown .2s ease; }
+    .search-dropdown-item {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .7rem 1rem;
+      cursor: pointer;
+      transition: background .2s;
+      border-bottom: 1px solid var(--border);
+    }
+    .search-dropdown-item:last-child { border-bottom: none; }
+    .search-dropdown-item:hover { background: var(--gold-glow); }
+    .search-dropdown-item img { width: 48px; height: 36px; border-radius: 4px; object-fit: cover; }
+    .search-dropdown-item .name { font-size: .8rem; font-weight: 600; }
+    .search-dropdown-item .cat { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: .5px; }
+    .search-no-results { padding: 1.5rem; text-align: center; color: var(--grey); font-size: .85rem; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white2); transition: var(--trans); border-radius: 2px; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: rgba(8,8,8,.98);
+      backdrop-filter: blur(28px);
+      padding: 1.5rem 1.5rem 2rem;
+      flex-direction: column; gap: 1.25rem;
+      border-bottom: 1px solid var(--border2);
+      z-index: 999;
+    }
+    .mobile-menu.active { display: flex; animation: fadeDown .3s ease; }
+    .mobile-menu a {
+      font-size: .9rem; font-weight: 700;
+      color: var(--grey);
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: color .3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* Mobile search */
+    .mobile-search-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: .25rem;
+    }
+    .mobile-search-icon {
+      position: absolute; left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--grey); font-size: .85rem;
+      pointer-events: none;
+    }
+    .mobile-search-input {
+      width: 100%;
+      background: var(--black4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .85rem 1rem .85rem 2.6rem;
+      color: var(--white2);
+      font-size: .9rem;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .mobile-search-input::placeholder { color: var(--grey); }
+    .mobile-search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(232,82,10,.12);
+      outline: none;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Video background */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Multi-layer overlay for cinematic feel */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(4,4,4,.72) 0%, rgba(4,4,4,.35) 35%, rgba(4,4,4,.5) 65%, rgba(4,4,4,.92) 100%),
+        linear-gradient(to right, rgba(4,4,4,.45) 0%, transparent 50%, rgba(4,4,4,.45) 100%);
+      z-index: 1;
+    }
+    /* Subtle vignette grain */
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: 2;
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-eyebrow {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      animation: fadeUp 1s var(--ease) .2s both;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 36px; height: 1px;
+      background: var(--gold);
+      opacity: .6;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1s var(--ease) .4s both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero-tagline {
+      font-size: clamp(.8rem, 1.5vw, 1.05rem);
+      color: rgba(255,255,255,.55);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      font-weight: 500;
+      animation: fadeUp 1s var(--ease) .6s both;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      animation: fadeUp 1s var(--ease) .8s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center; gap: .6rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      font-weight: 800;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--gold2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
+    }
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(201,168,76,.3); }
+    .btn-primary i, .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center; gap: .6rem;
+      background: transparent;
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.25);
+      font-weight: 700;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--trans);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      animation: fadeUp 1s var(--ease) 1.2s both;
+    }
+    .scroll-indicator span {
+      font-size: .55rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .scroll-mouse {
+      width: 22px; height: 36px;
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+    .scroll-mouse::before {
+      content: '';
+      width: 3px; height: 7px;
+      background: var(--gold);
+      border-radius: 2px;
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 1; transform: translateY(0); }
+      50% { opacity: 0; transform: translateY(6px); }
+    }
+
+    /* ─── MAIN APP ──────────────────────────────────────────────── */
+    #app { min-height: 100vh; }
+    /* Hero hidden on sub-pages — app needs top padding instead */
+    body.subpage .hero { display: none; }
+    body.subpage #app  { margin-top: var(--nav-h); }
+
+    /* Page transitions */
+    .page { animation: fadeUp .5s var(--ease); }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(30px); }  to { opacity:1; transform:none; } }
+
+    /* ─── SCROLL REVEAL ─────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ─── SECTION ───────────────────────────────────────────────── */
+    .section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
+    .section-label {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+      opacity: .7;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 4rem;
+      color: var(--white);
+    }
+    .section-title span { color: var(--gold); }
+
+    /* ─── ABOUT SECTION ─────────────────────────────────────────── */
+    .about-section {
+      padding: 7rem clamp(1.5rem, 6vw, 5rem);
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-frame {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--black4);
+      border: 1px solid var(--border2);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .about-img-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: filter .5s, transform .5s;
+    }
+    .about-img-frame:hover img { filter: grayscale(0%); transform: scale(1.04); }
+    .about-stat-card {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      background: var(--black);
+      border: 1px solid var(--border2);
+      border-radius: var(--r);
+      padding: 1.2rem 1.6rem;
+      box-shadow: var(--shadow-gold);
+    }
+    .about-stat-card .num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .about-stat-card .lbl {
+      font-size: .65rem;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+    }
+    .about-text h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .about-text p {
+      color: var(--grey);
+      font-size: .95rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+    }
+    .about-badge {
+      display: inline-flex;
+      align-items: center; gap: .4rem;
+      padding: .45rem .9rem;
+      border: 1px solid var(--border2);
+      border-radius: 50px;
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .5px;
+      background: var(--gold-glow);
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────────── */
+    .services-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: border-color .4s, transform .4s var(--ease), box-shadow .4s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform .5s var(--ease);
+    }
+    .service-card:hover { border-color: var(--border2); transform: translateY(-6px); box-shadow: var(--shadow-gold); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--gold-dim);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      transition: background .3s, transform .3s;
+    }
+    .service-card:hover .service-icon { background: var(--gold); color: var(--black); transform: scale(1.1); }
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: .75rem;
+      letter-spacing: -.3px;
+    }
+    .service-card p {
+      font-size: .83rem;
+      color: var(--grey);
+      line-height: 1.8;
+    }
+    .service-card .service-arrow {
+      display: inline-flex;
+      align-items: center; gap: .4rem;
+      margin-top: 1.5rem;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity .3s, transform .3s;
+    }
+    .service-card:hover .service-arrow { opacity: 1; transform: none; }
+
+    /* ─── CATEGORIES ────────────────────────────────────────────── */
+    .categories-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); background: var(--black2); border-top: 1px solid var(--border); }
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+    .category-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .category-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold-glow);
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .category-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-gold);
+    }
+    .category-card:hover::after { opacity: 1; }
+    .category-card .icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: .9rem;
+      transition: transform .35s;
+      position: relative; z-index: 1;
+    }
+    .category-card:hover .icon { transform: scale(1.15); }
+    .category-card .name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: .72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white2);
+      position: relative; z-index: 1;
+      transition: color .3s;
+    }
+    .category-card:hover .name { color: var(--gold); }
+
+    /* ─── PORTFOLIO / GALLERY ───────────────────────────────────── */
+    .portfolio-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+      gap: 1rem;
+    }
+    .portfolio-grid .wide { grid-column: span 2; }
+    .portfolio-grid .tall { grid-row: span 2; }
+    .portfolio-item {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--black4);
+    }
+    .portfolio-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease), filter .6s;
+      filter: brightness(.85);
+    }
+    .portfolio-item:hover img { transform: scale(1.07); filter: brightness(.6); }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,.8) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay .cat-tag {
+      font-size: .6rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: .35rem;
+    }
+    .portfolio-overlay h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ─── FEATURED CAROUSEL ─────────────────────────────────────── */
+    .featured-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); background: var(--black2); border-top: 1px solid var(--border); }
+    .carousel-wrapper { position: relative; overflow: hidden; padding: 0 0 1rem; }
+    .carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      transition: transform .55s var(--ease);
+      touch-action: pan-y pinch-zoom;
+      cursor: grab;
+    }
+    .carousel-track.dragging { cursor: grabbing; transition: none; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--black3);
+      border: 1px solid var(--border2);
+      color: var(--white2);
+      font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: var(--trans);
+    }
+    .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--black); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    /* ─── PRODUCT CARD ──────────────────────────────────────────── */
+    .product-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
+      flex: 0 0 calc(25% - 1rem);
+      min-width: 240px;
+    }
+    .product-card:hover { transform: translateY(-6px); border-color: var(--border2); box-shadow: var(--shadow-gold); }
+    .product-card-img-wrap { overflow: hidden; }
+    .product-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; transition: transform .5s var(--ease); }
+    .product-card:hover .product-card-img { transform: scale(1.08); }
+    .product-card-body { padding: 1.1rem 1.3rem; }
+    .product-card-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: .87rem;
+      margin-bottom: .5rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .category-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      color: var(--gold);
+      font-size: .6rem; font-weight: 700;
+      padding: .2rem .55rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid var(--border2);
+    }
+
+    /* ─── CONTACT SECTION ───────────────────────────────────────── */
+    .contact-section {
+      padding: 7rem clamp(1.5rem, 6vw, 5rem);
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info-col h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-info-col p {
+      color: var(--grey);
+      font-size: .9rem;
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: center; gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      margin-bottom: .75rem;
+      transition: border-color .3s, transform .3s;
+      text-decoration: none;
+      color: var(--white2);
+    }
+    .contact-info-item:hover { border-color: var(--border2); transform: translateX(4px); }
+    .contact-info-item .icon {
+      width: 40px; height: 40px;
+      background: var(--gold-dim);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .contact-info-item .contact-text .label {
+      font-size: .6rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;
+    }
+    .contact-info-item .contact-text .value {
+      font-size: .9rem; font-weight: 600; color: var(--white); margin-top: 2px;
+    }
+
+    /* Contact form */
+    .contact-form-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 2.5rem;
+    }
+    .contact-form-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 1.75rem;
+      letter-spacing: -.3px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: .5rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--black4);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: .85rem 1rem;
+      color: var(--white2);
+      font-size: .87rem;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem;
+      border-radius: var(--r-sm);
+      font-weight: 800;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--trans);
+      margin-top: .5rem;
+    }
+    .form-submit:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,.25); }
+
+    /* ─── PRODUCTS PAGE ─────────────────────────────────────────── */
+    .products-page { display: flex; gap: 2rem; padding: 2rem clamp(1.5rem, 5vw, 4rem); }
+    .products-main { flex: 1; min-width: 0; }
+    .products-sidebar { width: 280px; flex-shrink: 0; }
+    .products-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .products-header h1 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; }
+    .filter-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+    .filter-tab {
+      padding: .4rem 1rem;
+      border-radius: 3px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--grey);
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .5px; text-transform: uppercase;
+      transition: var(--trans); cursor: pointer;
+    }
+    .filter-tab:hover { border-color: var(--border2); color: var(--white); }
+    .filter-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .view-toggle { display: flex; gap: .4rem; }
+    .view-btn {
+      width: 34px; height: 34px;
+      border-radius: var(--r-sm);
+      background: var(--black3);
+      border: 1px solid var(--border);
+      color: var(--grey);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--trans);
+    }
+    .view-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .product-list .product-card { flex: unset; min-width: unset; display: flex; flex-direction: row; }
+    .product-list .product-card-img-wrap { width: 200px; flex-shrink: 0; }
+    .product-list .product-card-img { height: 100%; aspect-ratio: unset; }
+    .product-list .product-card-body { display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; }
+    .product-list .product-card-desc { color: var(--grey); font-size: .82rem; margin-top: .4rem; }
+
+    /* sidebar */
+    .sidebar-card { background: var(--black3); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem; margin-bottom: 1rem; }
+    .sidebar-card h3 { font-size: .75rem; margin-bottom: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+    .sidebar-product { display: flex; gap: .75rem; padding: .7rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: var(--trans); }
+    .sidebar-product:last-child { border-bottom: none; }
+    .sidebar-product:hover { opacity: .7; }
+    .sidebar-product img { width: 58px; height: 43px; border-radius: 4px; object-fit: cover; }
+    .sidebar-product .name { font-size: .78rem; font-weight: 600; color: var(--white); }
+    .sidebar-product .cat { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: .5px; }
+
+    /* pagination */
+    .pagination { display: flex; justify-content: center; gap: .4rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .page-btn {
+      min-width: 38px; height: 38px;
+      border-radius: 3px;
+      background: var(--black3);
+      border: 1px solid var(--border);
+      color: var(--grey);
+      font-size: .8rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--trans);
+    }
+    .page-btn:hover { border-color: var(--border2); color: var(--white); }
+    .page-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .page-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+    /* ─── PRODUCT DETAIL ────────────────────────────────────────── */
+    .product-detail { padding: 2rem clamp(1.5rem, 5vw, 4rem); }
+    .breadcrumb { display: flex; gap: .5rem; font-size: .78rem; color: var(--grey); margin-bottom: 2rem; flex-wrap: wrap; align-items: center; }
+    .breadcrumb a { color: var(--grey); transition: color .2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb .sep { color: var(--border); }
+    .detail-layout { display: flex; gap: 3rem; margin-bottom: 3rem; }
+    .gallery { flex: 1; min-width: 0; }
+    .gallery-main-wrap {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      background: var(--black3);
+      border: 1px solid var(--border);
+      cursor: crosshair;
+    }
+    .gallery-main-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: opacity .3s; }
+    .gallery-fullscreen-btn {
+      position: absolute; top: 12px; right: 12px;
+      width: 34px; height: 34px; border-radius: 4px;
+      background: rgba(0,0,0,.7); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--trans); z-index: 5;
+    }
+    .gallery-fullscreen-btn:hover { background: var(--gold); color: var(--black); }
+    .gallery-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(0,0,0,.6); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--trans); z-index: 5;
+    }
+    .gallery-nav:hover { background: var(--gold); color: var(--black); }
+    .gallery-nav.prev { left: 10px; }
+    .gallery-nav.next { right: 10px; }
+    .gallery-thumbs { display: flex; gap: .5rem; margin-top: .6rem; }
+    .gallery-thumb {
+      width: 76px; height: 57px;
+      border-radius: var(--r-sm); overflow: hidden;
+      border: 2px solid transparent; cursor: pointer;
+      transition: var(--trans); opacity: .5;
+    }
+    .gallery-thumb.active { border-color: var(--gold); opacity: 1; }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .zoom-panel {
+      position: absolute; top: 0; right: -320px;
+      width: 300px; height: 300px;
+      border: 1px solid var(--border2);
+      border-radius: var(--r);
+      overflow: hidden;
+      background: var(--black3);
+      display: none; z-index: 20;
+      pointer-events: none;
+    }
+    .zoom-panel.active { display: block; }
+    .zoom-panel img { position: absolute; max-width: none; }
+    .detail-info { width: 380px; flex-shrink: 0; }
+    .detail-info h1 { font-size: 1.7rem; font-weight: 900; margin-bottom: 1rem; letter-spacing: -1px; }
+    .detail-description { color: var(--grey); line-height: 1.8; margin-top: 1.5rem; font-size: .9rem; }
+
+    /* share */
+    .share-section { margin-top: 2rem; }
+    .share-section h4 { font-size: .62rem; color: var(--grey); margin-bottom: .75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+    .share-buttons { display: flex; gap: .5rem; }
+    .share-btn {
+      width: 40px; height: 40px; border-radius: 4px;
+      background: var(--black3); border: 1px solid var(--border);
+      color: var(--grey); display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; transition: var(--trans);
+    }
+    .share-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); transform: translateY(-2px); }
+
+    /* product nav */
+    .product-nav { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .product-nav-btn {
+      display: flex; align-items: center; gap: .5rem;
+      color: var(--grey); font-size: .78rem; font-weight: 600;
+      transition: var(--trans); background: none;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    .product-nav-btn:hover { color: var(--gold); }
+
+    /* related */
+    .related-section { margin-top: 3rem; }
+    .related-grid { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1rem; scrollbar-width: thin; scrollbar-color: var(--gold) var(--black); }
+
+    /* ─── CONTACT PAGE (standalone) ─────────────────────────────── */
+    .contact-page { padding: 4rem clamp(1rem, 4vw, 3rem); max-width: 560px; margin: 0 auto; text-align: center; }
+    .contact-card { background: var(--black3); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 3rem 2.5rem; margin-top: 2.5rem; }
+    .contact-card h3 { font-size: 1.1rem; margin-bottom: 2rem; color: var(--white); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+
+    /* ─── STATS BAR ─────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--black4);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem clamp(1.5rem, 6vw, 5rem);
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-item .number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -2px;
+      display: block;
+    }
+    .stat-item .label {
+      font-size: .65rem;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 4rem clamp(1.5rem, 6vw, 5rem) 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand p {
+      color: var(--grey);
+      font-size: .83rem;
+      line-height: 1.8;
+      margin: 1.25rem 0;
+      max-width: 280px;
+    }
+    .footer-socials { display: flex; gap: .6rem; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: var(--r-sm);
+      background: var(--black3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey); font-size: .85rem;
+      transition: var(--trans);
+    }
+    .footer-socials a:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .footer-col h4 { font-size: .65rem; color: var(--gold); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; }
+    .footer-col a { display: block; color: var(--grey); font-size: .83rem; margin-bottom: .6rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: var(--grey); font-size: .73rem; letter-spacing: .5px; }
+    .footer-bottom .designed-by { color: var(--grey2); font-size: .7rem; }
+
+    /* ─── LIGHTBOX ──────────────────────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.96);
+      z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: var(--r); object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      width: 44px; height: 44px; border-radius: 4px;
+      background: rgba(255,255,255,.06); color: var(--white);
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--trans);
+    }
+    .lightbox-close:hover { background: var(--gold); color: var(--black); }
+
+    /* ─── SPINNER & TOAST ───────────────────────────────────────── */
+    .inline-spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 3rem auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--black3);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--r-sm);
+      padding: .9rem 1.5rem;
+      color: var(--white);
+      font-size: .85rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 5000;
+      transform: translateX(200px); opacity: 0;
+      transition: var(--trans);
+    }
+    .toast.active { transform: translateX(0); opacity: 1; }
+    .toast.error { border-left-color: #e74c3c; }
+    .error-message { text-align: center; padding: 3rem; color: var(--grey); font-size: .9rem; }
+
+    /* ─── DIVIDER ───────────────────────────────────────────────── */
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .3;
+      margin: 0;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+
+    /* ── Tablet landscape ── */
+    @media (max-width: 1200px) {
+      .categories-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid   { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid  { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid .wide { grid-column: span 1; }
+    }
+
+    /* ── Tablet portrait ── */
+    @media (max-width: 1024px) {
+      :root { --nav-h: 64px; }
+      .section, .about-section, .services-section,
+      .categories-section, .portfolio-section,
+      .featured-section, .contact-section { padding: 5rem clamp(1.2rem, 5vw, 3rem); }
+      .about-grid      { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual    { max-width: 520px; margin: 0 auto; }
+      .about-stat-card { right: 0; bottom: -1rem; }
+      .contact-grid    { grid-template-columns: 1fr; }
+      .product-grid    { grid-template-columns: repeat(2, 1fr); }
+      .products-page   { padding: 1.5rem 1.2rem; }
+      .products-sidebar { display: none; }
+      .detail-layout   { flex-direction: column; }
+      .detail-info     { width: 100%; }
+      .zoom-panel      { display: none !important; }
+      .product-card    { flex: 0 0 calc(50% - .75rem); }
+      .footer-grid     { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .stats-bar       { padding: 2rem 1.5rem; }
+      .stat-item .number { font-size: 2rem; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      :root { --nav-h: 58px; }
+
+      /* Navbar */
+      .navbar          { padding: 0 1.2rem; }
+      .nav-links       { display: none; }
+      .hamburger       { display: flex; }
+      .nav-right       { gap: .5rem; margin-left: auto; }
+      .search-input    { width: 120px; font-size: .75rem; }
+      .search-input:focus { width: 155px; }
+      .logo-mark       { font-size: 1.25rem; }
+      .logo-mark .num  { font-size: 1.4rem; }
+
+      /* Hero */
+      .hero-eyebrow    { font-size: .58rem; letter-spacing: 3px; }
+      .hero h1         { letter-spacing: -1px; line-height: 1.05; }
+      .hero-tagline    { font-size: .72rem; letter-spacing: 2px; }
+      .hero-cta-row    { flex-direction: column; gap: .75rem; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; justify-content: center; padding: .9rem 1.5rem; }
+
+      /* Sections */
+      .section, .about-section, .services-section,
+      .categories-section, .portfolio-section,
+      .featured-section, .contact-section { padding: 4rem 1.2rem; }
+      .section-title   { font-size: 1.6rem; letter-spacing: -.8px; margin-bottom: 2.5rem; }
+      .section-label   { font-size: .58rem; }
+
+      /* Stats */
+      .stats-bar       { padding: 2rem 1.2rem; gap: 1.2rem; justify-content: center; }
+      .stat-item       { flex: 0 0 calc(50% - 1rem); }
+      .stat-item .number { font-size: 1.8rem; }
+      .stat-item .label  { font-size: .6rem; }
+
+      /* About */
+      .about-grid      { grid-template-columns: 1fr; gap: 2rem; }
+      .about-visual    { max-width: 100%; }
+      .about-img-frame { aspect-ratio: 16/9; }
+      .about-stat-card { right: .5rem; bottom: -.8rem; padding: .9rem 1.2rem; }
+      .about-stat-card .num { font-size: 1.6rem; }
+      .about-text h2   { font-size: 1.5rem; }
+      .about-badges    { gap: .4rem; }
+      .about-badge     { font-size: .65rem; }
+
+      /* Services */
+      .services-grid   { grid-template-columns: 1fr; gap: 1rem; }
+      .service-card    { padding: 1.75rem 1.5rem; }
+      .service-icon    { width: 44px; height: 44px; font-size: 1.1rem; }
+
+      /* Categories */
+      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+      .category-card   { padding: 1.5rem .75rem; }
+      .category-card .icon { font-size: 1.5rem; }
+      .category-card .name { font-size: .65rem; }
+
+      /* Portfolio */
+      .portfolio-grid  { grid-template-columns: 1fr; grid-auto-rows: 200px; gap: .75rem; }
+      .portfolio-grid .wide, .portfolio-grid .tall { grid-column: span 1; grid-row: span 1; }
+
+      /* Carousel */
+      .carousel-btn.prev { left: 0; }
+      .carousel-btn.next { right: 0; }
+      .product-card    { flex: 0 0 calc(70vw); min-width: unset; }
+
+      /* Products page */
+      .products-page   { flex-direction: column; padding: 1rem; }
+      .products-header h1 { font-size: 1.4rem; }
+      .filter-tabs     { gap: .35rem; }
+      .filter-tab      { font-size: .65rem; padding: .35rem .8rem; }
+      .product-grid    { grid-template-columns: 1fr 1fr; gap: .75rem; }
+      .product-card-name { font-size: .8rem; }
+
+      /* Product detail */
+      .product-detail  { padding: 1rem; }
+      .detail-info h1  { font-size: 1.3rem; }
+      .gallery-thumbs  { flex-wrap: wrap; }
+      .gallery-thumb   { width: 62px; height: 46px; }
+
+      /* Contact */
+      .contact-info-item { padding: 1rem 1.1rem; }
+      .contact-info-item .contact-text .value { font-size: .85rem; }
+
+      /* Footer */
+      .footer          { padding: 3rem 1.2rem 1.5rem; }
+      .footer-grid     { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-brand p  { max-width: 100%; }
+      .footer-bottom   { flex-direction: column; text-align: center; gap: .5rem; }
+      .footer-bottom p { font-size: .7rem; }
+
+      /* Misc */
+      .breadcrumb      { font-size: .72rem; }
+      .share-btn       { width: 36px; height: 36px; }
+    }
+
+    /* ── Small phones ── */
+    @media (max-width: 480px) {
+      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+      .product-grid    { grid-template-columns: 1fr; }
+      .product-card    { flex: 0 0 85vw; }
+      .hero h1         { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+      .about-section, .services-section,
+      .categories-section, .portfolio-section,
+      .featured-section, .contact-section { padding: 3rem 1rem; }
+      .service-card    { padding: 1.4rem 1.2rem; }
+      .stats-bar       { gap: .8rem; }
+      .stat-item       { flex: 0 0 calc(50% - .5rem); }
+      .stat-item .number { font-size: 1.6rem; }
+      .search-input    { width: 100px; font-size: .72rem; }
+    }
+
+    /* ── Very small phones ── */
+    @media (max-width: 360px) {
+      .logo-mark       { font-size: 1.1rem; }
+      .logo-mark .num  { font-size: 1.25rem; }
+      .logo-mark .sub  { display: none; }
+      .hero h1         { font-size: 1.75rem; }
+      .categories-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+      .category-card   { padding: 1.2rem .5rem; }
+      .product-card    { flex: 0 0 90vw; }
+    }
+
+    /* ── Touch: disable hover effects ── */
+    @media (hover: none) {
+      .service-card:hover { transform: none; }
+      .category-card:hover { transform: none; }
+      .product-card:hover { transform: none; }
+      .about-img-frame:hover img { transform: none; }
+      .service-card .service-arrow { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-mark">
+        h<span class="num">2</span>k<span class="sub">PRODUCTION</span>
+      </span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home"    data-page="home">Home</a>
+      <a href="#about"   data-page="about" id="navAbout">About</a>
+      <a href="#services" data-page="services" id="navServices">Services</a>
+      <a href="#products" data-page="products">Products</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-container" id="searchContainer">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search gear…" autocomplete="off">
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <!-- Mobile Search -->
+    <div class="mobile-search-wrap">
+      <i class="fas fa-search mobile-search-icon"></i>
+      <input type="text" id="mobileSearchInput" class="mobile-search-input" placeholder="Search equipment..." autocomplete="off">
+    </div>
+    <a href="#home"     data-page="home">Home</a>
+    <a href="#products" data-page="products">Products</a>
+    <a href="#contact"  data-page="contact">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO — Video Background
+  ════════════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <video
+      class="hero-video"
+      id="heroVideo"
+      autoplay muted loop playsinline
+      src="./h2k.mp4"
+    ></video>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Premium Production Equipment</div>
+      <h1>Gear Built for<br><em>Cinematic Vision</em></h1>
+      <p class="hero-tagline">Cameras · Lights · Sound · Drones · Transport</p>
+      <div class="hero-cta-row">
+        <a href="#products" class="btn-primary">
+          <i class="fas fa-film"></i>
+          <span>Explore Equipment</span>
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fas fa-envelope"></i>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       MAIN APP (dynamic pages injected here)
+  ════════════════════════════════════════════════════ -->
+  <main id="app"></main>
+
+  <!-- ═══════════════════════════════════════════════════
+       LIGHTBOX
+  ════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <img src="" alt="Full view" id="lightboxImg">
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    const SUPABASE_URL     = 'https://wojnxmeanoxinvorfift.supabase.co'
+    const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDA2NjQsImV4cCI6MjA5NDUxNjY2NH0.-ASe3qBrlBZg3uWkOJ44wpAPcnbrqCN3pS6iO5aYy7o'
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+    const app = document.getElementById('app')
+    const ITEMS_PER_PAGE = 12
+
+    const CATEGORIES = [
+      { key: 'all',              label: 'All Products',      icon: 'fas fa-th' },
+      { key: 'lights',           label: 'Lights',            icon: 'fas fa-lightbulb' },
+      { key: 'camera',           label: 'Camera',            icon: 'fas fa-camera' },
+      { key: 'voice',            label: 'Sound',             icon: 'fas fa-microphone' },
+      { key: 'light-accessories',label: 'Light Accessories', icon: 'fas fa-sliders-h' },
+      { key: 'lenses',           label: 'Lenses',            icon: 'fas fa-circle' },
+      { key: 'cargovan',         label: 'Cargo Van',         icon: 'fas fa-truck' }
+    ]
+
+    // ── UTILS ────────────────────────────────────────────────────
+    function showToast(msg, isError = false) {
+      const t = document.getElementById('toast')
+      t.textContent = msg
+      t.className = 'toast' + (isError ? ' error' : '') + ' active'
+      setTimeout(() => t.classList.remove('active'), 3000)
+    }
+    function spinner() { return '<div class="inline-spinner"></div>' }
+    function catLabel(key) { return CATEGORIES.find(c => c.key === key)?.label || key }
+    function catIcon(key)  { return CATEGORIES.find(c => c.key === key)?.icon  || 'fas fa-box' }
+
+    // ── ROUTER ───────────────────────────────────────────────────
+    function getRoute() {
+      const h = location.hash.slice(1) || 'home'
+      if (h.startsWith('product/'))  return { page: 'product', id: h.split('/')[1] }
+      if (h.startsWith('products')) {
+        const p = new URLSearchParams(h.includes('?') ? h.split('?')[1] : '')
+        return { page: 'products', category: p.get('category') || 'all', search: p.get('search') || '', pg: parseInt(p.get('pg')) || 1 }
+      }
+      return { page: h }
+    }
+    function navigate(hash) { location.hash = hash }
+    window.addEventListener('hashchange', () => route())
+
+    function route() {
+      const r = getRoute()
+      updateNav(r.page)
+      app.classList.remove('page')
+      void app.offsetWidth
+      app.classList.add('page')
+
+      // Show hero only on home page
+      const isHome = r.page === 'home'
+      document.body.classList.toggle('subpage', !isHome)
+      const heroSection = document.getElementById('home')
+      if (heroSection) heroSection.style.display = isHome ? '' : 'none'
+
+      // Scroll to top for sub-pages
+      if (!isHome) window.scrollTo({ top: 0, behavior: 'instant' })
+
+      if      (r.page === 'home')     renderHome()
+      else if (r.page === 'products') renderProducts(r.category, r.search, r.pg)
+      else if (r.page === 'product')  renderProductDetail(r.id)
+      else if (r.page === 'contact')  renderContact()
+      else if (r.page === 'about')    { navigate('home'); setTimeout(() => document.getElementById('aboutSection')?.scrollIntoView({ behavior: 'smooth' }), 300) }
+      else if (r.page === 'services') { navigate('home'); setTimeout(() => document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' }), 300) }
+      else renderHome()
+    }
+
+    function updateNav(page) {
+      document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === page)
+      })
+    }
+
+    // ── NAVBAR SCROLL + VIDEO PARALLAX ───────────────────────────
+    const navbar = document.getElementById('navbar')
+    const heroVideo = document.getElementById('heroVideo')
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY
+      // Navbar dark transition
+      navbar.classList.toggle('scrolled', sy > 60)
+      // Video parallax — only on home when hero is visible
+      if (heroVideo) {
+        const heroEl = document.getElementById('home')
+        if (heroEl && sy < heroEl.offsetHeight) {
+          heroVideo.style.transform = `translateY(${sy * 0.4}px)`
+        }
+      }
+    }, { passive: true })
+
+    // ── HAMBURGER ────────────────────────────────────────────────
+    const hamburger  = document.getElementById('hamburger')
+    const mobileMenu = document.getElementById('mobileMenu')
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active')
+      mobileMenu.classList.toggle('active')
+    })
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hamburger.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    }))
+
+    // Mobile search submit on Enter
+    const mobileSearchInput = document.getElementById('mobileSearchInput')
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const q = mobileSearchInput.value.trim()
+          if (q) {
+            navigate('products?search=' + encodeURIComponent(q))
+            mobileSearchInput.value = ''
+            hamburger.classList.remove('active')
+            mobileMenu.classList.remove('active')
+          }
+        }
+      })
+    }
+
+    // ── SEARCH ───────────────────────────────────────────────────
+    let searchTimer
+    const searchInput    = document.getElementById('searchInput')
+    const searchDropdown = document.getElementById('searchDropdown')
+
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer)
+      const q = searchInput.value.trim()
+      if (!q) { searchDropdown.classList.remove('active'); return }
+      searchTimer = setTimeout(async () => {
+        try {
+          const { data, error } = await supabase.from('products').select('*').ilike('name', '%' + q + '%').limit(8)
+          if (error) throw error
+          if (!data.length) {
+            searchDropdown.innerHTML = '<div class="search-no-results">No products found</div>'
+            searchDropdown.classList.add('active'); return
+          }
+          searchDropdown.innerHTML = data.map(p =>
+            `<div class="search-dropdown-item" data-id="${p.id}">
+              <img src="${p.images?.[0] || 'https://picsum.photos/100/75'}" alt="">
+              <div class="info"><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div>
+            </div>`
+          ).join('')
+          searchDropdown.classList.add('active')
+          searchDropdown.querySelectorAll('.search-dropdown-item').forEach(el =>
+            el.addEventListener('click', () => {
+              navigate('product/' + el.dataset.id)
+              searchDropdown.classList.remove('active')
+              searchInput.value = ''
+            })
+          )
+        } catch(e) { console.error(e) }
+      }, 300)
+    })
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const q = searchInput.value.trim()
+        if (q) { navigate('products?search=' + encodeURIComponent(q)); searchDropdown.classList.remove('active'); searchInput.value = '' }
+      }
+    })
+    document.addEventListener('click', e => {
+      if (!document.getElementById('searchContainer').contains(e.target)) searchDropdown.classList.remove('active')
+    })
+
+    // ── LIGHTBOX ─────────────────────────────────────────────────
+    const lightbox = document.getElementById('lightbox')
+    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'))
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active') })
+    function openLightbox(src) { document.getElementById('lightboxImg').src = src; lightbox.classList.add('active') }
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────
+    function initReveal() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
+        })
+      }, { threshold: 0.1 })
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el))
+    }
+
+    // ── RENDER HOME ───────────────────────────────────────────────
+    function renderHome() {
+      app.innerHTML = `
+        <!-- STATS BAR -->
+        <div class="stats-bar reveal">
+          <div class="stat-item">
+            <span class="number">100+</span>
+            <span class="label">Equipment Items</span>
+          </div>
+          <div class="stat-item">
+            <span class="number">5+</span>
+            <span class="label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="number">200+</span>
+            <span class="label">Projects Delivered</span>
+          </div>
+          <div class="stat-item">
+            <span class="number">24/7</span>
+            <span class="label">Support Available</span>
+          </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="about-section" id="aboutSection">
+          <div class="about-grid">
+            <div class="about-visual reveal-left">
+              <div class="about-img-frame">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Professional production set">
+              </div>
+              <div class="about-stat-card">
+                <div class="num">100+</div>
+                <div class="lbl">Gear Items Ready</div>
+              </div>
+            </div>
+            <div class="about-text reveal-right">
+              <div class="section-label">About H2K Production</div>
+              <h2>Your Complete <span style="color:var(--gold)">Production Partner</span></h2>
+              <p>H2K Production is Armenia's premier supplier of professional-grade cinematography and broadcast equipment. From Hollywood-standard lighting rigs to the latest digital cinema cameras, we stock everything modern productions demand.</p>
+              <p>Whether you're shooting a feature film, a commercial, a music video, or a corporate production, our curated inventory of top-tier gear from leading brands ensures every frame looks its best.</p>
+              <div class="about-badges">
+                <span class="about-badge"><i class="fas fa-check-circle"></i> Professional Grade</span>
+                <span class="about-badge"><i class="fas fa-shipping-fast"></i> Fast Delivery</span>
+                <span class="about-badge"><i class="fas fa-headset"></i> Expert Support</span>
+                <span class="about-badge"><i class="fas fa-shield-alt"></i> Fully Insured</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-section" id="servicesSection">
+          <div style="text-align:center; max-width:600px; margin:0 auto 4rem;">
+            <div class="section-label" style="justify-content:center">What We Offer</div>
+            <div class="section-title" style="margin-bottom:0">Premium <span>Services</span> &amp; Equipment</div>
+          </div>
+          <div class="services-grid">
+            <div class="service-card reveal">
+              <div class="service-icon"><i class="fas fa-camera"></i></div>
+              <h3>Cinema Cameras</h3>
+              <p>Top-of-the-line digital cinema cameras from Sony, ARRI, RED, Blackmagic and more — fully rigged and ready to shoot.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Cameras</div>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.1s">
+              <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+              <h3>Lighting Systems</h3>
+              <p>Full-spectrum LED panels, HMI fixtures, tungsten kits and RGB pixel tubes for any lighting scenario imaginable.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Lights</div>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.2s">
+              <div class="service-icon"><i class="fas fa-microphone"></i></div>
+              <h3>Sound Equipment</h3>
+              <p>Professional wireless systems, boom poles, recorders and studio microphones for crystal-clear location audio.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Sound</div>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.1s">
+              <div class="service-icon"><i class="fas fa-drone-alt" style="font-family:sans-serif">🚁</i></div>
+              <h3>Drones &amp; Aerials</h3>
+              <p>DJI Inspire, Mavic and FPV drone packages with licensed pilots for breathtaking aerial cinematography.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Learn More</div>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.2s">
+              <div class="service-icon"><i class="fas fa-circle"></i></div>
+              <h3>Lenses &amp; Optics</h3>
+              <p>Vintage and modern cinema lenses — anamorphic, prime and zoom sets from Sigma, Zeiss, Leica and Canon.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Lenses</div>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.3s">
+              <div class="service-icon"><i class="fas fa-truck"></i></div>
+              <h3>Cargo &amp; Transport</h3>
+              <p>Fully equipped production vans for on-location shoots — your entire kit delivered on time, every time.</p>
+              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Learn More</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="categories-section">
+          <div class="section-label">Browse by Category</div>
+          <div class="section-title">Top <span>Categories</span></div>
+          <div class="categories-grid">
+            ${CATEGORIES.filter(c => c.key !== 'all').map(c => `
+              <div class="category-card reveal" data-cat="${c.key}">
+                <div class="icon"><i class="${c.icon}"></i></div>
+                <div class="name">${c.label}</div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- FEATURED CAROUSEL -->
+        <section class="featured-section">
+          <div class="section-label">Hand-Picked Selection</div>
+          <div class="section-title">Featured <span>Equipment</span></div>
+          <div class="carousel-wrapper">
+            <button class="carousel-btn prev" id="carPrev"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-track" id="carTrack">${spinner()}</div>
+            <button class="carousel-btn next" id="carNext"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </section>
+
+        <!-- PORTFOLIO GALLERY -->
+        <section class="portfolio-section">
+          <div style="text-align:center; max-width:600px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center">Our Work</div>
+            <div class="section-title" style="margin-bottom:3rem">Production <span>Gallery</span></div>
+          </div>
+          <div class="portfolio-grid">
+            <div class="portfolio-item wide reveal">
+              <img src="https://images.unsplash.com/photo-1601506521793-dc748fc80b67?w=900&q=80" alt="Film set">
+              <div class="portfolio-overlay">
+                <div class="cat-tag">Film Production</div>
+                <h3>Feature Film Set</h3>
+              </div>
+            </div>
+            <div class="portfolio-item reveal" style="transition-delay:.1s">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80" alt="Camera">
+              <div class="portfolio-overlay">
+                <div class="cat-tag">Camera</div>
+                <h3>Cinema Package</h3>
+              </div>
+            </div>
+            <div class="portfolio-item reveal" style="transition-delay:.05s">
+              <img src="https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=600&q=80" alt="Lighting">
+              <div class="portfolio-overlay">
+                <div class="cat-tag">Lighting</div>
+                <h3>Studio Lighting Rig</h3>
+              </div>
+            </div>
+            <div class="portfolio-item tall reveal" style="transition-delay:.15s">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="Drone">
+              <div class="portfolio-overlay">
+                <div class="cat-tag">Aerial</div>
+                <h3>Drone Cinematography</h3>
+              </div>
+            </div>
+            <div class="portfolio-item reveal" style="transition-delay:.2s">
+              <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80" alt="Sound">
+              <div class="portfolio-overlay">
+                <div class="cat-tag">Sound</div>
+                <h3>Location Audio</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT TEASER -->
+        <section class="contact-section" id="contactSection" style="text-align:center">
+          <div class="reveal" style="max-width:640px;margin:0 auto">
+            <div class="section-label" style="justify-content:center">Get In Touch</div>
+            <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-1px;margin-bottom:1.25rem">
+              Ready to <span style="color:var(--gold)">Start Shooting?</span>
+            </h2>
+            <p style="color:var(--grey);font-size:.95rem;line-height:1.9;margin-bottom:2.5rem">
+              Have a project in mind? Need specific equipment?<br>
+              Our team is available 24/7 to help you build the perfect kit.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:.85rem;max-width:420px;margin:0 auto 2.5rem">
+              <a href="mailto:info@h2kproduction.com" class="contact-info-item">
+                <div class="icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-text">
+                  <div class="label">Email Us</div>
+                  <div class="value">info@h2kproduction.com</div>
+                </div>
+              </a>
+              <a href="tel:+37433107107" class="contact-info-item">
+                <div class="icon"><i class="fas fa-phone"></i></div>
+                <div class="contact-text">
+                  <div class="label">Call Us</div>
+                  <div class="value">+374 33 107 107</div>
+                </div>
+              </a>
+            </div>
+            <a href="#products" class="btn-primary" style="display:inline-flex">
+              <i class="fas fa-film"></i>
+              <span>Browse Equipment</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        ${footerHTML()}
+      `
+
+      // Category card clicks
+      document.querySelectorAll('.category-card').forEach(c =>
+        c.addEventListener('click', () => navigate('products?category=' + c.dataset.cat))
+      )
+
+      // Service card clicks
+      document.querySelectorAll('.service-card').forEach((c, i) => {
+        const cats = ['camera', 'lights', 'voice', null, 'lenses', 'cargovan']
+        c.addEventListener('click', () => { if (cats[i]) navigate('products?category=' + cats[i]) })
+      })
+
+      // (contact form removed)
+
+      loadFeatured()
+      initReveal()
+    }
+
+    // ── FOOTER HTML ───────────────────────────────────────────────
+    function footerHTML() {
+      return `
+      <footer class="footer">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="logo" style="margin-bottom:1.25rem;display:inline-flex">
+              <span class="logo-mark">h<span class="num">2</span>k<span class="sub">PRODUCTION</span></span>
+            </a>
+            <p>Armenia's premier supplier of professional production equipment. Cameras, lights, sound and drones for world-class creators.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="tel:+37433107107">+374 33 107 107</a>
+            <a href="mailto:info@h2kproduction.com">info@h2kproduction.com</a>
+            <a href="#">Yerevan, Armenia</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; ${new Date().getFullYear()} H2K Production. All rights reserved.</p>
+          <span class="designed-by">Premium Production Equipment</span>
+        </div>
+      </footer>`
+    }
+
+    // ── FEATURED PRODUCTS ────────────────────────────────────────
+    const DEMO_PRODUCTS = [
+      { id: 'demo-1', name: 'Sony FX9 Full-Frame Cinema Camera', category: 'camera', images: ['https://images.unsplash.com/photo-1612197527762-8cfb04674c25?w=600&q=80'] },
+      { id: 'demo-2', name: 'ARRI Skypanel S60-C LED Panel', category: 'lights', images: ['https://images.unsplash.com/photo-1524169358666-79f22534bc6e?w=600&q=80'] },
+      { id: 'demo-3', name: 'Sigma 18-35mm Art Cine Lens', category: 'lenses', images: ['https://images.unsplash.com/photo-1617201522033-ac1f0ef18d08?w=600&q=80'] },
+      { id: 'demo-4', name: 'Sennheiser MKH 416 Shotgun Mic', category: 'voice', images: ['https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&q=80'] },
+      { id: 'demo-5', name: 'DJI Inspire 3 Drone Package', category: 'camera', images: ['https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80'] },
+      { id: 'demo-6', name: 'Aputure 600d Pro Light Kit', category: 'lights', images: ['https://images.unsplash.com/photo-1547119957-637f8679db1e?w=600&q=80'] },
+      { id: 'demo-7', name: 'Zeiss CP.3 Prime Lens Set', category: 'lenses', images: ['https://images.unsplash.com/photo-1606986628253-3b52e59b8c34?w=600&q=80'] },
+      { id: 'demo-8', name: 'Rode NTG5 Boom Microphone', category: 'voice', images: ['https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&q=80'] },
+      { id: 'demo-9', name: 'Blackmagic URSA Mini Pro 12K', category: 'camera', images: ['https://images.unsplash.com/photo-1519947486511-46149a169204?w=600&q=80'] },
+      { id: 'demo-10', name: 'Astera AX1 PixelTube RGB LED Set', category: 'lights', images: ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80'] },
+      { id: 'demo-11', name: 'Cargo Production Van', category: 'cargovan', images: ['https://images.unsplash.com/photo-1519003300449-424ad0405076?w=600&q=80'] },
+      { id: 'demo-12', name: 'Elinchrom Rotalux Octa 100cm', category: 'light-accessories', images: ['https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&q=80'] },
+    ]
+
+    async function loadFeatured() {
+      try {
+        const { data, error } = await supabase.from('products').select('*').limit(12)
+        if (error) throw error
+        const track = document.getElementById('carTrack')
+        const products = (data && data.length) ? data : DEMO_PRODUCTS
+        track.innerHTML = products.map(p => productCardHTML(p)).join('')
+        track.querySelectorAll('.product-card').forEach(c =>
+          c.addEventListener('click', () => {
+            if (c.dataset.id.startsWith('demo-')) return
+            navigate('product/' + c.dataset.id)
+          })
+        )
+        let pos = 0
+        const cardWidth = 280
+        const prev = document.getElementById('carPrev')
+        const next = document.getElementById('carNext')
+        const maxPos = Math.max(0, products.length - 4)
+        function slide() { track.style.transform = `translateX(-${pos * (cardWidth + 20)}px)` }
+        next.addEventListener('click', () => { pos = Math.min(pos + 1, maxPos); slide() })
+        prev.addEventListener('click', () => { pos = Math.max(pos - 1, 0); slide() })
+        // Touch swipe
+        let touchStartX = 0
+        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; track.classList.add('dragging') }, { passive: true })
+        track.addEventListener('touchend', e => {
+          track.classList.remove('dragging')
+          const dx = touchStartX - e.changedTouches[0].clientX
+          if (Math.abs(dx) > 50) { dx > 0 ? (pos = Math.min(pos + 1, maxPos)) : (pos = Math.max(pos - 1, 0)); slide() }
+        }, { passive: true })
+        // Mouse drag
+        let mouseDown = false, mouseStartX = 0
+        track.addEventListener('mousedown', e => { mouseDown = true; mouseStartX = e.clientX; track.classList.add('dragging') })
+        track.addEventListener('mouseup', e => {
+          if (!mouseDown) return; mouseDown = false; track.classList.remove('dragging')
+          const dx = mouseStartX - e.clientX
+          if (Math.abs(dx) > 50) { dx > 0 ? (pos = Math.min(pos + 1, maxPos)) : (pos = Math.max(pos - 1, 0)); slide() }
+        })
+        track.addEventListener('mouseleave', () => { mouseDown = false; track.classList.remove('dragging') })
+      } catch(e) {
+        // On error, show demo products anyway
+        const track = document.getElementById('carTrack')
+        if (track) {
+          track.innerHTML = DEMO_PRODUCTS.map(p => productCardHTML(p)).join('')
+          let pos = 0
+          const maxPos = Math.max(0, DEMO_PRODUCTS.length - 4)
+          const prev = document.getElementById('carPrev')
+          const next = document.getElementById('carNext')
+          function slide() { track.style.transform = `translateX(-${pos * 300}px)` }
+          if (next) next.addEventListener('click', () => { pos = Math.min(pos + 1, maxPos); slide() })
+          if (prev) prev.addEventListener('click', () => { pos = Math.max(pos - 1, 0); slide() })
+        }
+        console.error(e)
+      }
+    }
+
+    function productCardHTML(p) {
+      return `
+        <div class="product-card" data-id="${p.id}">
+          <div class="product-card-img-wrap">
+            <img class="product-card-img" src="${p.images?.[0] || 'https://picsum.photos/600/400'}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-name">${p.name}</div>
+            <span class="category-badge">${catLabel(p.category)}</span>
+          </div>
+        </div>`
+    }
+
+    // ── RENDER PRODUCTS ──────────────────────────────────────────
+    async function renderProducts(cat = 'all', search = '', pg = 1) {
+      app.innerHTML = `
+        <div class="products-page">
+          <div class="products-main">
+            <div class="products-header">
+              <h1>${search ? 'Search: "' + search + '"' : 'All Products'}</h1>
+              <div class="view-toggle">
+                <button class="view-btn active" id="gridBtn" title="Grid"><i class="fas fa-th"></i></button>
+                <button class="view-btn" id="listBtn" title="List"><i class="fas fa-list"></i></button>
+              </div>
+            </div>
+            <div class="filter-tabs">
+              ${CATEGORIES.map(c => `<button class="filter-tab${c.key === cat ? ' active' : ''}" data-cat="${c.key}">${c.label}</button>`).join('')}
+            </div>
+            <div id="productGrid" class="product-grid">${spinner()}</div>
+            <div id="pagination" class="pagination"></div>
+          </div>
+          <aside class="products-sidebar">
+            <div class="sidebar-card">
+              <h3><i class="fas fa-star"></i> Top Rated</h3>
+              <div id="topRated">${spinner()}</div>
+            </div>
+          </aside>
+        </div>
+        ${footerHTML()}`
+
+      let view = 'grid'
+      document.querySelectorAll('.filter-tab').forEach(t =>
+        t.addEventListener('click', () => navigate('products?category=' + t.dataset.cat))
+      )
+      document.getElementById('gridBtn').addEventListener('click', () => { view = 'grid'; updateView() })
+      document.getElementById('listBtn').addEventListener('click', () => { view = 'list'; updateView() })
+
+      function updateView() {
+        const g = document.getElementById('productGrid')
+        g.className = view === 'grid' ? 'product-grid' : 'product-list'
+        document.getElementById('gridBtn').classList.toggle('active', view === 'grid')
+        document.getElementById('listBtn').classList.toggle('active', view === 'list')
+      }
+
+      loadProducts(cat, search, pg)
+      loadTopRated()
+    }
+
+    async function loadProducts(cat, search, pg) {
+      const grid   = document.getElementById('productGrid')
+      const pagDiv = document.getElementById('pagination')
+      try {
+        let q = supabase.from('products').select('*', { count: 'exact' })
+        if (cat && cat !== 'all') q = q.eq('category', cat)
+        if (search) q = q.ilike('name', '%' + search + '%')
+        q = q.order('created_at', { ascending: false }).range((pg - 1) * ITEMS_PER_PAGE, pg * ITEMS_PER_PAGE - 1)
+        const { data, error, count } = await q
+        if (error) throw error
+        if (!data.length) { grid.innerHTML = '<p class="error-message">No products found.</p>'; pagDiv.innerHTML = ''; return }
+        grid.innerHTML = data.map(p => productCardHTML(p)).join('')
+        grid.querySelectorAll('.product-card').forEach((c, i) => {
+          if (data[i].description) {
+            const body = c.querySelector('.product-card-body')
+            const d = document.createElement('div')
+            d.className = 'product-card-desc'; d.textContent = data[i].description; body.appendChild(d)
+          }
+          c.addEventListener('click', () => navigate('product/' + c.dataset.id))
+        })
+        const totalPages = Math.ceil(count / ITEMS_PER_PAGE)
+        if (totalPages > 1) {
+          let html = `<button class="page-btn" ${pg <= 1 ? 'disabled' : ''} data-pg="${pg - 1}">‹ Prev</button>`
+          for (let i = 1; i <= totalPages; i++) html += `<button class="page-btn${i === pg ? ' active' : ''}" data-pg="${i}">${i}</button>`
+          html += `<button class="page-btn" ${pg >= totalPages ? 'disabled' : ''} data-pg="${pg + 1}">Next ›</button>`
+          pagDiv.innerHTML = html
+          pagDiv.querySelectorAll('.page-btn').forEach(b =>
+            b.addEventListener('click', () => { if (!b.disabled) navigate(`products?category=${cat}&search=${encodeURIComponent(search || '')}&pg=${b.dataset.pg}`) })
+          )
+        } else pagDiv.innerHTML = ''
+      } catch(e) { grid.innerHTML = '<p class="error-message">Error loading products.</p>'; console.error(e) }
+    }
+
+    async function loadTopRated() {
+      const el = document.getElementById('topRated')
+      try {
+        const { data, error } = await supabase.from('products').select('*').eq('top_rated', true).limit(3)
+        if (error) throw error
+        if (!data.length) { el.innerHTML = '<p style="color:var(--grey);font-size:.8rem">None yet</p>'; return }
+        el.innerHTML = data.map(p =>
+          `<div class="sidebar-product" data-id="${p.id}">
+            <img src="${p.images?.[0] || 'https://picsum.photos/100/75'}" alt="${p.name}">
+            <div><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div>
+          </div>`
+        ).join('')
+        el.querySelectorAll('.sidebar-product').forEach(s => s.addEventListener('click', () => navigate('product/' + s.dataset.id)))
+      } catch(e) { el.innerHTML = '<p class="error-message">Error</p>' }
+    }
+
+    // ── PRODUCT DETAIL ────────────────────────────────────────────
+    async function renderProductDetail(id) {
+      app.innerHTML = `<div class="product-detail">${spinner()}</div>`
+      try {
+        const { data: product, error } = await supabase.from('products').select('*').eq('id', id).single()
+        if (error) throw error
+        const imgs = product.images || []
+        app.innerHTML = `
+          <div class="product-detail page">
+            <div class="breadcrumb">
+              <a href="#home">Home</a><span class="sep">/</span>
+              <a href="#products">All Products</a><span class="sep">/</span>
+              <span>${product.name}</span>
+            </div>
+            <div class="detail-layout">
+              <div class="gallery">
+                <div class="gallery-main-wrap" id="mainWrap">
+                  <img class="gallery-main-img" id="mainImg" src="${imgs[0] || 'https://picsum.photos/600/400'}" alt="${product.name}">
+                  <button class="gallery-fullscreen-btn" id="fsBtn"><i class="fas fa-expand"></i></button>
+                  ${imgs.length > 1 ? '<button class="gallery-nav prev" id="imgPrev"><i class="fas fa-chevron-left"></i></button><button class="gallery-nav next" id="imgNext"><i class="fas fa-chevron-right"></i></button>' : ''}
+                  <div class="zoom-panel" id="zoomPanel"><img id="zoomImg" src="${imgs[0] || ''}" alt="Zoom"></div>
+                </div>
+                <div class="gallery-thumbs">${imgs.map((img, i) => `<div class="gallery-thumb${i === 0 ? ' active' : ''}" data-idx="${i}"><img src="${img}" alt="Thumb ${i + 1}"></div>`).join('')}</div>
+              </div>
+              <div class="detail-info">
+                <span class="category-badge" style="margin-bottom:1rem">${catLabel(product.category)}</span>
+                <h1>${product.name}</h1>
+                ${product.description ? `<div class="detail-description">${product.description}</div>` : ''}
+                <div class="share-section">
+                  <h4>Share this product</h4>
+                  <div class="share-buttons">
+                    <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(product.name + ' ' + location.href)}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a class="share-btn" href="https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <button class="share-btn" id="copyLinkBtn" title="Copy Link"><i class="fas fa-link"></i></button>
+                    <a class="share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(product.name)}&url=${encodeURIComponent(location.href)}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  </div>
+                </div>
+                <div class="product-nav" id="productNav"></div>
+              </div>
+            </div>
+            <section class="related-section">
+              <h2 class="section-title" style="font-size:1.4rem;letter-spacing:-.5px">Related Products</h2>
+              <div class="related-grid" id="relatedGrid">${spinner()}</div>
+            </section>
+          </div>
+          ${footerHTML()}`
+
+        let currentIdx = 0
+        const mainImg = document.getElementById('mainImg')
+        const thumbs  = document.querySelectorAll('.gallery-thumb')
+        function setImage(idx) {
+          currentIdx = idx; mainImg.src = imgs[idx] || mainImg.src
+          thumbs.forEach((t, i) => t.classList.toggle('active', i === idx))
+          const zoomImg = document.getElementById('zoomImg'); if (zoomImg) zoomImg.src = imgs[idx] || ''
+        }
+        thumbs.forEach(t => t.addEventListener('click', () => setImage(parseInt(t.dataset.idx))))
+        if (document.getElementById('imgPrev')) {
+          document.getElementById('imgPrev').addEventListener('click', () => setImage((currentIdx - 1 + imgs.length) % imgs.length))
+          document.getElementById('imgNext').addEventListener('click', () => setImage((currentIdx + 1) % imgs.length))
+        }
+        document.getElementById('fsBtn').addEventListener('click', () => openLightbox(mainImg.src))
+
+        // Zoom
+        const mainWrap = document.getElementById('mainWrap')
+        const zoomPanel = document.getElementById('zoomPanel')
+        const zoomImg  = document.getElementById('zoomImg')
+        if (window.innerWidth > 1024) {
+          mainWrap.addEventListener('mouseenter', () => zoomPanel.classList.add('active'))
+          mainWrap.addEventListener('mouseleave', () => zoomPanel.classList.remove('active'))
+          mainWrap.addEventListener('mousemove', e => {
+            const rect = mainWrap.getBoundingClientRect()
+            const x = (e.clientX - rect.left) / rect.width
+            const y = (e.clientY - rect.top)  / rect.height
+            const zw = zoomPanel.offsetWidth, zh = zoomPanel.offsetHeight
+            const iw = rect.width * 2.5, ih = rect.height * 2.5
+            zoomImg.style.width  = iw + 'px'; zoomImg.style.height = ih + 'px'
+            zoomImg.style.left   = -(x * iw - zw / 2) + 'px'
+            zoomImg.style.top    = -(y * ih - zh / 2) + 'px'
+          })
+        }
+
+        document.getElementById('copyLinkBtn').addEventListener('click', () => {
+          navigator.clipboard.writeText(location.href); showToast('Link copied!')
+        })
+        loadProductNav(product)
+        loadRelated(product)
+      } catch(e) {
+        app.innerHTML = '<div class="product-detail"><p class="error-message">Product not found.</p></div>'
+        console.error(e)
+      }
+    }
+
+    async function loadProductNav(product) {
+      const nav = document.getElementById('productNav')
+      try {
+        const { data: prev } = await supabase.from('products').select('id,name').eq('category', product.category).lt('created_at', product.created_at).order('created_at', { ascending: false }).limit(1)
+        const { data: next } = await supabase.from('products').select('id,name').eq('category', product.category).gt('created_at', product.created_at).order('created_at', { ascending: true }).limit(1)
+        let html = ''
+        if (prev?.length) html += `<button class="product-nav-btn" data-id="${prev[0].id}"><i class="fas fa-arrow-left"></i> ${prev[0].name}</button>`
+        else html += '<span></span>'
+        if (next?.length) html += `<button class="product-nav-btn" data-id="${next[0].id}">${next[0].name} <i class="fas fa-arrow-right"></i></button>`
+        nav.innerHTML = html
+        nav.querySelectorAll('.product-nav-btn').forEach(b => b.addEventListener('click', () => navigate('product/' + b.dataset.id)))
+      } catch(e) { console.error(e) }
+    }
+
+    async function loadRelated(product) {
+      const grid = document.getElementById('relatedGrid')
+      try {
+        const { data, error } = await supabase.from('products').select('*').eq('category', product.category).neq('id', product.id).limit(4)
+        if (error) throw error
+        if (!data.length) { grid.innerHTML = '<p class="error-message">No related products.</p>'; return }
+        grid.innerHTML = data.map(p => productCardHTML(p)).join('')
+        grid.querySelectorAll('.product-card').forEach(c => c.addEventListener('click', () => navigate('product/' + c.dataset.id)))
+      } catch(e) { grid.innerHTML = '<p class="error-message">Error loading related products.</p>' }
+    }
+
+    // ── CONTACT PAGE ─────────────────────────────────────────────
+    function renderContact() {
+      app.innerHTML = `
+        <div class="contact-page page">
+          <h1 class="section-title">Contact Us</h1>
+          <div class="contact-card">
+            <h3><i class="fas fa-headset"></i> Get in Touch</h3>
+            <a href="mailto:info@h2kproduction.com" class="contact-info-item">
+              <div class="icon"><i class="fas fa-envelope"></i></div>
+              <span>info@h2kproduction.com</span>
+            </a>
+            <a href="tel:+37433107107" class="contact-info-item">
+              <div class="icon"><i class="fas fa-phone"></i></div>
+              <span>+374 33 107 107</span>
+            </a>
+          </div>
+        </div>
+        ${footerHTML()}`
+    }
+
+    // ── INIT ──────────────────────────────────────────────────────
+    route()
+  </script>
+</body>
+</html>
