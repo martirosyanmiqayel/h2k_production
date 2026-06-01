@@ -15,6 +15,73 @@
     .logo-2{color:var(--orange);font-size:1.6rem}
     .logo-sub{font-size:.4rem;font-weight:700;letter-spacing:3px;color:var(--grey);margin-left:4px;text-transform:uppercase;align-self:flex-end;margin-bottom:1px}
 
+    /* ── LOGIN SCREEN ───────────────────────────────────────── */
+    #loginScreen {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-box {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 100%; max-width: 380px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.8);
+    }
+    .login-logo { text-align: center; margin-bottom: 2rem; }
+    .login-logo .logo-text { justify-content: center; font-size: 1.7rem; }
+    .login-logo .logo-2 { font-size: 1.9rem; }
+    .login-logo p { font-size: .68rem; color: var(--grey); letter-spacing: 3px; text-transform: uppercase; margin-top: .5rem; }
+    .login-box h2 { font-family: 'Montserrat',sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--white); text-align: center; }
+    .login-field { margin-bottom: 1rem; }
+    .login-field label { display: block; font-size: .68rem; font-weight: 700; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: .5rem; }
+    .login-field-wrap { position: relative; }
+    .login-field input {
+      width: 100%; padding: .85rem 2.8rem .85rem 1rem;
+      background: var(--black2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--white); font-size: .9rem;
+      font-family: 'Inter',sans-serif; transition: border-color .25s;
+    }
+    .login-field input:focus { border-color: var(--orange); outline: none; }
+    .toggle-pw {
+      position: absolute; right: .85rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--grey); cursor: pointer; font-size: .9rem;
+      transition: color .2s;
+    }
+    .toggle-pw:hover { color: var(--white); }
+    .login-error {
+      display: none;
+      background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.3);
+      border-radius: 6px; padding: .7rem 1rem;
+      font-size: .8rem; color: #e74c3c;
+      margin-bottom: 1rem;
+      align-items: center; gap: .5rem;
+    }
+    .login-error.show { display: flex; animation: shake .4s ease; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-8px)}
+      40%{transform:translateX(8px)}
+      60%{transform:translateX(-5px)}
+      80%{transform:translateX(5px)}
+    }
+    .login-btn {
+      width: 100%; padding: .9rem;
+      background: var(--orange); color: var(--white);
+      border: none; border-radius: 8px;
+      font-weight: 800; font-size: .85rem;
+      font-family: 'Inter',sans-serif;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      cursor: pointer; transition: background .2s, transform .2s;
+      margin-top: .25rem;
+    }
+    .login-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .login-btn:active { transform: translateY(0); }
+
+    /* ── ADMIN PANEL (hidden until logged in) ───────────────── */
+    #adminWrap { display: none; width: 100%; }
+
     /* SIDEBAR */
     .sidebar{width:240px;background:var(--black2);border-right:1px solid var(--border);padding:0;flex-shrink:0;position:fixed;top:0;bottom:0;display:flex;flex-direction:column}
     .sidebar-header{padding:1.5rem;border-bottom:1px solid var(--border)}
@@ -24,8 +91,10 @@
     .sidebar-nav a:hover{background:rgba(255,255,255,.03);color:var(--white)}
     .sidebar-nav a.active{color:var(--orange);border-left-color:var(--orange);background:rgba(232,75,23,.05)}
     .sidebar-nav a i{width:16px;text-align:center}
-    .sidebar-footer{padding:1.5rem;border-top:1px solid var(--border)}
+    .sidebar-footer{padding:1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
     .sidebar-footer p{font-size:.7rem;color:var(--grey)}
+    .logout-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--grey);font-size:.7rem;padding:.35rem .7rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+    .logout-btn:hover{border-color:rgba(231,76,60,.4);color:#e74c3c}
 
     /* MAIN */
     .main{margin-left:240px;flex:1;padding:2.5rem}
@@ -99,81 +168,188 @@
     .spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin 1s linear infinite;margin:2rem auto}
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    @media(max-width:768px){.sidebar{width:56px}.sidebar-header .logo-sub,.sidebar-header .subtitle,.sidebar-nav a span{display:none}.sidebar-header{padding:1rem .75rem}.main{margin-left:56px;padding:1.5rem}}
+    @media(max-width:768px){.sidebar{width:56px}.sidebar-header .logo-sub,.sidebar-header .subtitle,.sidebar-nav a span,.sidebar-footer p{display:none}.sidebar-header{padding:1rem .75rem}.main{margin-left:56px;padding:1.5rem}.logout-btn span{display:none}}
   </style>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span>
-      <div class="subtitle">Admin Panel</div>
-    </div>
-    <nav class="sidebar-nav">
-      <a class="active" data-panel="dashboard"><i class="fas fa-chart-bar"></i><span>Dashboard</span></a>
-      <a data-panel="add"><i class="fas fa-plus-circle"></i><span>Add Product</span></a>
-      <a data-panel="manage"><i class="fas fa-list"></i><span>Manage</span></a>
-    </nav>
-    <div class="sidebar-footer"><p>H2K Production © 2026</p></div>
-  </aside>
 
-  <div class="main">
-    <!-- DASHBOARD -->
-    <div class="panel active" id="panel-dashboard">
-      <div class="page-header"><h1><i class="fas fa-chart-bar"></i> Dashboard</h1></div>
-      <div class="stats" id="stats"><div class="spinner"></div></div>
+  <!-- ══ LOGIN SCREEN ══════════════════════════════════════════ -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <div class="login-logo">
+        <span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span>
+        <p>Admin Access</p>
+      </div>
+      <h2><i class="fas fa-lock" style="color:var(--orange);margin-right:.5rem"></i>Sign In</h2>
+      <div class="login-error" id="loginError">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Incorrect username or password.</span>
+      </div>
+      <form id="loginForm">
+        <div class="login-field">
+          <label>Username</label>
+          <div class="login-field-wrap">
+            <input type="text" id="loginUser" placeholder="Enter username" autocomplete="username" required>
+          </div>
+        </div>
+        <div class="login-field">
+          <label>Password</label>
+          <div class="login-field-wrap">
+            <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password" required>
+            <button type="button" class="toggle-pw" id="togglePw" tabindex="-1">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+      </form>
     </div>
+  </div>
 
-    <!-- ADD / EDIT PRODUCT -->
-    <div class="panel" id="panel-add">
-      <div class="page-header">
-        <h1 id="formTitle"><i class="fas fa-plus-circle"></i> Add Product</h1>
+  <!-- ══ ADMIN PANEL ═══════════════════════════════════════════ -->
+  <div id="adminWrap">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span>
+        <div class="subtitle">Admin Panel</div>
       </div>
-      <div class="alert alert-warning" id="serviceKeyAlert" style="display:none">
-        <i class="fas fa-exclamation-triangle"></i>
-        Service Role Key not set. Open admin.js and replace <strong>YOUR_SERVICE_ROLE_KEY</strong>.
+      <nav class="sidebar-nav">
+        <a class="active" data-panel="dashboard"><i class="fas fa-chart-bar"></i><span>Dashboard</span></a>
+        <a data-panel="add"><i class="fas fa-plus-circle"></i><span>Add Product</span></a>
+        <a data-panel="manage"><i class="fas fa-list"></i><span>Manage</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <p>H2K Production © 2026</p>
+        <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
       </div>
-      <div class="form-card">
-        <form id="productForm">
-          <input type="hidden" id="editId">
-          <div class="form-row"><label>Product Name *</label><input type="text" id="pName" required placeholder="e.g. ARRI SkyPanel S60-C"></div>
-          <div class="form-row">
-            <label>Category *</label>
-            <select id="pCategory" required>
-              <option value="">— Select category —</option>
-              <option value="lights">Lights</option>
-              <option value="camera">Camera</option>
-              <option value="voice">Voice</option>
-              <option value="light-accessories">Light Accessories</option>
-              <option value="lenses">Lenses</option>
-              <option value="cargovan">Cargo Van</option>
-            </select>
-          </div>
-          <div class="form-row"><label>Description (optional)</label><textarea id="pDesc" placeholder="Product description..."></textarea></div>
-          <div class="form-row">
-            <label>Images (up to 3)</label>
-            <input type="file" id="pImages" accept="image/*" multiple>
-            <div class="image-previews" id="imgPreviews"></div>
-          </div>
-          <div class="form-row"><div class="checkbox-row"><input type="checkbox" id="pTopRated"><label for="pTopRated">Mark as Top Rated</label></div></div>
-          <div class="btn-group">
-            <button type="submit" class="btn btn-orange" id="submitBtn"><i class="fas fa-save"></i> Add Product</button>
-            <button type="button" class="btn btn-cancel" id="cancelEdit" style="display:none"><i class="fas fa-times"></i> Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
+    </aside>
 
-    <!-- MANAGE -->
-    <div class="panel" id="panel-manage">
-      <div class="page-header">
-        <h1><i class="fas fa-list"></i> Manage Products</h1>
-        <button class="btn btn-orange btn-sm" id="refreshBtn"><i class="fas fa-refresh"></i> Refresh</button>
+    <div class="main">
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="page-header"><h1><i class="fas fa-chart-bar"></i> Dashboard</h1></div>
+        <div class="stats" id="stats"><div class="spinner"></div></div>
       </div>
-      <div class="table-wrap" id="productsTable"><div class="spinner"></div></div>
+
+      <!-- ADD / EDIT PRODUCT -->
+      <div class="panel" id="panel-add">
+        <div class="page-header">
+          <h1 id="formTitle"><i class="fas fa-plus-circle"></i> Add Product</h1>
+        </div>
+        <div class="alert alert-warning" id="serviceKeyAlert" style="display:none">
+          <i class="fas fa-exclamation-triangle"></i>
+          Service Role Key not set. Open admin.js and replace <strong>YOUR_SERVICE_ROLE_KEY</strong>.
+        </div>
+        <div class="form-card">
+          <form id="productForm">
+            <input type="hidden" id="editId">
+            <div class="form-row"><label>Product Name *</label><input type="text" id="pName" required placeholder="e.g. ARRI SkyPanel S60-C"></div>
+            <div class="form-row">
+              <label>Category *</label>
+              <select id="pCategory" required>
+                <option value="">— Select category —</option>
+                <option value="lights">Lights</option>
+                <option value="camera">Camera</option>
+                <option value="voice">Voice</option>
+                <option value="light-accessories">Light Accessories</option>
+                <option value="lenses">Lenses</option>
+                <option value="cargovan">Cargo Van</option>
+              </select>
+            </div>
+            <div class="form-row"><label>Description (optional)</label><textarea id="pDesc" placeholder="Product description..."></textarea></div>
+            <div class="form-row">
+              <label>Images (up to 3)</label>
+              <input type="file" id="pImages" accept="image/*" multiple>
+              <div class="image-previews" id="imgPreviews"></div>
+            </div>
+            <div class="form-row"><div class="checkbox-row"><input type="checkbox" id="pTopRated"><label for="pTopRated">Mark as Top Rated</label></div></div>
+            <div class="btn-group">
+              <button type="submit" class="btn btn-orange" id="submitBtn"><i class="fas fa-save"></i> Add Product</button>
+              <button type="button" class="btn btn-cancel" id="cancelEdit" style="display:none"><i class="fas fa-times"></i> Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- MANAGE -->
+      <div class="panel" id="panel-manage">
+        <div class="page-header">
+          <h1><i class="fas fa-list"></i> Manage Products</h1>
+          <button class="btn btn-orange btn-sm" id="refreshBtn"><i class="fas fa-refresh"></i> Refresh</button>
+        </div>
+        <div class="table-wrap" id="productsTable"><div class="spinner"></div></div>
+      </div>
     </div>
   </div>
 
   <div class="toast" id="toast"></div>
   <script type="module" src="admin.js"></script>
+
+  <script>
+    // ── LOGIN GATE ────────────────────────────────────────────
+    const AUTH_KEY = 'h2k_admin_auth'
+    const CORRECT_USER = 'admin'
+    const CORRECT_PASS = 'h2k$admin$'
+
+    const loginScreen = document.getElementById('loginScreen')
+    const adminWrap   = document.getElementById('adminWrap')
+    const loginForm   = document.getElementById('loginForm')
+    const loginError  = document.getElementById('loginError')
+    const loginUser   = document.getElementById('loginUser')
+    const loginPass   = document.getElementById('loginPass')
+    const togglePw    = document.getElementById('togglePw')
+    const eyeIcon     = document.getElementById('eyeIcon')
+    const logoutBtn   = document.getElementById('logoutBtn')
+
+    // Check if already authenticated this session
+    if (sessionStorage.getItem(AUTH_KEY) === '1') {
+      loginScreen.style.display = 'none'
+      adminWrap.style.display   = 'flex'
+    }
+
+    // Login submit
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault()
+      const u = loginUser.value.trim()
+      const p = loginPass.value
+      if (u === CORRECT_USER && p === CORRECT_PASS) {
+        sessionStorage.setItem(AUTH_KEY, '1')
+        loginScreen.style.display = 'none'
+        adminWrap.style.display   = 'flex'
+        loginError.classList.remove('show')
+      } else {
+        loginError.classList.remove('show')
+        void loginError.offsetWidth // reflow to restart animation
+        loginError.classList.add('show')
+        loginPass.value = ''
+        loginPass.focus()
+      }
+    })
+
+    // Toggle password visibility
+    togglePw.addEventListener('click', () => {
+      const isPass = loginPass.type === 'password'
+      loginPass.type = isPass ? 'text' : 'password'
+      eyeIcon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye'
+    })
+
+    // Logout
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem(AUTH_KEY)
+        location.reload()
+      })
+    }
+
+    // Prevent going back to admin after logout via browser back button
+    window.addEventListener('pageshow', e => {
+      if (!sessionStorage.getItem(AUTH_KEY)) {
+        loginScreen.style.display = 'flex'
+        adminWrap.style.display   = 'none'
+      }
+    })
+  </script>
 </body>
 </html>

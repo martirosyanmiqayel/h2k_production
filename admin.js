@@ -3,7 +3,7 @@ import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm
 const SUPABASE_URL='https://wojnxmeanoxinvorfift.supabase.co'
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDA2NjQsImV4cCI6MjA5NDUxNjY2NH0.-ASe3qBrlBZg3uWkOJ44wpAPcnbrqCN3pS6iO5aYy7o'
 // Replace with your service role key for write operations (Supabase → Settings → API)
-const SUPABASE_SERVICE_KEY='YOUR_SERVICE_ROLE_KEY'
+const SUPABASE_SERVICE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3ODk0MDY2NCwiZXhwIjoyMDk0NTE2NjY0fQ.B1GLTikNpmn7Rv2zPc9zWTKgt0IhnhCqlZBx5XJfqD0'
 
 // Use service key if available, otherwise fall back to anon key
 const activeKey=SUPABASE_SERVICE_KEY==='YOUR_SERVICE_ROLE_KEY'?SUPABASE_ANON_KEY:SUPABASE_SERVICE_KEY
