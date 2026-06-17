@@ -3,1727 +3,747 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="H2K Production — Premium professional production equipment. Cameras, lights, sound, drones and more for world-class creators.">
-  <meta name="keywords" content="H2K Production, camera rental, lighting equipment, professional production, drones, sound equipment Armenia">
-  <title>H2K Production — Premium Equipment</title>
+  <meta name="theme-color" content="#050506">
+  <meta name="description" content="H2K Production — Premium professional film & photo equipment rental. Cinema cameras, lighting, lenses, sound and transport for world-class productions.">
+  <meta name="keywords" content="H2K Production, camera rental, lighting rental, cinema lenses, sound equipment, production Armenia">
+  <title>H2K Production — Premium Equipment Rental</title>
 
-  <!-- Fonts -->
+  <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* ─── RESET & VARIABLES ─────────────────────────────────────── */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-    :root {
-      --black:    #080808;
-      --black2:   #0f0f0f;
-      --black3:   #161616;
-      --black4:   #1e1e1e;
-      --black5:   #242424;
-      --gold:     #e8520a;
-      --gold2:    #ff6b1a;
-      --gold-dim: rgba(232,82,10,.18);
-      --gold-glow:rgba(232,82,10,.08);
-      --red:      #c0392b;
-      --red2:     #e74c3c;
-      --white:    #ffffff;
-      --white2:   #ececec;
-      --grey:     #888;
-      --grey2:    #555;
-      --border:   rgba(255,255,255,.07);
-      --border2:  rgba(232,82,10,.3);
-      --nav-h:    76px;
-      --ease:     cubic-bezier(.4,0,.2,1);
-      --trans:    all .35s var(--ease);
-      --r:        10px;
-      --r-sm:     6px;
-      --r-lg:     18px;
-      --shadow:   0 8px 40px rgba(0,0,0,.6);
-      --shadow-lg:0 24px 80px rgba(0,0,0,.8);
-      --shadow-gold:0 0 40px rgba(232,82,10,.2);
+    :root{
+      --bg:#050506;
+      --bg2:#0a0a0c;
+      --surface:#0e0e11;
+      --surface2:#141418;
+      --surface3:#1b1b21;
+      --line:rgba(255,255,255,.07);
+      --line2:rgba(255,255,255,.12);
+      --accent:#ff5a1f;
+      --accent2:#ff8a3d;
+      --accent-soft:rgba(255,90,31,.14);
+      --accent-glow:rgba(255,90,31,.35);
+      --white:#fff;
+      --text:#e7e7ea;
+      --muted:#9a9aa2;
+      --muted2:#6a6a72;
+      --nav-h:74px;
+      --maxw:1280px;
+      --ease:cubic-bezier(.4,0,.2,1);
+      --r:14px;--r-sm:10px;--r-lg:24px;
+      --shadow:0 20px 60px -20px rgba(0,0,0,.8);
+      --shadow-accent:0 20px 50px -22px var(--accent-glow);
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--white2);
-      line-height: 1.65;
-      overflow-x: hidden;
-      min-height: 100vh;
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:var(--bg);color:var(--text);
+      line-height:1.7;overflow-x:hidden;min-height:100vh;
+      -webkit-font-smoothing:antialiased;
     }
-
-    h1,h2,h3,h4,h5,h6 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      line-height: 1.15;
-      color: var(--white);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { cursor: pointer; border: none; outline: none; font-family: 'Inter', sans-serif; }
-    input, textarea { font-family: 'Inter', sans-serif; outline: none; }
-    ul { list-style: none; }
-
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-    /* ─── VIDEO PARALLAX ─────────────────────────────────────────── */
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 120%;
-      top: -10%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    /* ─── LOGO ──────────────────────────────────────────────────── */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .logo-mark {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      letter-spacing: -1.5px;
-      color: var(--white);
-      display: flex;
-      align-items: baseline;
-      line-height: 1;
-    }
-    .logo-mark .num {
-      color: var(--gold);
-      font-size: 1.7rem;
-      transition: color .3s;
-    }
-    .logo-mark .sub {
-      font-size: .38rem;
-      letter-spacing: 3.5px;
-      color: var(--grey);
-      text-transform: uppercase;
-      font-weight: 700;
-      align-self: flex-end;
-      margin-left: 4px;
-      margin-bottom: 2px;
-    }
-    .logo:hover .num { color: var(--gold2); }
-
-    /* ─── NAVBAR ────────────────────────────────────────────────── */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      gap: 2rem;
-      transition: background .5s var(--ease), border-color .5s var(--ease), backdrop-filter .5s;
-      /* Start fully transparent over video */
-      background: transparent;
-      border-bottom: 1px solid transparent;
-    }
-    .navbar.scrolled {
-      background: rgba(8,8,8,.96);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-bottom-color: var(--border2);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      margin-left: auto;
-    }
-    .nav-links a {
-      font-size: .75rem;
-      font-weight: 700;
-      color: rgba(255,255,255,.65);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color .3s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px; left: 0;
-      width: 0; height: 1.5px;
-      background: var(--gold);
-      transition: width .35s var(--ease);
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--white); }
-    .nav-links a:hover::after,
-    .nav-links a.active::after { width: 100%; }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-left: 2rem;
-    }
-
-    /* search */
-    .search-container { position: relative; }
-    .search-input {
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: .45rem 1rem .45rem 2.2rem;
-      color: var(--white2);
-      font-size: .78rem;
-      width: 190px;
-      transition: var(--trans);
-    }
-    .search-input::placeholder { color: var(--grey); }
-    .search-input:focus {
-      border-color: var(--gold);
-      width: 240px;
-      background: rgba(201,168,76,.06);
-    }
-    .search-icon {
-      position: absolute; left: .75rem; top: 50%;
-      transform: translateY(-50%);
-      color: var(--grey); font-size: .8rem;
-      pointer-events: none;
-    }
-    .search-dropdown {
-      position: absolute;
-      top: calc(100% + 10px); left: 0; right: 0;
-      background: var(--black3);
-      border: 1px solid var(--border2);
-      border-radius: var(--r-sm);
-      max-height: 360px;
-      overflow-y: auto;
-      display: none; z-index: 200;
-      box-shadow: var(--shadow-lg);
-    }
-    .search-dropdown.active { display: block; animation: fadeDown .2s ease; }
-    .search-dropdown-item {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .7rem 1rem;
-      cursor: pointer;
-      transition: background .2s;
-      border-bottom: 1px solid var(--border);
-    }
-    .search-dropdown-item:last-child { border-bottom: none; }
-    .search-dropdown-item:hover { background: var(--gold-glow); }
-    .search-dropdown-item img { width: 48px; height: 36px; border-radius: 4px; object-fit: cover; }
-    .search-dropdown-item .name { font-size: .8rem; font-weight: 600; }
-    .search-dropdown-item .cat { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: .5px; }
-    .search-no-results { padding: 1.5rem; text-align: center; color: var(--grey); font-size: .85rem; }
-
-    /* hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 6px; background: none; padding: 12px; margin-right: -8px; cursor: pointer; z-index: 1001; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white2); transition: var(--trans); border-radius: 2px; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: var(--nav-h); left: 0; right: 0;
-      height: calc(100vh - var(--nav-h));
-      background: rgba(8,8,8,.98);
-      backdrop-filter: blur(28px);
-      padding: 2rem 1.5rem;
-      flex-direction: column; gap: 1.5rem;
-      border-bottom: 1px solid var(--border2);
-      z-index: 999;
-      overflow-y: auto;
-    }
-    .mobile-menu.active { display: flex; animation: fadeDown .3s ease; }
-    .mobile-menu a {
-      font-size: 1rem; font-weight: 800;
-      color: var(--white);
-      letter-spacing: 2px; text-transform: uppercase;
-      transition: color .3s;
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-
-    /* Mobile search */
-    .mobile-search-wrap {
-      position: relative;
-      width: 100%;
-      margin-bottom: .25rem;
-    }
-    .mobile-search-icon {
-      position: absolute; left: 1rem; top: 50%;
-      transform: translateY(-50%);
-      color: var(--grey); font-size: .85rem;
-      pointer-events: none;
-    }
-    .mobile-search-input {
-      width: 100%;
-      background: var(--black4);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: .85rem 1rem .85rem 2.6rem;
-      color: var(--white2);
-      font-size: .9rem;
-      transition: border-color .3s, box-shadow .3s;
-    }
-    .mobile-search-input::placeholder { color: var(--grey); }
-    .mobile-search-input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(232,82,10,.12);
-      outline: none;
-    }
-
-    /* ─── HERO ──────────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Video background */
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Multi-layer overlay for cinematic feel */
-    .hero-overlay {
-      position: absolute; inset: 0;
+    body::before{
+      content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
       background:
-        linear-gradient(to bottom, rgba(4,4,4,.72) 0%, rgba(4,4,4,.35) 35%, rgba(4,4,4,.5) 65%, rgba(4,4,4,.92) 100%),
-        linear-gradient(to right, rgba(4,4,4,.45) 0%, transparent 50%, rgba(4,4,4,.45) 100%);
-      z-index: 1;
+        radial-gradient(900px 500px at 80% -10%,rgba(255,90,31,.10),transparent 60%),
+        radial-gradient(700px 600px at -10% 20%,rgba(255,90,31,.05),transparent 55%),
+        var(--bg);
     }
-    /* Subtle vignette grain */
-    .hero-grain {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      z-index: 2;
-      opacity: .5;
-      pointer-events: none;
+    h1,h2,h3,h4,h5{font-family:'Sora',sans-serif;font-weight:700;line-height:1.1;color:var(--white);letter-spacing:-.02em}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+    input{font-family:inherit;outline:none}
+    ul{list-style:none}
+    ::selection{background:var(--accent);color:#fff}
+    ::-webkit-scrollbar{width:9px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:#27272e;border-radius:9px;border:2px solid var(--bg)}
+    ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+    .wrap{max-width:var(--maxw);margin-inline:auto}
+    section{padding-inline:clamp(1.15rem,5vw,4rem)}
+
+    /* ── SECTION HEADERS ─────────────────────────────── */
+    .section-label{
+      display:inline-flex;align-items:center;gap:.6rem;
+      font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--accent2);margin-bottom:1rem;
+    }
+    .section-label::before{content:'';width:26px;height:1px;background:var(--accent)}
+    .section-title{
+      font-family:'Sora',sans-serif;font-weight:800;
+      font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.03em;color:var(--white);
+      margin-bottom:2.5rem;
+    }
+    .section-title span{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 900px;
-      padding: 0 2rem;
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn-primary,.btn-outline{
+      display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+      padding:.95rem 1.9rem;border-radius:100px;font-weight:600;font-size:.92rem;
+      letter-spacing:.01em;transition:all .35s var(--ease);white-space:nowrap;
     }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;
+      box-shadow:var(--shadow-accent);
+    }
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 26px 60px -20px var(--accent-glow)}
+    .btn-outline{
+      background:rgba(255,255,255,.03);color:var(--white);
+      border:1px solid var(--line2);backdrop-filter:blur(10px);
+    }
+    .btn-outline:hover{background:rgba(255,255,255,.08);border-color:var(--accent);transform:translateY(-3px)}
 
-    .hero-eyebrow {
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .8rem;
-      animation: fadeUp 1s var(--ease) .2s both;
+    /* ── NAVBAR ──────────────────────────────────────── */
+    .navbar{
+      position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 clamp(1.15rem,5vw,4rem);
+      transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s;
+      border-bottom:1px solid transparent;
     }
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: '';
-      display: block;
-      width: 36px; height: 1px;
-      background: var(--gold);
-      opacity: .6;
+    .navbar.scrolled{
+      background:rgba(8,8,10,.72);backdrop-filter:blur(18px) saturate(140%);
+      border-bottom:1px solid var(--line);
     }
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-mark{
+      font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-1.5px;
+      color:var(--white);display:flex;align-items:baseline;line-height:1;
+    }
+    .logo-mark .num{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      font-size:1.7rem;
+    }
+    .logo-mark .sub{
+      font-size:.4rem;letter-spacing:3.5px;color:var(--muted);text-transform:uppercase;
+      font-weight:700;align-self:flex-end;margin-left:5px;margin-bottom:3px;
+    }
+    .nav-links{display:flex;align-items:center;gap:2.1rem}
+    .nav-links a{
+      position:relative;font-size:.9rem;font-weight:500;color:var(--muted);
+      padding:.3rem 0;transition:color .3s;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s var(--ease);border-radius:2px;
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
 
-    .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -2.5px;
-      line-height: 1.0;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 1s var(--ease) .4s both;
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .search-container{position:relative;width:230px}
+    .search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted2);font-size:.85rem;pointer-events:none}
+    .search-input{
+      width:100%;padding:.62rem 1rem .62rem 2.5rem;border-radius:100px;
+      background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--white);
+      font-size:.85rem;transition:all .3s;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--gold);
-      position: relative;
-    }
+    .search-input::placeholder{color:var(--muted2)}
+    .search-input:focus{border-color:var(--accent);background:rgba(255,255,255,.08);width:100%}
+    .search-container:focus-within{width:280px}
 
-    .hero-tagline {
-      font-size: clamp(.8rem, 1.5vw, 1.05rem);
-      color: rgba(255,255,255,.55);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 3rem;
-      font-weight: 500;
-      animation: fadeUp 1s var(--ease) .6s both;
+    .search-dropdown{
+      position:absolute;top:calc(100% + 12px);right:0;width:360px;max-height:430px;overflow-y:auto;
+      background:rgba(14,14,17,.96);backdrop-filter:blur(20px);border:1px solid var(--line2);
+      border-radius:var(--r);box-shadow:var(--shadow);padding:.5rem;
+      opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s var(--ease);
     }
+    .search-dropdown.active{opacity:1;visibility:visible;transform:translateY(0)}
+    .search-dropdown-item{display:flex;align-items:center;gap:.85rem;padding:.6rem;border-radius:var(--r-sm);cursor:pointer;transition:background .2s}
+    .search-dropdown-item:hover{background:rgba(255,255,255,.06)}
+    .search-dropdown-item img{width:52px;height:52px;border-radius:8px;object-fit:contain;background:#fff;padding:4px;flex-shrink:0}
+    .search-dropdown-item .name{font-size:.85rem;font-weight:500;color:var(--white);line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+    .search-dropdown-item .cat{font-size:.72rem;color:var(--accent2)}
+    .search-no-results{padding:1.2rem;text-align:center;color:var(--muted);font-size:.85rem}
 
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      animation: fadeUp 1s var(--ease) .8s both;
-    }
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:1001}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s var(--ease)}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center; gap: .6rem;
-      background: var(--gold);
-      color: var(--black);
-      padding: 1rem 2.5rem;
-      border-radius: 3px;
-      font-weight: 800;
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: var(--trans);
-      position: relative;
-      overflow: hidden;
+    .mobile-menu{
+      position:fixed;top:0;right:0;bottom:0;width:min(82vw,340px);z-index:1000;
+      background:rgba(10,10,12,.97);backdrop-filter:blur(22px);border-left:1px solid var(--line);
+      padding:calc(var(--nav-h) + 1.5rem) 1.6rem 2rem;
+      display:flex;flex-direction:column;gap:.4rem;
+      transform:translateX(100%);transition:transform .42s var(--ease);
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--gold2);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .35s var(--ease);
-    }
-    .btn-primary:hover::before { transform: scaleX(1); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(201,168,76,.3); }
-    .btn-primary i, .btn-primary span { position: relative; z-index: 1; }
+    .mobile-menu.active{transform:translateX(0)}
+    .mobile-menu a{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:600;color:var(--text);padding:.85rem .4rem;border-bottom:1px solid var(--line);transition:color .25s,padding .25s}
+    .mobile-menu a:hover,.mobile-menu a.active{color:var(--accent2);padding-left:.9rem}
+    .mobile-search-wrap{position:relative;margin-bottom:1.2rem}
+    .mobile-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted2);font-size:.9rem}
+    .mobile-search-input{width:100%;padding:.85rem 1rem .85rem 2.6rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#fff;font-size:.9rem}
+    .mobile-search-input:focus{border-color:var(--accent)}
 
-    .btn-outline {
-      display: inline-flex;
-      align-items: center; gap: .6rem;
-      background: transparent;
-      color: var(--white);
-      padding: 1rem 2.5rem;
-      border-radius: 3px;
-      border: 1px solid rgba(255,255,255,.25);
-      font-weight: 700;
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: var(--trans);
+    /* ── HERO ────────────────────────────────────────── */
+    .hero{position:relative;height:100svh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+    .hero-video{position:absolute;inset:0;width:100%;height:118%;top:-9%;object-fit:cover;z-index:0;pointer-events:none;will-change:transform}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:
+      linear-gradient(180deg,rgba(5,5,6,.55) 0%,rgba(5,5,6,.25) 35%,rgba(5,5,6,.75) 80%,var(--bg) 100%),
+      radial-gradient(80% 80% at 20% 50%,transparent,rgba(5,5,6,.55))}
+    .hero-grain{position:absolute;inset:0;z-index:2;opacity:.05;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .hero-content{position:relative;z-index:3;max-width:var(--maxw);width:100%;margin-inline:auto;padding-inline:clamp(1.15rem,5vw,4rem)}
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:.6rem;font-size:.74rem;font-weight:600;
+      letter-spacing:.24em;text-transform:uppercase;color:var(--accent2);
+      padding:.5rem 1rem;border:1px solid var(--line2);border-radius:100px;
+      background:rgba(255,90,31,.08);backdrop-filter:blur(6px);margin-bottom:1.6rem;
+      animation:fadeUp .8s var(--ease) both;
     }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-3px);
+    .hero h1{
+      font-size:clamp(2.6rem,7.5vw,5.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.02;
+      color:#fff;margin-bottom:1.3rem;animation:fadeUp .8s var(--ease) .1s both;
     }
+    .hero h1 em{
+      font-style:normal;display:block;
+      background:linear-gradient(120deg,var(--accent),var(--accent2) 60%,#ffd5b8);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .hero-tagline{font-size:clamp(.95rem,2vw,1.2rem);color:var(--muted);letter-spacing:.04em;margin-bottom:2.4rem;animation:fadeUp .8s var(--ease) .2s both}
+    .hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .3s both}
+    .hero-scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;color:var(--muted);font-size:1.3rem;animation:bob 2s infinite}
+    @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-    /* scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .5rem;
-      animation: fadeUp 1s var(--ease) 1.2s both;
-    }
-    .scroll-indicator span {
-      font-size: .55rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-    }
-    .scroll-mouse {
-      width: 22px; height: 36px;
-      border: 1.5px solid rgba(255,255,255,.3);
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      padding-top: 6px;
-    }
-    .scroll-mouse::before {
-      content: '';
-      width: 3px; height: 7px;
-      background: var(--gold);
-      border-radius: 2px;
-      animation: scrollPulse 2s ease infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity: 1; transform: translateY(0); }
-      50% { opacity: 0; transform: translateY(6px); }
-    }
+    /* ── PAGE TRANSITION ─────────────────────────────── */
+    #app.page{animation:pageIn .5s var(--ease)}
+    @keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    body.subpage{padding-top:var(--nav-h)}
 
-    /* ─── MAIN APP ──────────────────────────────────────────────── */
-    #app { min-height: 100vh; }
-    /* Hero hidden on sub-pages — app needs top padding instead */
-    body.subpage .hero { display: none; }
-    body.subpage #app  { margin-top: var(--nav-h); }
+    /* ── REVEAL ──────────────────────────────────────── */
+    .reveal,.reveal-left,.reveal-right{opacity:0;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .reveal{transform:translateY(40px)}
+    .reveal-left{transform:translateX(-50px)}
+    .reveal-right{transform:translateX(50px)}
+    .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
 
-    /* Page transitions */
-    .page { animation: fadeUp .5s var(--ease); }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
-    @keyframes fadeUp   { from { opacity:0; transform:translateY(30px); }  to { opacity:1; transform:none; } }
+    /* ── STATS BAR ───────────────────────────────────── */
+    .stats-bar{
+      max-width:var(--maxw);margin:0 auto;margin-top:-4.5rem;position:relative;z-index:5;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .stat-item{background:var(--surface);padding:2rem 1.2rem;text-align:center;transition:background .3s}
+    .stat-item:hover{background:var(--surface2)}
+    .stat-item .number{display:block;font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);
+      background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-item .label{font-size:.78rem;color:var(--muted);letter-spacing:.05em;margin-top:.3rem}
 
-    /* ─── SCROLL REVEAL ─────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    /* ── ABOUT ───────────────────────────────────────── */
+    .about-section{padding-block:clamp(4.5rem,9vw,7.5rem)}
+    .about-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+    .about-img-frame{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .about-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,5,6,.7))}
+    .about-img-frame img{width:100%;height:480px;object-fit:cover;transition:transform 1s var(--ease)}
+    .about-visual:hover .about-img-frame img{transform:scale(1.06)}
+    .about-visual{position:relative}
+    .about-stat-card{
+      position:absolute;right:-18px;bottom:-26px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+      padding:1.3rem 1.7rem;border-radius:var(--r);box-shadow:var(--shadow-accent);
     }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity .9s var(--ease), transform .9s var(--ease);
-    }
-    .reveal-left.visible { opacity: 1; transform: none; }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity .9s var(--ease), transform .9s var(--ease);
-    }
-    .reveal-right.visible { opacity: 1; transform: none; }
+    .about-stat-card .num{font-family:'Sora',sans-serif;font-weight:800;font-size:1.9rem;color:#fff;line-height:1}
+    .about-stat-card .lbl{font-size:.75rem;color:rgba(255,255,255,.85);margin-top:.2rem}
+    .about-text h2{font-size:clamp(1.7rem,3.5vw,2.7rem);letter-spacing:-.03em;margin-bottom:1.3rem}
+    .about-text h2 span{color:var(--accent2)}
+    .about-text p{color:var(--muted);margin-bottom:1.1rem;font-size:.98rem}
+    .about-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+    .about-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--text);
+      background:var(--surface2);border:1px solid var(--line);padding:.55rem 1rem;border-radius:100px}
+    .about-badge i{color:var(--accent2)}
 
-    /* ─── SECTION ───────────────────────────────────────────────── */
-    .section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
-    .section-label {
-      font-size: .6rem;
-      font-weight: 700;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
+    /* ── SERVICES ────────────────────────────────────── */
+    .services-section{padding-block:clamp(4rem,8vw,6.5rem);max-width:var(--maxw);margin:0 auto}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .service-card{
+      position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+      padding:2.2rem 1.9rem;overflow:hidden;cursor:pointer;transition:transform .4s var(--ease),border-color .4s,background .4s;
     }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px; height: 1px;
-      background: var(--gold);
-      opacity: .7;
+    .service-card::before{content:'';position:absolute;inset:0;background:radial-gradient(420px 220px at 50% -20%,var(--accent-soft),transparent 70%);opacity:0;transition:opacity .4s}
+    .service-card:hover{transform:translateY(-7px);border-color:var(--line2);background:var(--surface2)}
+    .service-card:hover::before{opacity:1}
+    .service-icon{
+      width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:1.4rem;color:var(--accent2);
+      background:var(--accent-soft);border:1px solid rgba(255,90,31,.2);margin-bottom:1.4rem;transition:all .4s var(--ease);
     }
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 4rem;
-      color: var(--white);
-    }
-    .section-title span { color: var(--gold); }
+    .service-card:hover .service-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;transform:scale(1.05) rotate(-4deg)}
+    .service-card h3{font-size:1.22rem;margin-bottom:.7rem}
+    .service-card p{color:var(--muted);font-size:.9rem;line-height:1.7}
+    .service-arrow{margin-top:1.3rem;font-size:.82rem;font-weight:600;color:var(--accent2);display:flex;align-items:center;gap:.5rem;opacity:0;transform:translateX(-6px);transition:all .4s var(--ease)}
+    .service-card:hover .service-arrow{opacity:1;transform:translateX(0)}
 
-    /* ─── ABOUT SECTION ─────────────────────────────────────────── */
-    .about-section {
-      padding: 7rem clamp(1.5rem, 6vw, 5rem);
-      background: var(--black2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* ── CATEGORIES ──────────────────────────────────── */
+    .categories-section{padding-block:clamp(3.5rem,7vw,5.5rem);max-width:var(--maxw);margin:0 auto}
+    .categories-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+    .category-card{
+      position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+      padding:1.8rem 1rem;text-align:center;cursor:pointer;overflow:hidden;
+      transition:transform .35s var(--ease),border-color .35s,background .35s;
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-img-frame {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--black4);
-      border: 1px solid var(--border2);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      position: relative;
-    }
-    .about-img-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(20%);
-      transition: filter .5s, transform .5s;
-    }
-    .about-img-frame:hover img { filter: grayscale(0%); transform: scale(1.04); }
-    .about-stat-card {
-      position: absolute;
-      bottom: -1.5rem; right: -1.5rem;
-      background: var(--black);
-      border: 1px solid var(--border2);
-      border-radius: var(--r);
-      padding: 1.2rem 1.6rem;
-      box-shadow: var(--shadow-gold);
-    }
-    .about-stat-card .num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .about-stat-card .lbl {
-      font-size: .65rem;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-top: 4px;
-    }
-    .about-text h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    .about-text p {
-      color: var(--grey);
-      font-size: .95rem;
-      line-height: 1.9;
-      margin-bottom: 1.25rem;
-    }
-    .about-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-      margin-top: 2rem;
-    }
-    .about-badge {
-      display: inline-flex;
-      align-items: center; gap: .4rem;
-      padding: .45rem .9rem;
-      border: 1px solid var(--border2);
-      border-radius: 50px;
-      font-size: .7rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .5px;
-      background: var(--gold-glow);
-    }
+    .category-card:hover{transform:translateY(-6px);border-color:var(--accent);background:var(--surface2)}
+    .category-card .icon{font-size:1.7rem;color:var(--muted);margin-bottom:.9rem;transition:color .35s,transform .35s}
+    .category-card:hover .icon{color:var(--accent2);transform:scale(1.12)}
+    .category-card .name{font-size:.86rem;font-weight:600;color:var(--text)}
 
-    /* ─── SERVICES ──────────────────────────────────────────────── */
-    .services-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    /* ── FEATURED CAROUSEL ───────────────────────────── */
+    .featured-section{padding-block:clamp(3.5rem,7vw,5.5rem);max-width:var(--maxw);margin:0 auto;overflow:hidden}
+    .carousel-outer{display:flex;align-items:center;gap:1rem}
+    .carousel-wrapper{flex:1;overflow:hidden}
+    .carousel-track{display:flex;gap:20px;transition:transform .55s var(--ease);will-change:transform}
+    .carousel-track.dragging{transition:none;cursor:grabbing}
+    .carousel-track .product-card{min-width:280px;max-width:280px}
+    .carousel-btn{
+      flex-shrink:0;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+      background:var(--surface2);border:1px solid var(--line);color:var(--white);font-size:.95rem;transition:all .3s;
     }
-    .service-card {
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: border-color .4s, transform .4s var(--ease), box-shadow .4s;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      transform: scaleX(0);
-      transition: transform .5s var(--ease);
-    }
-    .service-card:hover { border-color: var(--border2); transform: translateY(-6px); box-shadow: var(--shadow-gold); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon {
-      width: 52px; height: 52px;
-      background: var(--gold-dim);
-      border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      transition: background .3s, transform .3s;
-    }
-    .service-card:hover .service-icon { background: var(--gold); color: var(--black); transform: scale(1.1); }
-    .service-card h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: .75rem;
-      letter-spacing: -.3px;
-    }
-    .service-card p {
-      font-size: .83rem;
-      color: var(--grey);
-      line-height: 1.8;
-    }
-    .service-card .service-arrow {
-      display: inline-flex;
-      align-items: center; gap: .4rem;
-      margin-top: 1.5rem;
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity .3s, transform .3s;
-    }
-    .service-card:hover .service-arrow { opacity: 1; transform: none; }
+    .carousel-btn:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;transform:scale(1.08)}
 
-    /* ─── CATEGORIES ────────────────────────────────────────────── */
-    .categories-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); background: var(--black2); border-top: 1px solid var(--border); }
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 1rem;
+    /* ── PRODUCT CARD ────────────────────────────────── */
+    .product-card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+      cursor:pointer;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;display:flex;flex-direction:column;
     }
-    .category-card {
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 2rem 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: var(--trans);
-      position: relative;
-      overflow: hidden;
+    .product-card:hover{transform:translateY(-8px);border-color:var(--line2);box-shadow:var(--shadow)}
+    .product-card-img-wrap{position:relative;aspect-ratio:1/1;background:#fff;overflow:hidden}
+    .product-card-img{width:100%;height:100%;object-fit:contain;padding:clamp(10px,5%,22px);transition:transform .55s var(--ease)}
+    .product-card:hover .product-card-img{transform:scale(1.07)}
+    .product-card-img-wrap::after{
+      content:'View details';position:absolute;left:0;right:0;bottom:0;padding:.7rem;text-align:center;
+      font-size:.78rem;font-weight:600;letter-spacing:.04em;color:#fff;
+      background:linear-gradient(180deg,transparent,rgba(255,90,31,.95));
+      transform:translateY(100%);transition:transform .4s var(--ease);
     }
-    .category-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold-glow);
-      opacity: 0;
-      transition: opacity .35s;
-    }
-    .category-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-gold);
-    }
-    .category-card:hover::after { opacity: 1; }
-    .category-card .icon {
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: .9rem;
-      transition: transform .35s;
-      position: relative; z-index: 1;
-    }
-    .category-card:hover .icon { transform: scale(1.15); }
-    .category-card .name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: .72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--white2);
-      position: relative; z-index: 1;
-      transition: color .3s;
-    }
-    .category-card:hover .name { color: var(--gold); }
+    .product-card:hover .product-card-img-wrap::after{transform:translateY(0)}
+    .product-card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+    .product-card-name{font-family:'Sora',sans-serif;font-weight:600;font-size:.92rem;color:var(--white);line-height:1.35;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+    .product-card-desc{font-size:.8rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .category-badge{align-self:flex-start;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--accent2);background:var(--accent-soft);border:1px solid rgba(255,90,31,.2);padding:.28rem .7rem;border-radius:100px}
 
-    /* ─── PORTFOLIO / GALLERY ───────────────────────────────────── */
-    .portfolio-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 220px;
-      gap: 1rem;
-    }
-    .portfolio-grid .wide { grid-column: span 2; }
-    .portfolio-grid .tall { grid-row: span 2; }
-    .portfolio-item {
-      position: relative;
-      border-radius: var(--r);
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--black4);
-    }
-    .portfolio-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform .6s var(--ease), filter .6s;
-      filter: brightness(.85);
-    }
-    .portfolio-item:hover img { transform: scale(1.07); filter: brightness(.6); }
-    .portfolio-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,.8) 0%, transparent 60%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-      opacity: 0;
-      transition: opacity .4s;
-    }
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-    .portfolio-overlay .cat-tag {
-      font-size: .6rem;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 700;
-      margin-bottom: .35rem;
-    }
-    .portfolio-overlay h3 {
-      font-size: .95rem;
-      font-weight: 700;
-      color: var(--white);
-    }
+    /* ── PORTFOLIO ───────────────────────────────────── */
+    .portfolio-section{padding-block:clamp(3.5rem,7vw,5.5rem);max-width:var(--maxw);margin:0 auto}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:1rem}
+    .portfolio-item{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);cursor:pointer}
+    .portfolio-item.wide{grid-column:span 2}
+    .portfolio-item.tall{grid-row:span 2}
+    .portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+    .portfolio-item:hover img{transform:scale(1.08)}
+    .portfolio-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;
+      background:linear-gradient(180deg,transparent 40%,rgba(5,5,6,.85));opacity:.85;transition:opacity .4s}
+    .portfolio-item:hover .portfolio-overlay{opacity:1}
+    .portfolio-overlay .cat-tag{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.35rem}
+    .portfolio-overlay h3{font-size:1.05rem}
 
-    /* ─── FEATURED CAROUSEL ─────────────────────────────────────── */
-    .featured-section { padding: 7rem clamp(1.5rem, 6vw, 5rem); background: var(--black2); border-top: 1px solid var(--border); }
-    /* Outer holds buttons; inner clips the track */
-    .carousel-outer  { position: relative; padding: 0 56px; }
-    .carousel-wrapper { overflow: hidden; padding: 0 0 .5rem; }
-    .carousel-track {
-      display: flex;
-      gap: 1.25rem;
-      transition: transform .55s var(--ease);
-      touch-action: pan-y pinch-zoom;
-      cursor: grab;
-    }
-    .carousel-track.dragging { cursor: grabbing; transition: none; }
-    .carousel-btn {
-      position: absolute; top: 50%; transform: translateY(-60%);
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--black3);
-      border: 1px solid var(--border2);
-      color: var(--white2);
-      font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10;
-      transition: var(--trans);
-      box-shadow: 0 4px 20px rgba(0,0,0,.5);
-    }
-    .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--black); transform: translateY(-60%) scale(1.1); }
-    .carousel-btn.prev { left: 0; }
-    .carousel-btn.next { right: 0; }
-    @media (max-width: 768px) {
-      .carousel-outer { padding: 0 44px; }
-      .carousel-btn   { width: 40px; height: 40px; font-size: .85rem; }
-    }
-    @media (max-width: 480px) {
-      .carousel-outer { padding: 0 36px; }
-      .carousel-btn   { width: 34px; height: 34px; font-size: .75rem; }
-    }
+    /* ── CONTACT TEASER ──────────────────────────────── */
+    .contact-section{padding-block:clamp(4rem,8vw,6.5rem);max-width:var(--maxw);margin:0 auto}
+    .contact-info-item{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line);
+      padding:1rem 1.3rem;border-radius:var(--r);transition:border-color .3s,transform .3s;text-align:left}
+    .contact-info-item:hover{border-color:var(--accent);transform:translateY(-3px)}
+    .contact-info-item .icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+      background:var(--accent-soft);color:var(--accent2);font-size:1.1rem;border:1px solid rgba(255,90,31,.2)}
+    .contact-info-item .contact-text .label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+    .contact-info-item .contact-text .value{font-size:.98rem;font-weight:600;color:var(--white)}
 
-    /* ─── PRODUCT CARD ──────────────────────────────────────────── */
-    .product-card {
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
-      flex: 0 0 calc(25% - 1rem);
-      min-width: 240px;
-    }
-    .product-card:hover { transform: translateY(-6px); border-color: var(--border2); box-shadow: var(--shadow-gold); }
-    .product-card-img-wrap { overflow: hidden; }
-    .product-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; transition: transform .5s var(--ease); }
-    .product-card:hover .product-card-img { transform: scale(1.08); }
-    .product-card-body { padding: 1.1rem 1.3rem; }
-    .product-card-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700; font-size: .87rem;
-      margin-bottom: .5rem;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .category-badge {
-      display: inline-block;
-      background: var(--gold-dim);
-      color: var(--gold);
-      font-size: .6rem; font-weight: 700;
-      padding: .2rem .55rem;
-      border-radius: 3px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 1px solid var(--border2);
-    }
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer{border-top:1px solid var(--line);margin-top:4rem;padding:clamp(3rem,6vw,4.5rem) clamp(1.15rem,5vw,4rem) 2rem;background:var(--bg2)}
+    .footer-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line)}
+    .footer-brand p{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:1rem}
+    .footer-socials{display:flex;gap:.7rem;margin-top:1.4rem}
+    .footer-socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);border:1px solid var(--line);color:var(--muted);transition:all .3s}
+    .footer-socials a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;transform:translateY(-3px)}
+    .footer-col h4{font-size:.95rem;margin-bottom:1.1rem;color:var(--white)}
+    .footer-col a{display:block;color:var(--muted);font-size:.88rem;padding:.32rem 0;transition:color .25s,padding-left .25s}
+    .footer-col a:hover{color:var(--accent2);padding-left:.4rem}
+    .footer-bottom{max-width:var(--maxw);margin:0 auto;padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;color:var(--muted2);font-size:.82rem}
+    .footer-bottom .designed-by{color:var(--accent2)}
 
-    /* ─── CONTACT SECTION ───────────────────────────────────────── */
-    .contact-section {
-      padding: 7rem clamp(1.5rem, 6vw, 5rem);
-      background: var(--black2);
-      border-top: 1px solid var(--border);
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .contact-info-col h2 {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 1.5rem;
-    }
-    .contact-info-col p {
-      color: var(--grey);
-      font-size: .9rem;
-      line-height: 1.9;
-      margin-bottom: 2.5rem;
-    }
-    .contact-info-item {
-      display: flex;
-      align-items: center; gap: 1rem;
-      padding: 1.2rem 1.5rem;
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: var(--r-sm);
-      margin-bottom: .75rem;
-      transition: border-color .3s, transform .3s;
-      text-decoration: none;
-      color: var(--white2);
-    }
-    .contact-info-item:hover { border-color: var(--border2); transform: translateX(4px); }
-    .contact-info-item .icon {
-      width: 40px; height: 40px;
-      background: var(--gold-dim);
-      border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: .9rem;
-      flex-shrink: 0;
-    }
-    .contact-info-item .contact-text .label {
-      font-size: .6rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;
-    }
-    .contact-info-item .contact-text .value {
-      font-size: .9rem; font-weight: 600; color: var(--white); margin-top: 2px;
-    }
+    /* ── PRODUCTS PAGE ───────────────────────────────── */
+    .products-page{max-width:var(--maxw);margin:0 auto;padding:2.5rem clamp(1.15rem,5vw,4rem) 0;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .products-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.6rem;flex-wrap:wrap}
+    .products-header h1{font-size:clamp(1.6rem,3.5vw,2.3rem);letter-spacing:-.03em}
+    .view-toggle{display:flex;gap:.4rem;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:.25rem}
+    .view-btn{width:38px;height:34px;border-radius:7px;display:grid;place-items:center;color:var(--muted);transition:all .25s}
+    .view-btn.active{background:var(--accent);color:#fff}
+    .filter-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+    .filter-tab{padding:.55rem 1.1rem;border-radius:100px;font-size:.84rem;font-weight:500;color:var(--muted);
+      background:var(--surface);border:1px solid var(--line);transition:all .3s}
+    .filter-tab:hover{color:var(--white);border-color:var(--line2)}
+    .filter-tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .product-list{display:flex;flex-direction:column;gap:1rem}
+    .product-list .product-card{flex-direction:row;align-items:stretch}
+    .product-list .product-card-img-wrap{width:170px;aspect-ratio:auto;flex-shrink:0}
+    .product-list .product-card-img-wrap::after{display:none}
+    .product-list .product-card-body{justify-content:center}
 
-    /* Contact form */
-    .contact-form-card {
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 2.5rem;
-    }
-    .contact-form-card h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 1.75rem;
-      letter-spacing: -.3px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label {
-      display: block;
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: .5rem;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      background: var(--black4);
-      border: 1px solid var(--border);
-      border-radius: var(--r-sm);
-      padding: .85rem 1rem;
-      color: var(--white2);
-      font-size: .87rem;
-      transition: border-color .3s, box-shadow .3s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201,168,76,.1);
-    }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .form-submit {
-      width: 100%;
-      background: var(--gold);
-      color: var(--black);
-      padding: 1rem;
-      border-radius: var(--r-sm);
-      font-weight: 800;
-      font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: var(--trans);
-      margin-top: .5rem;
-    }
-    .form-submit:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,.25); }
+    .products-sidebar{position:sticky;top:calc(var(--nav-h) + 1.5rem)}
+    .sidebar-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem}
+    .sidebar-card h3{font-size:1rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+    .sidebar-card h3 i{color:var(--accent2)}
+    .sidebar-product{display:flex;align-items:center;gap:.85rem;padding:.6rem;border-radius:var(--r-sm);cursor:pointer;transition:background .25s}
+    .sidebar-product:hover{background:var(--surface2)}
+    .sidebar-product img{width:56px;height:56px;border-radius:8px;object-fit:contain;background:#fff;padding:4px;flex-shrink:0}
+    .sidebar-product .name{font-size:.84rem;font-weight:500;color:var(--white);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .sidebar-product .cat{font-size:.72rem;color:var(--accent2)}
 
-    /* ─── PRODUCTS PAGE ─────────────────────────────────────────── */
-    .products-page { display: flex; gap: 2rem; padding: 2rem clamp(1.5rem, 5vw, 4rem); }
-    .products-main { flex: 1; min-width: 0; }
-    .products-sidebar { width: 280px; flex-shrink: 0; }
-    .products-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-    .products-header h1 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; }
-    .filter-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
-    .filter-tab {
-      padding: .4rem 1rem;
-      border-radius: 3px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--grey);
-      font-size: .7rem; font-weight: 700;
-      letter-spacing: .5px; text-transform: uppercase;
-      transition: var(--trans); cursor: pointer;
+    .pagination{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:3rem 0 1rem}
+    .page-btn{min-width:42px;height:42px;padding:0 .8rem;border-radius:10px;font-size:.86rem;font-weight:500;color:var(--muted);
+      background:var(--surface);border:1px solid var(--line);transition:all .25s}
+    .page-btn:hover:not(:disabled){color:var(--white);border-color:var(--accent)}
+    .page-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
+    .page-btn:disabled{opacity:.35;cursor:not-allowed}
+    .error-message{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 1rem;font-size:.95rem}
+
+    /* ── PRODUCT DETAIL ──────────────────────────────── */
+    .product-detail{max-width:var(--maxw);margin:0 auto;padding:2rem clamp(1.15rem,5vw,4rem) 0}
+    .breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.82rem;color:var(--muted);margin-bottom:2rem}
+    .breadcrumb a:hover{color:var(--accent2)}
+    .breadcrumb .sep{color:var(--muted2)}
+    .breadcrumb span:last-child{color:var(--white)}
+    .detail-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+    .gallery{position:sticky;top:calc(var(--nav-h) + 1.5rem)}
+    .gallery-main-wrap{position:relative;aspect-ratio:1/1;background:#fff;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
+    .gallery-main-img{width:100%;height:100%;object-fit:contain;padding:clamp(18px,5%,42px)}
+    .gallery-fullscreen-btn{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+      background:rgba(0,0,0,.55);color:#fff;backdrop-filter:blur(6px);transition:background .25s;z-index:3}
+    .gallery-fullscreen-btn:hover{background:var(--accent)}
+    .gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(6px);transition:background .25s;z-index:3}
+    .gallery-nav:hover{background:var(--accent)}
+    .gallery-nav.prev{left:14px}.gallery-nav.next{right:14px}
+    .zoom-panel{position:absolute;inset:0;overflow:hidden;background:#fff;opacity:0;visibility:hidden;transition:opacity .25s;z-index:2;pointer-events:none}
+    .zoom-panel.active{opacity:1;visibility:visible}
+    .zoom-panel img{position:absolute;max-width:none}
+    .gallery-thumbs{display:flex;gap:.7rem;margin-top:1rem;flex-wrap:wrap}
+    .gallery-thumb{width:74px;height:74px;border-radius:10px;overflow:hidden;border:2px solid var(--line);cursor:pointer;background:#fff;transition:border-color .25s}
+    .gallery-thumb.active{border-color:var(--accent)}
+    .gallery-thumb img{width:100%;height:100%;object-fit:contain;padding:5px}
+
+    .detail-info{padding-top:.5rem}
+    .detail-info h1{font-size:clamp(1.6rem,3.5vw,2.5rem);letter-spacing:-.03em;margin:1rem 0}
+    .detail-description{color:var(--muted);font-size:.98rem;line-height:1.8;margin-bottom:1.5rem}
+    .share-section{margin-top:2rem;padding-top:1.8rem;border-top:1px solid var(--line)}
+    .share-section h4{font-size:.85rem;color:var(--muted);font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.08em}
+    .share-buttons{display:flex;gap:.7rem;flex-wrap:wrap}
+    .share-btn{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.05rem;color:var(--text);
+      background:var(--surface2);border:1px solid var(--line);transition:all .3s}
+    .share-btn:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;transform:translateY(-3px)}
+    .product-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.2rem}
+    .product-nav-btn{display:flex;align-items:center;gap:.5rem;max-width:48%;font-size:.82rem;color:var(--muted);
+      background:var(--surface);border:1px solid var(--line);padding:.7rem 1rem;border-radius:10px;transition:all .3s;text-align:left;line-height:1.3}
+    .product-nav-btn:hover{color:var(--white);border-color:var(--accent)}
+    .product-nav-btn i{color:var(--accent2);flex-shrink:0}
+
+    .related-section{margin-top:clamp(3rem,6vw,5rem)}
+    .related-section .section-title{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:1.8rem}
+    .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+
+    /* ── CONTACT PAGE ────────────────────────────────── */
+    .contact-page{max-width:760px;margin:0 auto;padding:2rem clamp(1.15rem,5vw,4rem) 0;text-align:center}
+    .contact-page .section-title{margin-bottom:2.5rem}
+    .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(2rem,5vw,3.5rem);display:flex;flex-direction:column;gap:1rem}
+    .contact-card h3{display:flex;align-items:center;justify-content:center;gap:.7rem;font-size:1.3rem;margin-bottom:1rem}
+    .contact-card h3 i{color:var(--accent2)}
+    .contact-card .contact-info-item{justify-content:center}
+
+    /* ── LIGHTBOX / TOAST / SPINNER ──────────────────── */
+    .lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);
+      display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:all .3s}
+    .lightbox.active{opacity:1;visibility:visible}
+    .lightbox img{max-width:92vw;max-height:88vh;border-radius:var(--r);background:#fff}
+    .lightbox-close{position:absolute;top:24px;right:28px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.1);color:#fff;font-size:1.2rem;transition:background .25s}
+    .lightbox-close:hover{background:var(--accent)}
+
+    .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);z-index:2100;
+      background:var(--surface3);border:1px solid var(--line2);color:#fff;padding:.9rem 1.6rem;border-radius:100px;
+      font-size:.88rem;box-shadow:var(--shadow);transition:transform .4s var(--ease);display:flex;align-items:center;gap:.6rem}
+    .toast::before{content:'\f058';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--accent2)}
+    .toast.active{transform:translateX(-50%) translateY(0)}
+    .toast.error::before{content:'\f057';color:#e74c3c}
+
+    .inline-spinner{width:40px;height:40px;margin:3rem auto;border:3px solid var(--line2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+    .product-grid .inline-spinner,.related-grid .inline-spinner,.carousel-track .inline-spinner{grid-column:1/-1}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media(max-width:1100px){
+      .detail-layout{grid-template-columns:1fr;gap:2rem}
+      .gallery{position:static}
+      .related-grid{grid-template-columns:repeat(3,1fr)}
+      .categories-grid{grid-template-columns:repeat(3,1fr)}
+      .products-page{grid-template-columns:1fr}
+      .products-sidebar{display:none}
     }
-    .filter-tab:hover { border-color: var(--border2); color: var(--white); }
-    .filter-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
-    .view-toggle { display: flex; gap: .4rem; }
-    .view-btn {
-      width: 34px; height: 34px;
-      border-radius: var(--r-sm);
-      background: var(--black3);
-      border: 1px solid var(--border);
-      color: var(--grey);
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--trans);
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .search-container{display:none}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid{grid-template-columns:1fr;gap:3.5rem}
+      .about-img-frame img{height:360px}
+      .about-stat-card{right:16px}
+      .stats-bar{grid-template-columns:repeat(2,1fr);margin-top:-3rem}
+      .portfolio-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+      .portfolio-item.wide{grid-column:span 2}
+      .portfolio-item.tall{grid-row:span 1}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+      .footer-brand{grid-column:1/-1}
     }
-    .view-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
-    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .product-list .product-card { flex: unset; min-width: unset; display: flex; flex-direction: row; }
-    .product-list .product-card-img-wrap { width: 200px; flex-shrink: 0; }
-    .product-list .product-card-img { height: 100%; aspect-ratio: unset; }
-    .product-list .product-card-body { display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; }
-    .product-list .product-card-desc { color: var(--grey); font-size: .82rem; margin-top: .4rem; }
-
-    /* sidebar */
-    .sidebar-card { background: var(--black3); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem; margin-bottom: 1rem; }
-    .sidebar-card h3 { font-size: .75rem; margin-bottom: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-    .sidebar-product { display: flex; gap: .75rem; padding: .7rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: var(--trans); }
-    .sidebar-product:last-child { border-bottom: none; }
-    .sidebar-product:hover { opacity: .7; }
-    .sidebar-product img { width: 58px; height: 43px; border-radius: 4px; object-fit: cover; }
-    .sidebar-product .name { font-size: .78rem; font-weight: 600; color: var(--white); }
-    .sidebar-product .cat { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: .5px; }
-
-    /* pagination */
-    .pagination { display: flex; justify-content: center; gap: .4rem; margin-top: 2.5rem; flex-wrap: wrap; }
-    .page-btn {
-      min-width: 38px; height: 38px;
-      border-radius: 3px;
-      background: var(--black3);
-      border: 1px solid var(--border);
-      color: var(--grey);
-      font-size: .8rem; font-weight: 600;
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--trans);
+    @media(max-width:640px){
+      :root{--nav-h:64px}
+      .product-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}
+      .related-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}
+      .services-grid{grid-template-columns:1fr}
+      .categories-grid{grid-template-columns:repeat(2,1fr)}
+      .product-card-name{font-size:.85rem}
+      .product-card-body{padding:.85rem .9rem 1rem}
+      .hero h1{font-size:clamp(2.3rem,11vw,3.6rem)}
+      .hero-cta-row{flex-direction:column;width:100%}
+      .hero-cta-row .btn-primary,.hero-cta-row .btn-outline{width:100%}
+      .portfolio-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+      .portfolio-item.wide{grid-column:span 1}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .product-nav-btn{font-size:.74rem}
+      .product-list .product-card-img-wrap{width:120px}
+      .stat-item{padding:1.4rem .8rem}
+      .gallery-thumb{width:60px;height:60px}
     }
-    .page-btn:hover { border-color: var(--border2); color: var(--white); }
-    .page-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
-    .page-btn:disabled { opacity: .3; cursor: not-allowed; }
-
-    /* ─── PRODUCT DETAIL ────────────────────────────────────────── */
-    .product-detail { padding: 2rem clamp(1.5rem, 5vw, 4rem); }
-    .breadcrumb { display: flex; gap: .5rem; font-size: .78rem; color: var(--grey); margin-bottom: 2rem; flex-wrap: wrap; align-items: center; }
-    .breadcrumb a { color: var(--grey); transition: color .2s; }
-    .breadcrumb a:hover { color: var(--gold); }
-    .breadcrumb .sep { color: var(--border); }
-    .detail-layout { display: flex; gap: 3rem; margin-bottom: 3rem; }
-    .gallery { flex: 1; min-width: 0; }
-    .gallery-main-wrap {
-      position: relative;
-      border-radius: var(--r);
-      overflow: hidden;
-      background: var(--black3);
-      border: 1px solid var(--border);
-      cursor: crosshair;
+    @media(max-width:340px){
+      .product-grid{grid-template-columns:1fr}
+      .related-grid{grid-template-columns:1fr}
     }
-    .gallery-main-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: opacity .3s; }
-    .gallery-fullscreen-btn {
-      position: absolute; top: 12px; right: 12px;
-      width: 34px; height: 34px; border-radius: 4px;
-      background: rgba(0,0,0,.7); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--trans); z-index: 5;
-    }
-    .gallery-fullscreen-btn:hover { background: var(--gold); color: var(--black); }
-    .gallery-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(0,0,0,.6); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--trans); z-index: 5;
-    }
-    .gallery-nav:hover { background: var(--gold); color: var(--black); }
-    .gallery-nav.prev { left: 10px; }
-    .gallery-nav.next { right: 10px; }
-    .gallery-thumbs { display: flex; gap: .5rem; margin-top: .6rem; }
-    .gallery-thumb {
-      width: 76px; height: 57px;
-      border-radius: var(--r-sm); overflow: hidden;
-      border: 2px solid transparent; cursor: pointer;
-      transition: var(--trans); opacity: .5;
-    }
-    .gallery-thumb.active { border-color: var(--gold); opacity: 1; }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .zoom-panel {
-      position: absolute; top: 0; right: -320px;
-      width: 300px; height: 300px;
-      border: 1px solid var(--border2);
-      border-radius: var(--r);
-      overflow: hidden;
-      background: var(--black3);
-      display: none; z-index: 20;
-      pointer-events: none;
-    }
-    .zoom-panel.active { display: block; }
-    .zoom-panel img { position: absolute; max-width: none; }
-    .detail-info { width: 380px; flex-shrink: 0; }
-    .detail-info h1 { font-size: 1.7rem; font-weight: 900; margin-bottom: 1rem; letter-spacing: -1px; }
-    .detail-description { color: var(--grey); line-height: 1.8; margin-top: 1.5rem; font-size: .9rem; }
-
-    /* share */
-    .share-section { margin-top: 2rem; }
-    .share-section h4 { font-size: .62rem; color: var(--grey); margin-bottom: .75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
-    .share-buttons { display: flex; gap: .5rem; }
-    .share-btn {
-      width: 40px; height: 40px; border-radius: 4px;
-      background: var(--black3); border: 1px solid var(--border);
-      color: var(--grey); display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; transition: var(--trans);
-    }
-    .share-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); transform: translateY(-2px); }
-
-    /* product nav */
-    .product-nav { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-    .product-nav-btn {
-      display: flex; align-items: center; gap: .5rem;
-      color: var(--grey); font-size: .78rem; font-weight: 600;
-      transition: var(--trans); background: none;
-      text-transform: uppercase; letter-spacing: .5px;
-    }
-    .product-nav-btn:hover { color: var(--gold); }
-
-    /* related */
-    .related-section { margin-top: 3rem; }
-    .related-grid { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1rem; scrollbar-width: thin; scrollbar-color: var(--gold) var(--black); }
-
-    /* ─── CONTACT PAGE (standalone) ─────────────────────────────── */
-    .contact-page { padding: 4rem clamp(1rem, 4vw, 3rem); max-width: 560px; margin: 0 auto; text-align: center; }
-    .contact-card { background: var(--black3); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 3rem 2.5rem; margin-top: 2.5rem; }
-    .contact-card h3 { font-size: 1.1rem; margin-bottom: 2rem; color: var(--white); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
-
-    /* ─── STATS BAR ─────────────────────────────────────────────── */
-    .stats-bar {
-      background: var(--black4);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2.5rem clamp(1.5rem, 6vw, 5rem);
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .stat-item { text-align: center; }
-    .stat-item .number {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -2px;
-      display: block;
-    }
-    .stat-item .label {
-      font-size: .65rem;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────────────── */
-    .footer {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      padding: 4rem clamp(1.5rem, 6vw, 5rem) 2rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 3rem;
-    }
-    .footer-brand p {
-      color: var(--grey);
-      font-size: .83rem;
-      line-height: 1.8;
-      margin: 1.25rem 0;
-      max-width: 280px;
-    }
-    .footer-socials { display: flex; gap: .6rem; }
-    .footer-socials a {
-      width: 36px; height: 36px;
-      border-radius: var(--r-sm);
-      background: var(--black3);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--grey); font-size: .85rem;
-      transition: var(--trans);
-    }
-    .footer-socials a:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
-    .footer-col h4 { font-size: .65rem; color: var(--gold); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; }
-    .footer-col a { display: block; color: var(--grey); font-size: .83rem; margin-bottom: .6rem; transition: color .2s; }
-    .footer-col a:hover { color: var(--gold); }
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-bottom p { color: var(--grey); font-size: .73rem; letter-spacing: .5px; }
-    .footer-bottom .designed-by { color: var(--grey2); font-size: .7rem; }
-
-    /* ─── LIGHTBOX ──────────────────────────────────────────────── */
-    .lightbox {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.96);
-      z-index: 2000;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity .35s;
-    }
-    .lightbox.active { opacity: 1; pointer-events: all; }
-    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: var(--r); object-fit: contain; }
-    .lightbox-close {
-      position: absolute; top: 20px; right: 24px;
-      width: 44px; height: 44px; border-radius: 4px;
-      background: rgba(255,255,255,.06); color: var(--white);
-      font-size: 1.2rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: var(--trans);
-    }
-    .lightbox-close:hover { background: var(--gold); color: var(--black); }
-
-    /* ─── SPINNER & TOAST ───────────────────────────────────────── */
-    .inline-spinner {
-      width: 32px; height: 32px;
-      border: 2px solid var(--border);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 3rem auto;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .toast {
-      position: fixed; bottom: 24px; right: 24px;
-      background: var(--black3);
-      border-left: 3px solid var(--gold);
-      border-radius: var(--r-sm);
-      padding: .9rem 1.5rem;
-      color: var(--white);
-      font-size: .85rem;
-      box-shadow: var(--shadow-lg);
-      z-index: 5000;
-      transform: translateX(200px); opacity: 0;
-      transition: var(--trans);
-    }
-    .toast.active { transform: translateX(0); opacity: 1; }
-    .toast.error { border-left-color: #e74c3c; }
-    .error-message { text-align: center; padding: 3rem; color: var(--grey); font-size: .9rem; }
-
-    /* ─── DIVIDER ───────────────────────────────────────────────── */
-    .gold-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: .3;
-      margin: 0;
-    }
-
-    /* ─── RESPONSIVE ────────────────────────────────────────────── */
-
-    /* ── Tablet landscape ── */
-    @media (max-width: 1200px) {
-      .categories-grid { grid-template-columns: repeat(3, 1fr); }
-      .services-grid   { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-grid  { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-grid .wide { grid-column: span 1; }
-    }
-
-    /* ── Tablet portrait ── */
-    @media (max-width: 1024px) {
-      :root { --nav-h: 64px; }
-      .section, .about-section, .services-section,
-      .categories-section, .portfolio-section,
-      .featured-section, .contact-section { padding: 5rem clamp(1.2rem, 5vw, 3rem); }
-      .about-grid      { grid-template-columns: 1fr; gap: 3rem; }
-      .about-visual    { max-width: 520px; margin: 0 auto; }
-      .about-stat-card { right: 0; bottom: -1rem; }
-      .contact-grid    { grid-template-columns: 1fr; }
-      .product-grid    { grid-template-columns: repeat(2, 1fr); }
-      .products-page   { padding: 1.5rem 1.2rem; }
-      .products-sidebar { display: none; }
-      .detail-layout   { flex-direction: column; }
-      .detail-info     { width: 100%; }
-      .zoom-panel      { display: none !important; }
-      .product-card    { flex: 0 0 calc(50% - .75rem); }
-      .footer-grid     { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .stats-bar       { padding: 2rem 1.5rem; }
-      .stat-item .number { font-size: 2rem; }
-    }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      :root { --nav-h: 58px; }
-
-      /* Navbar */
-      .navbar          { padding: 0 1.2rem; }
-      .nav-links       { display: none; }
-      .hamburger       { display: flex; }
-      .nav-right       { gap: .5rem; margin-left: auto; }
-      .search-input    { width: 120px; font-size: .75rem; }
-      .search-input:focus { width: 155px; }
-      .logo-mark       { font-size: 1.25rem; }
-      .logo-mark .num  { font-size: 1.4rem; }
-
-      /* Hero */
-      .hero-eyebrow    { font-size: .58rem; letter-spacing: 3px; }
-      .hero h1         { letter-spacing: -1px; line-height: 1.05; }
-      .hero-tagline    { font-size: .72rem; letter-spacing: 2px; }
-      .hero-cta-row    { flex-direction: column; gap: .75rem; align-items: center; }
-      .btn-primary, .btn-outline { width: 100%; max-width: 280px; justify-content: center; padding: .9rem 1.5rem; }
-
-      /* Sections */
-      .section, .about-section, .services-section,
-      .categories-section, .portfolio-section,
-      .featured-section, .contact-section { padding: 4rem 1.2rem; }
-      .section-title   { font-size: 1.6rem; letter-spacing: -.8px; margin-bottom: 2.5rem; line-height: 1.1; }
-      .section-label   { font-size: .58rem; margin-bottom: .8rem; }
-
-      /* Stats */
-      .stats-bar       { padding: 2rem 1.2rem; gap: 1.2rem; justify-content: center; }
-      .stat-item       { flex: 0 0 calc(50% - 1rem); }
-      .stat-item .number { font-size: 1.8rem; }
-      .stat-item .label  { font-size: .6rem; }
-
-      /* About */
-      .about-grid      { grid-template-columns: 1fr; gap: 2rem; }
-      .about-visual    { max-width: 100%; }
-      .about-img-frame { aspect-ratio: 16/9; }
-      .about-stat-card { right: .5rem; bottom: -.8rem; padding: .9rem 1.2rem; }
-      .about-stat-card .num { font-size: 1.6rem; }
-      .about-text h2   { font-size: 1.5rem; }
-      .about-badges    { gap: .4rem; }
-      .about-badge     { font-size: .65rem; }
-
-      /* Services */
-      .services-grid   { grid-template-columns: 1fr; gap: 1rem; }
-      .service-card    { padding: 1.75rem 1.5rem; }
-      .service-icon    { width: 44px; height: 44px; font-size: 1.1rem; }
-
-      /* Categories */
-      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
-      .category-card   { padding: 1.5rem .75rem; }
-      .category-card .icon { font-size: 1.5rem; }
-      .category-card .name { font-size: .65rem; }
-
-      /* Portfolio */
-      .portfolio-grid  { grid-template-columns: 1fr; grid-auto-rows: 200px; gap: .75rem; }
-      .portfolio-grid .wide, .portfolio-grid .tall { grid-column: span 1; grid-row: span 1; }
-
-      /* Carousel */
-      .product-card    { flex: 0 0 72vw; min-width: unset; }
-
-      /* Products page */
-      .products-page   { flex-direction: column; padding: 1rem; }
-      .products-header h1 { font-size: 1.4rem; }
-      .filter-tabs     { gap: .35rem; }
-      .filter-tab      { font-size: .65rem; padding: .35rem .8rem; }
-      .product-grid    { grid-template-columns: 1fr 1fr; gap: .75rem; }
-      .product-card-name { font-size: .8rem; }
-
-      /* Product detail */
-      .product-detail  { padding: 1rem; }
-      .detail-info h1  { font-size: 1.3rem; }
-      .gallery-thumbs  { flex-wrap: wrap; }
-      .gallery-thumb   { width: 62px; height: 46px; }
-
-      /* Contact */
-      .contact-info-item { padding: 1rem 1.1rem; }
-      .contact-info-item .contact-text .value { font-size: .85rem; }
-
-      /* Footer */
-      .footer          { padding: 3rem 1.2rem 1.5rem; }
-      .footer-grid     { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-brand p  { max-width: 100%; }
-      .footer-bottom   { flex-direction: column; text-align: center; gap: .5rem; }
-      .footer-bottom p { font-size: .7rem; }
-
-      /* Misc */
-      .breadcrumb      { font-size: .72rem; }
-      .share-btn       { width: 36px; height: 36px; }
-    }
-
-    /* ── Small phones ── */
-    @media (max-width: 480px) {
-      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
-      .product-grid    { grid-template-columns: 1fr; }
-      .product-card    { flex: 0 0 85vw; }
-      .hero-content    { padding: 0 1rem; }
-      .hero h1         { font-size: clamp(2.2rem, 8vw, 2.6rem); letter-spacing: -1.5px; }
-      .hero-tagline    { font-size: .65rem; letter-spacing: 1.5px; }
-      .about-section, .services-section,
-      .categories-section, .portfolio-section,
-      .featured-section, .contact-section { padding: 3rem 1rem; }
-      .service-card    { padding: 1.4rem 1.2rem; }
-      .stats-bar       { gap: .8rem; }
-      .stat-item       { flex: 0 0 calc(50% - .5rem); }
-      .stat-item .number { font-size: 1.6rem; }
-      .search-input    { width: 100px; font-size: .72rem; }
-    }
-
-    /* ── Very small phones ── */
-    @media (max-width: 360px) {
-      .logo-mark       { font-size: 1.1rem; }
-      .logo-mark .num  { font-size: 1.25rem; }
-      .logo-mark .sub  { display: none; }
-      .hero h1         { font-size: 1.85rem; }
-      .categories-grid { grid-template-columns: 1fr; gap: .5rem; }
-      .category-card   { padding: 1.2rem .5rem; }
-      .product-card    { flex: 0 0 90vw; }
-    }
-
-    /* ── Touch: disable hover effects ── */
-    @media (hover: none) {
-      .service-card:hover { transform: none; }
-      .category-card:hover { transform: none; }
-      .product-card:hover { transform: none; }
-      .about-img-frame:hover img { transform: none; }
-      .service-card .service-arrow { opacity: 1; transform: none; }
+    @media(prefers-reduced-motion:reduce){
+      *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+      .hero-video{display:none}
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ═══════════════════════════════════════════════════
-       NAVBAR
-  ════════════════════════════════════════════════════ -->
   <nav class="navbar" id="navbar">
     <a href="#home" class="logo">
-      <span class="logo-mark">
-        h<span class="num">2</span>k<span class="sub">PRODUCTION</span>
-      </span>
+      <span class="logo-mark">h<span class="num">2</span>k<span class="sub">PRODUCTION</span></span>
     </a>
-
     <div class="nav-links" id="navLinks">
-      <a href="#home"    data-page="home">Home</a>
-      <a href="#about"   data-page="about" id="navAbout">About</a>
-      <a href="#services" data-page="services" id="navServices">Services</a>
-      <a href="#products" data-page="products">Products</a>
-      <a href="#contact" data-page="contact">Contact</a>
+      <a href="#home"     data-page="home">Home</a>
+      <a href="#about"    data-page="about">About</a>
+      <a href="#services" data-page="services">Services</a>
+      <a href="#products" data-page="products">Equipment</a>
+      <a href="#contact"  data-page="contact">Contact</a>
     </div>
-
     <div class="nav-right">
       <div class="search-container" id="searchContainer">
         <i class="fas fa-search search-icon"></i>
         <input type="text" class="search-input" id="searchInput" placeholder="Search gear…" autocomplete="off">
         <div class="search-dropdown" id="searchDropdown"></div>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <!-- Mobile Search -->
     <div class="mobile-search-wrap">
       <i class="fas fa-search mobile-search-icon"></i>
-      <input type="text" id="mobileSearchInput" class="mobile-search-input" placeholder="Search equipment..." autocomplete="off">
+      <input type="text" id="mobileSearchInput" class="mobile-search-input" placeholder="Search equipment…" autocomplete="off">
     </div>
     <a href="#home"     data-page="home">Home</a>
-    <a href="#products" data-page="products">Products</a>
+    <a href="#about"    data-page="about">About</a>
+    <a href="#services" data-page="services">Services</a>
+    <a href="#products" data-page="products">Equipment</a>
     <a href="#contact"  data-page="contact">Contact</a>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════
-       HERO — Video Background
-  ════════════════════════════════════════════════════ -->
   <section class="hero" id="home">
-    <video
-      class="hero-video"
-      id="heroVideo"
-      autoplay muted loop playsinline
-      src="./h2k.mp4"
-    ></video>
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="logo.png" src="./h2k.mp4"></video>
     <div class="hero-overlay"></div>
     <div class="hero-grain"></div>
-
     <div class="hero-content">
-      <div class="hero-eyebrow">Premium Production Equipment</div>
-      <h1>Gear Built for<br><em>Cinematic Vision</em></h1>
-      <p class="hero-tagline">Cameras · Lights · Sound · Drones · Transport</p>
+      <div class="hero-eyebrow"><i class="fas fa-circle" style="font-size:.4rem"></i> Premium Production Equipment</div>
+      <h1>Gear Built for<em>Cinematic Vision</em></h1>
+      <p class="hero-tagline">Cameras · Lights · Lenses · Sound · Transport</p>
       <div class="hero-cta-row">
-        <a href="#products" class="btn-primary">
-          <i class="fas fa-film"></i>
-          <span>Explore Equipment</span>
-        </a>
-        <a href="#contact" class="btn-outline">
-          <i class="fas fa-envelope"></i>
-          <span>Get in Touch</span>
-        </a>
+        <a href="#products" class="btn-primary"><i class="fas fa-film"></i><span>Explore Equipment</span></a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i><span>Get in Touch</span></a>
       </div>
     </div>
-
-
+    <a href="#about" class="hero-scroll" aria-label="Scroll"><i class="fas fa-chevron-down"></i></a>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       MAIN APP (dynamic pages injected here)
-  ════════════════════════════════════════════════════ -->
   <main id="app"></main>
 
-  <!-- ═══════════════════════════════════════════════════
-       LIGHTBOX
-  ════════════════════════════════════════════════════ -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
     <img src="" alt="Full view" id="lightboxImg">
   </div>
 
-  <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
+  <script src="products.js?v=2"></script>
   <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    function makeLocalClient(rows){
+      function builder(){
+        const filters=[]
+        let _order=null,_range=null,_limit=null,_count=false,_single=false
+        const q={
+          select(_sel,opts){if(opts&&opts.count)_count=true;return q},
+          eq(c,v){filters.push(r=>r[c]===v);return q},
+          neq(c,v){filters.push(r=>r[c]!==v);return q},
+          lt(c,v){filters.push(r=>r[c]<v);return q},
+          gt(c,v){filters.push(r=>r[c]>v);return q},
+          ilike(c,v){const re=new RegExp('^'+String(v).replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/%/g,'.*')+'$','i');filters.push(r=>re.test(String(r[c]??'')));return q},
+          order(c,opts){_order={c,asc:!(opts&&opts.ascending===false)};return q},
+          limit(n){_limit=n;return q},
+          range(a,b){_range=[a,b];return q},
+          single(){_single=true;return q},
+          then(resolve,reject){try{return Promise.resolve(run()).then(resolve,reject)}catch(e){return Promise.resolve({data:null,error:e}).then(resolve,reject)}},
+        }
+        function run(){
+          let out=rows.filter(r=>filters.every(f=>f(r)))
+          const count=out.length
+          if(_order){const{c,asc}=_order;out=out.slice().sort((a,b)=>a[c]===b[c]?0:((a[c]>b[c]?1:-1)*(asc?1:-1)))}
+          if(_range)out=out.slice(_range[0],_range[1]+1)
+          if(_limit!=null)out=out.slice(0,_limit)
+          if(_single)return{data:out[0]||null,error:out.length?null:{message:'No rows found'}}
+          return{data:out,error:null,count:_count?count:undefined}
+        }
+        return q
+      }
+      return{from(){return builder()}}
+    }
+    const supabase=makeLocalClient(window.H2K_PRODUCTS||[])
 
-    const SUPABASE_URL     = 'https://wojnxmeanoxinvorfift.supabase.co'
-    const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDA2NjQsImV4cCI6MjA5NDUxNjY2NH0.-ASe3qBrlBZg3uWkOJ44wpAPcnbrqCN3pS6iO5aYy7o'
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-    const app = document.getElementById('app')
-    const ITEMS_PER_PAGE = 12
-
-    const CATEGORIES = [
-      { key: 'all',              label: 'All Products',      icon: 'fas fa-th' },
-      { key: 'lights',           label: 'Lights',            icon: 'fas fa-lightbulb' },
-      { key: 'camera',           label: 'Camera',            icon: 'fas fa-camera' },
-      { key: 'voice',            label: 'Sound',             icon: 'fas fa-microphone' },
-      { key: 'light-accessories',label: 'Light Accessories', icon: 'fas fa-sliders-h' },
-      { key: 'lenses',           label: 'Lenses',            icon: 'fas fa-circle' },
-      { key: 'cargovan',         label: 'Cargo Van',         icon: 'fas fa-truck' }
+    const app=document.getElementById('app')
+    const ITEMS_PER_PAGE=12
+    const CATEGORIES=[
+      {key:'all',label:'All Equipment',icon:'fas fa-th'},
+      {key:'lights',label:'Lights',icon:'fas fa-lightbulb'},
+      {key:'camera',label:'Camera',icon:'fas fa-camera'},
+      {key:'voice',label:'Sound',icon:'fas fa-microphone'},
+      {key:'light-accessories',label:'Light Accessories',icon:'fas fa-sliders-h'},
+      {key:'lenses',label:'Lenses',icon:'fas fa-circle'},
+      {key:'cargovan',label:'Cargo Van',icon:'fas fa-truck'}
     ]
 
-    // ── UTILS ────────────────────────────────────────────────────
-    function showToast(msg, isError = false) {
-      const t = document.getElementById('toast')
-      t.textContent = msg
-      t.className = 'toast' + (isError ? ' error' : '') + ' active'
-      setTimeout(() => t.classList.remove('active'), 3000)
-    }
-    function spinner() { return '<div class="inline-spinner"></div>' }
-    function catLabel(key) { return CATEGORIES.find(c => c.key === key)?.label || key }
-    function catIcon(key)  { return CATEGORIES.find(c => c.key === key)?.icon  || 'fas fa-box' }
+    function showToast(msg,isError=false){const t=document.getElementById('toast');t.textContent=msg;t.className='toast'+(isError?' error':'')+' active';setTimeout(()=>t.classList.remove('active'),3000)}
+    function spinner(){return'<div class="inline-spinner"></div>'}
+    function catLabel(k){return CATEGORIES.find(c=>c.key===k)?.label||k}
+    function escapeAttr(s){return String(s).replace(/"/g,'&quot;')}
 
-    // ── ROUTER ───────────────────────────────────────────────────
-    function getRoute() {
-      const h = location.hash.slice(1) || 'home'
-      if (h.startsWith('product/'))  return { page: 'product', id: h.split('/')[1] }
-      if (h.startsWith('products')) {
-        const p = new URLSearchParams(h.includes('?') ? h.split('?')[1] : '')
-        return { page: 'products', category: p.get('category') || 'all', search: p.get('search') || '', pg: parseInt(p.get('pg')) || 1 }
+    function getRoute(){
+      const h=location.hash.slice(1)||'home'
+      if(h.startsWith('product/'))return{page:'product',id:decodeURIComponent(h.split('/')[1])}
+      if(h.startsWith('products')){
+        const p=new URLSearchParams(h.includes('?')?h.split('?')[1]:'')
+        return{page:'products',category:p.get('category')||'all',search:p.get('search')||'',pg:parseInt(p.get('pg'))||1}
       }
-      return { page: h }
+      return{page:h}
     }
-    function navigate(hash) { location.hash = hash }
-    window.addEventListener('hashchange', () => route())
+    function navigate(hash){location.hash=hash}
+    window.addEventListener('hashchange',route)
 
-    function route() {
-      const r = getRoute()
+    function route(){
+      const r=getRoute()
       updateNav(r.page)
-      app.classList.remove('page')
-      void app.offsetWidth
-      app.classList.add('page')
-
-      // Show hero only on home page
-      const isHome = r.page === 'home'
-      document.body.classList.toggle('subpage', !isHome)
-      const heroSection = document.getElementById('home')
-      if (heroSection) heroSection.style.display = isHome ? '' : 'none'
-
-      // Scroll to top for sub-pages
-      if (!isHome) window.scrollTo({ top: 0, behavior: 'instant' })
-
-      if      (r.page === 'home')     renderHome()
-      else if (r.page === 'products') renderProducts(r.category, r.search, r.pg)
-      else if (r.page === 'product')  renderProductDetail(r.id)
-      else if (r.page === 'contact')  renderContact()
-      else if (r.page === 'about')    { navigate('home'); setTimeout(() => document.getElementById('aboutSection')?.scrollIntoView({ behavior: 'smooth' }), 300) }
-      else if (r.page === 'services') { navigate('home'); setTimeout(() => document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' }), 300) }
+      app.classList.remove('page');void app.offsetWidth;app.classList.add('page')
+      const isHome=r.page==='home'
+      document.body.classList.toggle('subpage',!isHome)
+      const hero=document.getElementById('home')
+      if(hero)hero.style.display=isHome?'':'none'
+      if(!isHome)window.scrollTo({top:0,behavior:'instant'})
+      if(r.page==='home')renderHome()
+      else if(r.page==='products')renderProducts(r.category,r.search,r.pg)
+      else if(r.page==='product')renderProductDetail(r.id)
+      else if(r.page==='contact')renderContact()
+      else if(r.page==='about'){renderHome();setTimeout(()=>document.getElementById('aboutSection')?.scrollIntoView({behavior:'smooth'}),250)}
+      else if(r.page==='services'){renderHome();setTimeout(()=>document.getElementById('servicesSection')?.scrollIntoView({behavior:'smooth'}),250)}
       else renderHome()
     }
+    function updateNav(page){document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a=>a.classList.toggle('active',a.dataset.page===page))}
 
-    function updateNav(page) {
-      document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
-        a.classList.toggle('active', a.dataset.page === page)
-      })
-    }
+    const navbar=document.getElementById('navbar')
+    const heroVideo=document.getElementById('heroVideo')
+    window.addEventListener('scroll',()=>{
+      const sy=window.scrollY
+      navbar.classList.toggle('scrolled',sy>50)
+      const hero=document.getElementById('home')
+      if(heroVideo&&hero&&hero.style.display!=='none'&&sy<hero.offsetHeight)heroVideo.style.transform=`translateY(${sy*0.35}px)`
+    },{passive:true})
 
-    // ── NAVBAR SCROLL + VIDEO PARALLAX ───────────────────────────
-    const navbar = document.getElementById('navbar')
-    const heroVideo = document.getElementById('heroVideo')
-    window.addEventListener('scroll', () => {
-      const sy = window.scrollY
-      // Navbar dark transition
-      navbar.classList.toggle('scrolled', sy > 60)
-      // Video parallax — only on home when hero is visible
-      if (heroVideo) {
-        const heroEl = document.getElementById('home')
-        if (heroEl && sy < heroEl.offsetHeight) {
-          heroVideo.style.transform = `translateY(${sy * 0.4}px)`
-        }
-      }
-    }, { passive: true })
+    const hamburger=document.getElementById('hamburger')
+    const mobileMenu=document.getElementById('mobileMenu')
+    hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('active')})
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('active');mobileMenu.classList.remove('active')}))
+    const mobileSearchInput=document.getElementById('mobileSearchInput')
+    mobileSearchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const q=mobileSearchInput.value.trim();if(q){navigate('products?search='+encodeURIComponent(q));mobileSearchInput.value='';hamburger.classList.remove('active');mobileMenu.classList.remove('active')}}})
 
-    // ── HAMBURGER ────────────────────────────────────────────────
-    const hamburger  = document.getElementById('hamburger')
-    const mobileMenu = document.getElementById('mobileMenu')
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active')
-      mobileMenu.classList.toggle('active')
-    })
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      hamburger.classList.remove('active')
-      mobileMenu.classList.remove('active')
-    }))
-
-    // Mobile search submit on Enter
-    const mobileSearchInput = document.getElementById('mobileSearchInput')
-    if (mobileSearchInput) {
-      mobileSearchInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          const q = mobileSearchInput.value.trim()
-          if (q) {
-            navigate('products?search=' + encodeURIComponent(q))
-            mobileSearchInput.value = ''
-            hamburger.classList.remove('active')
-            mobileMenu.classList.remove('active')
-          }
-        }
-      })
-    }
-
-    // ── SEARCH ───────────────────────────────────────────────────
     let searchTimer
-    const searchInput    = document.getElementById('searchInput')
-    const searchDropdown = document.getElementById('searchDropdown')
-
-    searchInput.addEventListener('input', () => {
+    const searchInput=document.getElementById('searchInput')
+    const searchDropdown=document.getElementById('searchDropdown')
+    searchInput.addEventListener('input',()=>{
       clearTimeout(searchTimer)
-      const q = searchInput.value.trim()
-      if (!q) { searchDropdown.classList.remove('active'); return }
-      searchTimer = setTimeout(async () => {
-        try {
-          const { data, error } = await supabase.from('products').select('*').ilike('name', '%' + q + '%').limit(8)
-          if (error) throw error
-          if (!data.length) {
-            searchDropdown.innerHTML = '<div class="search-no-results">No products found</div>'
-            searchDropdown.classList.add('active'); return
-          }
-          searchDropdown.innerHTML = data.map(p =>
-            `<div class="search-dropdown-item" data-id="${p.id}">
-              <img src="${p.images?.[0] || 'https://picsum.photos/100/75'}" alt="">
-              <div class="info"><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div>
-            </div>`
-          ).join('')
-          searchDropdown.classList.add('active')
-          searchDropdown.querySelectorAll('.search-dropdown-item').forEach(el =>
-            el.addEventListener('click', () => {
-              navigate('product/' + el.dataset.id)
-              searchDropdown.classList.remove('active')
-              searchInput.value = ''
-            })
-          )
-        } catch(e) { console.error(e) }
-      }, 300)
+      const q=searchInput.value.trim()
+      if(!q){searchDropdown.classList.remove('active');return}
+      searchTimer=setTimeout(async()=>{
+        const{data}=await supabase.from('products').select('*').ilike('name','%'+q+'%').limit(8)
+        if(!data||!data.length){searchDropdown.innerHTML='<div class="search-no-results">No products found</div>';searchDropdown.classList.add('active');return}
+        searchDropdown.innerHTML=data.map(p=>`<div class="search-dropdown-item" data-id="${escapeAttr(p.id)}"><img src="${p.images?.[0]||'./placeholder.svg'}" alt=""><div class="info"><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div></div>`).join('')
+        searchDropdown.classList.add('active')
+        searchDropdown.querySelectorAll('.search-dropdown-item').forEach(el=>el.addEventListener('click',()=>{navigate('product/'+encodeURIComponent(el.dataset.id));searchDropdown.classList.remove('active');searchInput.value=''}))
+      },300)
     })
-    searchInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const q = searchInput.value.trim()
-        if (q) { navigate('products?search=' + encodeURIComponent(q)); searchDropdown.classList.remove('active'); searchInput.value = '' }
-      }
-    })
-    document.addEventListener('click', e => {
-      if (!document.getElementById('searchContainer').contains(e.target)) searchDropdown.classList.remove('active')
-    })
+    searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const q=searchInput.value.trim();if(q){navigate('products?search='+encodeURIComponent(q));searchDropdown.classList.remove('active');searchInput.value=''}}})
+    document.addEventListener('click',e=>{if(!document.getElementById('searchContainer').contains(e.target))searchDropdown.classList.remove('active')})
 
-    // ── LIGHTBOX ─────────────────────────────────────────────────
-    const lightbox = document.getElementById('lightbox')
-    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'))
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active') })
-    function openLightbox(src) { document.getElementById('lightboxImg').src = src; lightbox.classList.add('active') }
+    const lightbox=document.getElementById('lightbox')
+    document.getElementById('lightboxClose').addEventListener('click',()=>lightbox.classList.remove('active'))
+    lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('active')})
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')lightbox.classList.remove('active')})
+    function openLightbox(src){document.getElementById('lightboxImg').src=src;lightbox.classList.add('active')}
 
-    // ── SCROLL REVEAL ─────────────────────────────────────────────
-    function initReveal() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
-        })
-      }, { threshold: 0.1 })
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el))
+    function initReveal(){
+      const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12})
+      document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el))
     }
 
-    // ── RENDER HOME ───────────────────────────────────────────────
-    function renderHome() {
-      app.innerHTML = `
-        <!-- STATS BAR -->
+    function renderHome(){
+      app.innerHTML=`
         <div class="stats-bar reveal">
-          <div class="stat-item">
-            <span class="number">100+</span>
-            <span class="label">Equipment Items</span>
-          </div>
-          <div class="stat-item">
-            <span class="number">5+</span>
-            <span class="label">Years Experience</span>
-          </div>
-          <div class="stat-item">
-            <span class="number">200+</span>
-            <span class="label">Projects Delivered</span>
-          </div>
-          <div class="stat-item">
-            <span class="number">24/7</span>
-            <span class="label">Support Available</span>
-          </div>
+          <div class="stat-item"><span class="number">160+</span><span class="label">Equipment Items</span></div>
+          <div class="stat-item"><span class="number">5+</span><span class="label">Years Experience</span></div>
+          <div class="stat-item"><span class="number">200+</span><span class="label">Projects Delivered</span></div>
+          <div class="stat-item"><span class="number">24/7</span><span class="label">Support Available</span></div>
         </div>
 
-        <!-- ABOUT -->
         <section class="about-section" id="aboutSection">
           <div class="about-grid">
             <div class="about-visual reveal-left">
-              <div class="about-img-frame">
-                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Professional production set">
-              </div>
-              <div class="about-stat-card">
-                <div class="num">100+</div>
-                <div class="lbl">Gear Items Ready</div>
-              </div>
+              <div class="about-img-frame"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80" alt="Professional production set" loading="lazy"></div>
+              <div class="about-stat-card"><div class="num">160+</div><div class="lbl">Gear Items Ready</div></div>
             </div>
             <div class="about-text reveal-right">
               <div class="section-label">About H2K Production</div>
-              <h2>Your Complete <span style="color:var(--gold)">Production Partner</span></h2>
+              <h2>Your Complete <span>Production Partner</span></h2>
               <p>H2K Production is Armenia's premier supplier of professional-grade cinematography and broadcast equipment. From Hollywood-standard lighting rigs to the latest digital cinema cameras, we stock everything modern productions demand.</p>
-              <p>Whether you're shooting a feature film, a commercial, a music video, or a corporate production, our curated inventory of top-tier gear from leading brands ensures every frame looks its best.</p>
+              <p>Whether you're shooting a feature film, a commercial, a music video or a corporate production, our curated inventory of top-tier gear ensures every frame looks its best.</p>
               <div class="about-badges">
                 <span class="about-badge"><i class="fas fa-check-circle"></i> Professional Grade</span>
                 <span class="about-badge"><i class="fas fa-shipping-fast"></i> Fast Delivery</span>
@@ -1734,189 +754,79 @@
           </div>
         </section>
 
-        <!-- SERVICES -->
         <section class="services-section" id="servicesSection">
-          <div style="text-align:center; max-width:600px; margin:0 auto 4rem;">
+          <div style="text-align:center;max-width:620px;margin:0 auto 3.5rem">
             <div class="section-label" style="justify-content:center">What We Offer</div>
             <div class="section-title" style="margin-bottom:0">Premium <span>Services</span> &amp; Equipment</div>
           </div>
           <div class="services-grid">
-            <div class="service-card reveal">
-              <div class="service-icon"><i class="fas fa-camera"></i></div>
-              <h3>Cinema Cameras</h3>
-              <p>Top-of-the-line digital cinema cameras from Sony, ARRI, RED, Blackmagic and more — fully rigged and ready to shoot.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Cameras</div>
-            </div>
-            <div class="service-card reveal" style="transition-delay:.1s">
-              <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-              <h3>Lighting Systems</h3>
-              <p>Full-spectrum LED panels, HMI fixtures, tungsten kits and RGB pixel tubes for any lighting scenario imaginable.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Lights</div>
-            </div>
-            <div class="service-card reveal" style="transition-delay:.2s">
-              <div class="service-icon"><i class="fas fa-microphone"></i></div>
-              <h3>Sound Equipment</h3>
-              <p>Professional wireless systems, boom poles, recorders and studio microphones for crystal-clear location audio.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Sound</div>
-            </div>
-            <div class="service-card reveal" style="transition-delay:.1s">
-              <div class="service-icon"><i class="fas fa-drone-alt" style="font-family:sans-serif">🚁</i></div>
-              <h3>Drones &amp; Aerials</h3>
-              <p>DJI Inspire, Mavic and FPV drone packages with licensed pilots for breathtaking aerial cinematography.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Learn More</div>
-            </div>
-            <div class="service-card reveal" style="transition-delay:.2s">
-              <div class="service-icon"><i class="fas fa-circle"></i></div>
-              <h3>Lenses &amp; Optics</h3>
-              <p>Vintage and modern cinema lenses — anamorphic, prime and zoom sets from Sigma, Zeiss, Leica and Canon.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Browse Lenses</div>
-            </div>
-            <div class="service-card reveal" style="transition-delay:.3s">
-              <div class="service-icon"><i class="fas fa-truck"></i></div>
-              <h3>Cargo &amp; Transport</h3>
-              <p>Fully equipped production vans for on-location shoots — your entire kit delivered on time, every time.</p>
-              <div class="service-arrow"><i class="fas fa-arrow-right"></i> Learn More</div>
-            </div>
+            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-camera"></i></div><h3>Cinema Cameras</h3><p>Top-of-the-line digital cinema cameras — fully rigged and ready to shoot on any production.</p><div class="service-arrow">Browse Cameras <i class="fas fa-arrow-right"></i></div></div>
+            <div class="service-card reveal" style="transition-delay:.05s"><div class="service-icon"><i class="fas fa-lightbulb"></i></div><h3>Lighting Systems</h3><p>Full-spectrum LED panels, HMI fixtures, monolights and RGB pixel tubes for any scenario.</p><div class="service-arrow">Browse Lights <i class="fas fa-arrow-right"></i></div></div>
+            <div class="service-card reveal" style="transition-delay:.1s"><div class="service-icon"><i class="fas fa-microphone"></i></div><h3>Sound Equipment</h3><p>Professional wireless systems, boom poles, recorders and microphones for crystal-clear audio.</p><div class="service-arrow">Browse Sound <i class="fas fa-arrow-right"></i></div></div>
+            <div class="service-card reveal" style="transition-delay:.05s"><div class="service-icon"><i class="fas fa-sliders-h"></i></div><h3>Grip &amp; Support</h3><p>C-stands, clamps, flags, frames and rigging — the backbone of every professional set.</p><div class="service-arrow">Browse Accessories <i class="fas fa-arrow-right"></i></div></div>
+            <div class="service-card reveal" style="transition-delay:.1s"><div class="service-icon"><i class="fas fa-circle"></i></div><h3>Lenses &amp; Optics</h3><p>Modern cinema and photo lenses — prime, zoom and specialty glass from leading makers.</p><div class="service-arrow">Browse Lenses <i class="fas fa-arrow-right"></i></div></div>
+            <div class="service-card reveal" style="transition-delay:.15s"><div class="service-icon"><i class="fas fa-truck"></i></div><h3>Cargo &amp; Transport</h3><p>Fully equipped production vans for on-location shoots — your kit delivered on time, every time.</p><div class="service-arrow">Learn More <i class="fas fa-arrow-right"></i></div></div>
           </div>
         </section>
 
-        <!-- CATEGORIES -->
         <section class="categories-section">
           <div class="section-label">Browse by Category</div>
           <div class="section-title">Top <span>Categories</span></div>
           <div class="categories-grid">
-            ${CATEGORIES.filter(c => c.key !== 'all').map(c => `
-              <div class="category-card reveal" data-cat="${c.key}">
-                <div class="icon"><i class="${c.icon}"></i></div>
-                <div class="name">${c.label}</div>
-              </div>
-            `).join('')}
+            ${CATEGORIES.filter(c=>c.key!=='all').map(c=>`<div class="category-card reveal" data-cat="${c.key}"><div class="icon"><i class="${c.icon}"></i></div><div class="name">${c.label}</div></div>`).join('')}
           </div>
         </section>
 
-        <!-- FEATURED CAROUSEL -->
         <section class="featured-section">
           <div class="section-label">Hand-Picked Selection</div>
           <div class="section-title">Featured <span>Equipment</span></div>
           <div class="carousel-outer">
             <button class="carousel-btn prev" id="carPrev"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-wrapper">
-              <div class="carousel-track" id="carTrack">${spinner()}</div>
-            </div>
+            <div class="carousel-wrapper"><div class="carousel-track" id="carTrack">${spinner()}</div></div>
             <button class="carousel-btn next" id="carNext"><i class="fas fa-chevron-right"></i></button>
           </div>
         </section>
 
-        <!-- PORTFOLIO GALLERY -->
         <section class="portfolio-section">
-          <div style="text-align:center; max-width:600px; margin:0 auto;">
+          <div style="text-align:center;max-width:620px;margin:0 auto">
             <div class="section-label" style="justify-content:center">Our Work</div>
             <div class="section-title" style="margin-bottom:3rem">Production <span>Gallery</span></div>
           </div>
           <div class="portfolio-grid">
-            <div class="portfolio-item wide reveal">
-              <img src="https://images.unsplash.com/photo-1601506521793-dc748fc80b67?w=900&q=80" alt="Film set">
-              <div class="portfolio-overlay">
-                <div class="cat-tag">Film Production</div>
-                <h3>Feature Film Set</h3>
-              </div>
-            </div>
-            <div class="portfolio-item reveal" style="transition-delay:.1s">
-              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80" alt="Camera">
-              <div class="portfolio-overlay">
-                <div class="cat-tag">Camera</div>
-                <h3>Cinema Package</h3>
-              </div>
-            </div>
-            <div class="portfolio-item reveal" style="transition-delay:.05s">
-              <img src="https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=600&q=80" alt="Lighting">
-              <div class="portfolio-overlay">
-                <div class="cat-tag">Lighting</div>
-                <h3>Studio Lighting Rig</h3>
-              </div>
-            </div>
-            <div class="portfolio-item tall reveal" style="transition-delay:.15s">
-              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="Drone">
-              <div class="portfolio-overlay">
-                <div class="cat-tag">Aerial</div>
-                <h3>Drone Cinematography</h3>
-              </div>
-            </div>
-            <div class="portfolio-item reveal" style="transition-delay:.2s">
-              <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80" alt="Sound">
-              <div class="portfolio-overlay">
-                <div class="cat-tag">Sound</div>
-                <h3>Location Audio</h3>
-              </div>
-            </div>
+            <div class="portfolio-item wide reveal"><img src="https://images.unsplash.com/photo-1601506521793-dc748fc80b67?w=1000&q=80" alt="Film set" loading="lazy"><div class="portfolio-overlay"><div class="cat-tag">Film Production</div><h3>Feature Film Set</h3></div></div>
+            <div class="portfolio-item reveal" style="transition-delay:.1s"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&q=80" alt="Camera" loading="lazy"><div class="portfolio-overlay"><div class="cat-tag">Camera</div><h3>Cinema Package</h3></div></div>
+            <div class="portfolio-item reveal" style="transition-delay:.05s"><img src="https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=700&q=80" alt="Lighting" loading="lazy"><div class="portfolio-overlay"><div class="cat-tag">Lighting</div><h3>Studio Lighting Rig</h3></div></div>
+            <div class="portfolio-item tall reveal" style="transition-delay:.15s"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80" alt="Aerial" loading="lazy"><div class="portfolio-overlay"><div class="cat-tag">Aerial</div><h3>Drone Cinematography</h3></div></div>
+            <div class="portfolio-item reveal" style="transition-delay:.2s"><img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=700&q=80" alt="Sound" loading="lazy"><div class="portfolio-overlay"><div class="cat-tag">Sound</div><h3>Location Audio</h3></div></div>
           </div>
         </section>
 
-        <!-- CONTACT TEASER -->
         <section class="contact-section" id="contactSection" style="text-align:center">
           <div class="reveal" style="max-width:640px;margin:0 auto">
             <div class="section-label" style="justify-content:center">Get In Touch</div>
-            <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-1px;margin-bottom:1.25rem">
-              Ready to <span style="color:var(--gold)">Start Shooting?</span>
-            </h2>
-            <p style="color:var(--grey);font-size:.95rem;line-height:1.9;margin-bottom:2.5rem">
-              Have a project in mind? Need specific equipment?<br>
-              Our team is available 24/7 to help you build the perfect kit.
-            </p>
+            <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.03em;margin-bottom:1.25rem">Ready to <span style="color:var(--accent2)">Start Shooting?</span></h2>
+            <p style="color:var(--muted);font-size:.95rem;margin-bottom:2.5rem">Have a project in mind? Need specific equipment?<br>Our team is available 24/7 to help you build the perfect kit.</p>
             <div style="display:flex;flex-direction:column;gap:.85rem;max-width:420px;margin:0 auto 2.5rem">
-              <a href="mailto:info@h2kproduction.com" class="contact-info-item">
-                <div class="icon"><i class="fas fa-envelope"></i></div>
-                <div class="contact-text">
-                  <div class="label">Email Us</div>
-                  <div class="value">info@h2kproduction.com</div>
-                </div>
-              </a>
-              <a href="tel:+37433107107" class="contact-info-item">
-                <div class="icon"><i class="fas fa-phone"></i></div>
-                <div class="contact-text">
-                  <div class="label">Call Us</div>
-                  <div class="value">+374 33 107 107</div>
-                </div>
-              </a>
+              <a href="mailto:info@h2kproduction.com" class="contact-info-item"><div class="icon"><i class="fas fa-envelope"></i></div><div class="contact-text"><div class="label">Email Us</div><div class="value">info@h2kproduction.com</div></div></a>
+              <a href="tel:+37433107107" class="contact-info-item"><div class="icon"><i class="fas fa-phone"></i></div><div class="contact-text"><div class="label">Call Us</div><div class="value">+374 33 107 107</div></div></a>
             </div>
-            <a href="#products" class="btn-primary" style="display:inline-flex">
-              <i class="fas fa-film"></i>
-              <span>Browse Equipment</span>
-            </a>
+            <a href="#products" class="btn-primary" style="display:inline-flex"><i class="fas fa-film"></i><span>Browse Equipment</span></a>
           </div>
         </section>
+        ${footerHTML()}`
 
-        <!-- FOOTER -->
-        ${footerHTML()}
-      `
-
-      // Category card clicks
-      document.querySelectorAll('.category-card').forEach(c =>
-        c.addEventListener('click', () => navigate('products?category=' + c.dataset.cat))
-      )
-
-      // Service card clicks
-      document.querySelectorAll('.service-card').forEach((c, i) => {
-        const cats = ['camera', 'lights', 'voice', null, 'lenses', 'cargovan']
-        c.addEventListener('click', () => { if (cats[i]) navigate('products?category=' + cats[i]) })
-      })
-
-      // (contact form removed)
-
+      document.querySelectorAll('.category-card').forEach(c=>c.addEventListener('click',()=>navigate('products?category='+c.dataset.cat)))
+      document.querySelectorAll('.service-card').forEach((c,i)=>{const cats=['camera','lights','voice','light-accessories','lenses','cargovan'];c.addEventListener('click',()=>navigate('products?category='+cats[i]))})
       loadFeatured()
       initReveal()
     }
 
-    // ── FOOTER HTML ───────────────────────────────────────────────
-    function footerHTML() {
-      return `
-      <footer class="footer">
+    function footerHTML(){
+      return `<footer class="footer">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#home" class="logo" style="margin-bottom:1.25rem;display:inline-flex">
-              <span class="logo-mark">h<span class="num">2</span>k<span class="sub">PRODUCTION</span></span>
-            </a>
-            <p>Armenia's premier supplier of professional production equipment. Cameras, lights, sound and drones for world-class creators.</p>
+            <a href="#home" class="logo" style="display:inline-flex"><span class="logo-mark">h<span class="num">2</span>k<span class="sub">PRODUCTION</span></span></a>
+            <p>Armenia's premier supplier of professional production equipment. Cameras, lights, lenses and sound for world-class creators.</p>
             <div class="footer-socials">
               <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
               <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -1924,343 +834,191 @@
               <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
             </div>
           </div>
-          <div class="footer-col">
-            <h4>Quick Links</h4>
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="tel:+37433107107">+374 33 107 107</a>
-            <a href="mailto:info@h2kproduction.com">info@h2kproduction.com</a>
-            <a href="#">Yerevan, Armenia</a>
-          </div>
+          <div class="footer-col"><h4>Quick Links</h4><a href="#home">Home</a><a href="#about">About</a><a href="#products">Equipment</a><a href="#contact">Contact</a></div>
+          <div class="footer-col"><h4>Contact</h4><a href="tel:+37433107107">+374 33 107 107</a><a href="mailto:info@h2kproduction.com">info@h2kproduction.com</a><a href="#">Yerevan, Armenia</a></div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; ${new Date().getFullYear()} H2K Production. All rights reserved.</p>
-          <span class="designed-by">Premium Production Equipment</span>
-        </div>
+        <div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} H2K Production. All rights reserved.</p><span class="designed-by">Premium Production Equipment</span></div>
       </footer>`
     }
 
-    // ── FEATURED PRODUCTS ────────────────────────────────────────
-    const DEMO_PRODUCTS = [
-      { id: 'demo-1', name: 'Sony FX9 Full-Frame Cinema Camera', category: 'camera', images: ['https://images.unsplash.com/photo-1612197527762-8cfb04674c25?w=600&q=80'] },
-      { id: 'demo-2', name: 'ARRI Skypanel S60-C LED Panel', category: 'lights', images: ['https://images.unsplash.com/photo-1524169358666-79f22534bc6e?w=600&q=80'] },
-      { id: 'demo-3', name: 'Sigma 18-35mm Art Cine Lens', category: 'lenses', images: ['https://images.unsplash.com/photo-1617201522033-ac1f0ef18d08?w=600&q=80'] },
-      { id: 'demo-4', name: 'Sennheiser MKH 416 Shotgun Mic', category: 'voice', images: ['https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&q=80'] },
-      { id: 'demo-5', name: 'DJI Inspire 3 Drone Package', category: 'camera', images: ['https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80'] },
-      { id: 'demo-6', name: 'Aputure 600d Pro Light Kit', category: 'lights', images: ['https://images.unsplash.com/photo-1547119957-637f8679db1e?w=600&q=80'] },
-      { id: 'demo-7', name: 'Zeiss CP.3 Prime Lens Set', category: 'lenses', images: ['https://images.unsplash.com/photo-1606986628253-3b52e59b8c34?w=600&q=80'] },
-      { id: 'demo-8', name: 'Rode NTG5 Boom Microphone', category: 'voice', images: ['https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&q=80'] },
-      { id: 'demo-9', name: 'Blackmagic URSA Mini Pro 12K', category: 'camera', images: ['https://images.unsplash.com/photo-1519947486511-46149a169204?w=600&q=80'] },
-      { id: 'demo-10', name: 'Astera AX1 PixelTube RGB LED Set', category: 'lights', images: ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80'] },
-      { id: 'demo-11', name: 'Cargo Production Van', category: 'cargovan', images: ['https://images.unsplash.com/photo-1519003300449-424ad0405076?w=600&q=80'] },
-      { id: 'demo-12', name: 'Elinchrom Rotalux Octa 100cm', category: 'light-accessories', images: ['https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&q=80'] },
-    ]
-
-    async function loadFeatured() {
-      try {
-        const { data, error } = await supabase.from('products').select('*').limit(12)
-        if (error) throw error
-        const track = document.getElementById('carTrack')
-        const products = (data && data.length) ? data : DEMO_PRODUCTS
-        track.innerHTML = products.map(p => productCardHTML(p)).join('')
-        track.querySelectorAll('.product-card').forEach(c =>
-          c.addEventListener('click', () => {
-            if (c.dataset.id.startsWith('demo-')) return
-            navigate('product/' + c.dataset.id)
-          })
-        )
-        let pos = 0
-        const cardWidth = 280
-        const prev = document.getElementById('carPrev')
-        const next = document.getElementById('carNext')
-        const maxPos = Math.max(0, products.length - 4)
-        function slide() { track.style.transform = `translateX(-${pos * (cardWidth + 20)}px)` }
-        next.addEventListener('click', () => { pos = Math.min(pos + 1, maxPos); slide() })
-        prev.addEventListener('click', () => { pos = Math.max(pos - 1, 0); slide() })
-        // Touch swipe
-        let touchStartX = 0
-        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; track.classList.add('dragging') }, { passive: true })
-        track.addEventListener('touchend', e => {
-          track.classList.remove('dragging')
-          const dx = touchStartX - e.changedTouches[0].clientX
-          if (Math.abs(dx) > 50) { dx > 0 ? (pos = Math.min(pos + 1, maxPos)) : (pos = Math.max(pos - 1, 0)); slide() }
-        }, { passive: true })
-        // Mouse drag
-        let mouseDown = false, mouseStartX = 0
-        track.addEventListener('mousedown', e => { mouseDown = true; mouseStartX = e.clientX; track.classList.add('dragging') })
-        track.addEventListener('mouseup', e => {
-          if (!mouseDown) return; mouseDown = false; track.classList.remove('dragging')
-          const dx = mouseStartX - e.clientX
-          if (Math.abs(dx) > 50) { dx > 0 ? (pos = Math.min(pos + 1, maxPos)) : (pos = Math.max(pos - 1, 0)); slide() }
-        })
-        track.addEventListener('mouseleave', () => { mouseDown = false; track.classList.remove('dragging') })
-      } catch(e) {
-        // On error, show demo products anyway
-        const track = document.getElementById('carTrack')
-        if (track) {
-          track.innerHTML = DEMO_PRODUCTS.map(p => productCardHTML(p)).join('')
-          let pos = 0
-          const maxPos = Math.max(0, DEMO_PRODUCTS.length - 4)
-          const prev = document.getElementById('carPrev')
-          const next = document.getElementById('carNext')
-          function slide() { track.style.transform = `translateX(-${pos * 300}px)` }
-          if (next) next.addEventListener('click', () => { pos = Math.min(pos + 1, maxPos); slide() })
-          if (prev) prev.addEventListener('click', () => { pos = Math.max(pos - 1, 0); slide() })
-        }
-        console.error(e)
-      }
+    async function loadFeatured(){
+      const track=document.getElementById('carTrack')
+      const{data}=await supabase.from('products').select('*').eq('top_rated',true).limit(12)
+      let products=data||[]
+      if(products.length<6){const{data:more}=await supabase.from('products').select('*').limit(12);const seen=new Set(products.map(p=>p.id));products=products.concat((more||[]).filter(p=>!seen.has(p.id))).slice(0,12)}
+      if(!products.length){track.innerHTML='<p class="error-message">No products available.</p>';return}
+      track.innerHTML=products.map(p=>productCardHTML(p)).join('')
+      track.querySelectorAll('.product-card').forEach(c=>c.addEventListener('click',()=>navigate('product/'+encodeURIComponent(c.dataset.id))))
+      let pos=0;const step=300
+      const prev=document.getElementById('carPrev'),next=document.getElementById('carNext')
+      const visible=()=>Math.max(1,Math.floor(document.querySelector('.carousel-wrapper').offsetWidth/step))
+      const maxPos=()=>Math.max(0,products.length-visible())
+      const slide=()=>track.style.transform=`translateX(-${pos*step}px)`
+      next.addEventListener('click',()=>{pos=Math.min(pos+1,maxPos());slide()})
+      prev.addEventListener('click',()=>{pos=Math.max(pos-1,0);slide()})
+      let sx=0
+      track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;track.classList.add('dragging')},{passive:true})
+      track.addEventListener('touchend',e=>{track.classList.remove('dragging');const dx=sx-e.changedTouches[0].clientX;if(Math.abs(dx)>45){pos=dx>0?Math.min(pos+1,maxPos()):Math.max(pos-1,0);slide()}},{passive:true})
+      window.addEventListener('resize',()=>{pos=Math.min(pos,maxPos());slide()},{passive:true})
     }
 
-    function productCardHTML(p) {
-      return `
-        <div class="product-card" data-id="${p.id}">
-          <div class="product-card-img-wrap">
-            <img class="product-card-img" src="${p.images?.[0] || 'https://picsum.photos/600/400'}" alt="${p.name}" loading="lazy">
-          </div>
-          <div class="product-card-body">
-            <div class="product-card-name">${p.name}</div>
-            <span class="category-badge">${catLabel(p.category)}</span>
-          </div>
-        </div>`
+    function productCardHTML(p){
+      return `<div class="product-card" data-id="${escapeAttr(p.id)}">
+        <div class="product-card-img-wrap"><img class="product-card-img" src="${p.images?.[0]||'./placeholder.svg'}" alt="${escapeAttr(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='./placeholder.svg'"></div>
+        <div class="product-card-body"><div class="product-card-name">${p.name}</div><span class="category-badge">${catLabel(p.category)}</span></div>
+      </div>`
     }
 
-    // ── RENDER PRODUCTS ──────────────────────────────────────────
-    async function renderProducts(cat = 'all', search = '', pg = 1) {
-      app.innerHTML = `
+    async function renderProducts(cat='all',search='',pg=1){
+      app.innerHTML=`
         <div class="products-page">
           <div class="products-main">
             <div class="products-header">
-              <h1>${search ? 'Search: "' + search + '"' : 'All Products'}</h1>
-              <div class="view-toggle">
-                <button class="view-btn active" id="gridBtn" title="Grid"><i class="fas fa-th"></i></button>
-                <button class="view-btn" id="listBtn" title="List"><i class="fas fa-list"></i></button>
-              </div>
+              <h1>${search?'Search: “'+search+'”':catLabel(cat)}</h1>
+              <div class="view-toggle"><button class="view-btn active" id="gridBtn" title="Grid"><i class="fas fa-th"></i></button><button class="view-btn" id="listBtn" title="List"><i class="fas fa-list"></i></button></div>
             </div>
-            <div class="filter-tabs">
-              ${CATEGORIES.map(c => `<button class="filter-tab${c.key === cat ? ' active' : ''}" data-cat="${c.key}">${c.label}</button>`).join('')}
-            </div>
+            <div class="filter-tabs">${CATEGORIES.map(c=>`<button class="filter-tab${c.key===cat?' active':''}" data-cat="${c.key}">${c.label}</button>`).join('')}</div>
             <div id="productGrid" class="product-grid">${spinner()}</div>
             <div id="pagination" class="pagination"></div>
           </div>
-          <aside class="products-sidebar">
-            <div class="sidebar-card">
-              <h3><i class="fas fa-star"></i> Top Rated</h3>
-              <div id="topRated">${spinner()}</div>
-            </div>
-          </aside>
+          <aside class="products-sidebar"><div class="sidebar-card"><h3><i class="fas fa-star"></i> Top Rated</h3><div id="topRated">${spinner()}</div></div></aside>
         </div>
         ${footerHTML()}`
-
-      let view = 'grid'
-      document.querySelectorAll('.filter-tab').forEach(t =>
-        t.addEventListener('click', () => navigate('products?category=' + t.dataset.cat))
-      )
-      document.getElementById('gridBtn').addEventListener('click', () => { view = 'grid'; updateView() })
-      document.getElementById('listBtn').addEventListener('click', () => { view = 'list'; updateView() })
-
-      function updateView() {
-        const g = document.getElementById('productGrid')
-        g.className = view === 'grid' ? 'product-grid' : 'product-list'
-        document.getElementById('gridBtn').classList.toggle('active', view === 'grid')
-        document.getElementById('listBtn').classList.toggle('active', view === 'list')
-      }
-
-      loadProducts(cat, search, pg)
+      let view='grid'
+      document.querySelectorAll('.filter-tab').forEach(t=>t.addEventListener('click',()=>navigate('products?category='+t.dataset.cat)))
+      document.getElementById('gridBtn').addEventListener('click',()=>{view='grid';updateView()})
+      document.getElementById('listBtn').addEventListener('click',()=>{view='list';updateView()})
+      function updateView(){const g=document.getElementById('productGrid');g.className=view==='grid'?'product-grid':'product-list';document.getElementById('gridBtn').classList.toggle('active',view==='grid');document.getElementById('listBtn').classList.toggle('active',view==='list')}
+      loadProducts(cat,search,pg)
       loadTopRated()
     }
 
-    async function loadProducts(cat, search, pg) {
-      const grid   = document.getElementById('productGrid')
-      const pagDiv = document.getElementById('pagination')
-      try {
-        let q = supabase.from('products').select('*', { count: 'exact' })
-        if (cat && cat !== 'all') q = q.eq('category', cat)
-        if (search) q = q.ilike('name', '%' + search + '%')
-        q = q.order('created_at', { ascending: false }).range((pg - 1) * ITEMS_PER_PAGE, pg * ITEMS_PER_PAGE - 1)
-        const { data, error, count } = await q
-        if (error) throw error
-        if (!data.length) { grid.innerHTML = '<p class="error-message">No products found.</p>'; pagDiv.innerHTML = ''; return }
-        grid.innerHTML = data.map(p => productCardHTML(p)).join('')
-        grid.querySelectorAll('.product-card').forEach((c, i) => {
-          if (data[i].description) {
-            const body = c.querySelector('.product-card-body')
-            const d = document.createElement('div')
-            d.className = 'product-card-desc'; d.textContent = data[i].description; body.appendChild(d)
-          }
-          c.addEventListener('click', () => navigate('product/' + c.dataset.id))
-        })
-        const totalPages = Math.ceil(count / ITEMS_PER_PAGE)
-        if (totalPages > 1) {
-          let html = `<button class="page-btn" ${pg <= 1 ? 'disabled' : ''} data-pg="${pg - 1}">‹ Prev</button>`
-          for (let i = 1; i <= totalPages; i++) html += `<button class="page-btn${i === pg ? ' active' : ''}" data-pg="${i}">${i}</button>`
-          html += `<button class="page-btn" ${pg >= totalPages ? 'disabled' : ''} data-pg="${pg + 1}">Next ›</button>`
-          pagDiv.innerHTML = html
-          pagDiv.querySelectorAll('.page-btn').forEach(b =>
-            b.addEventListener('click', () => { if (!b.disabled) navigate(`products?category=${cat}&search=${encodeURIComponent(search || '')}&pg=${b.dataset.pg}`) })
-          )
-        } else pagDiv.innerHTML = ''
-      } catch(e) { grid.innerHTML = '<p class="error-message">Error loading products.</p>'; console.error(e) }
+    async function loadProducts(cat,search,pg){
+      const grid=document.getElementById('productGrid'),pagDiv=document.getElementById('pagination')
+      let q=supabase.from('products').select('*',{count:'exact'})
+      if(cat&&cat!=='all')q=q.eq('category',cat)
+      if(search)q=q.ilike('name','%'+search+'%')
+      q=q.order('created_at',{ascending:false}).range((pg-1)*ITEMS_PER_PAGE,pg*ITEMS_PER_PAGE-1)
+      const{data,count}=await q
+      if(!data||!data.length){grid.innerHTML='<p class="error-message">No products found in this category.</p>';pagDiv.innerHTML='';return}
+      grid.innerHTML=data.map(p=>productCardHTML(p)).join('')
+      grid.querySelectorAll('.product-card').forEach((c,i)=>{
+        if(data[i].description){const b=c.querySelector('.product-card-body');const d=document.createElement('div');d.className='product-card-desc';d.textContent=data[i].description;b.appendChild(d)}
+        c.addEventListener('click',()=>navigate('product/'+encodeURIComponent(c.dataset.id)))
+      })
+      const totalPages=Math.ceil(count/ITEMS_PER_PAGE)
+      if(totalPages>1){
+        let html=`<button class="page-btn" ${pg<=1?'disabled':''} data-pg="${pg-1}">‹</button>`
+        for(let i=1;i<=totalPages;i++)html+=`<button class="page-btn${i===pg?' active':''}" data-pg="${i}">${i}</button>`
+        html+=`<button class="page-btn" ${pg>=totalPages?'disabled':''} data-pg="${pg+1}">›</button>`
+        pagDiv.innerHTML=html
+        pagDiv.querySelectorAll('.page-btn').forEach(b=>b.addEventListener('click',()=>{if(!b.hasAttribute('disabled'))navigate(`products?category=${cat}&search=${encodeURIComponent(search||'')}&pg=${b.dataset.pg}`)}))
+      }else pagDiv.innerHTML=''
     }
 
-    async function loadTopRated() {
-      const el = document.getElementById('topRated')
-      try {
-        const { data, error } = await supabase.from('products').select('*').eq('top_rated', true).limit(3)
-        if (error) throw error
-        if (!data.length) { el.innerHTML = '<p style="color:var(--grey);font-size:.8rem">None yet</p>'; return }
-        el.innerHTML = data.map(p =>
-          `<div class="sidebar-product" data-id="${p.id}">
-            <img src="${p.images?.[0] || 'https://picsum.photos/100/75'}" alt="${p.name}">
-            <div><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div>
-          </div>`
-        ).join('')
-        el.querySelectorAll('.sidebar-product').forEach(s => s.addEventListener('click', () => navigate('product/' + s.dataset.id)))
-      } catch(e) { el.innerHTML = '<p class="error-message">Error</p>' }
+    async function loadTopRated(){
+      const el=document.getElementById('topRated')
+      let{data}=await supabase.from('products').select('*').eq('top_rated',true).limit(4)
+      if(!data||!data.length){const r=await supabase.from('products').select('*').limit(4);data=r.data}
+      if(!data||!data.length){el.innerHTML='<p style="color:var(--muted);font-size:.8rem">None yet</p>';return}
+      el.innerHTML=data.map(p=>`<div class="sidebar-product" data-id="${escapeAttr(p.id)}"><img src="${p.images?.[0]||'./placeholder.svg'}" alt="" onerror="this.onerror=null;this.src='./placeholder.svg'"><div><div class="name">${p.name}</div><div class="cat">${catLabel(p.category)}</div></div></div>`).join('')
+      el.querySelectorAll('.sidebar-product').forEach(s=>s.addEventListener('click',()=>navigate('product/'+encodeURIComponent(s.dataset.id))))
     }
 
-    // ── PRODUCT DETAIL ────────────────────────────────────────────
-    async function renderProductDetail(id) {
-      app.innerHTML = `<div class="product-detail">${spinner()}</div>`
-      try {
-        const { data: product, error } = await supabase.from('products').select('*').eq('id', id).single()
-        if (error) throw error
-        const imgs = product.images || []
-        app.innerHTML = `
-          <div class="product-detail page">
-            <div class="breadcrumb">
-              <a href="#home">Home</a><span class="sep">/</span>
-              <a href="#products">All Products</a><span class="sep">/</span>
-              <span>${product.name}</span>
-            </div>
-            <div class="detail-layout">
-              <div class="gallery">
-                <div class="gallery-main-wrap" id="mainWrap">
-                  <img class="gallery-main-img" id="mainImg" src="${imgs[0] || 'https://picsum.photos/600/400'}" alt="${product.name}">
-                  <button class="gallery-fullscreen-btn" id="fsBtn"><i class="fas fa-expand"></i></button>
-                  ${imgs.length > 1 ? '<button class="gallery-nav prev" id="imgPrev"><i class="fas fa-chevron-left"></i></button><button class="gallery-nav next" id="imgNext"><i class="fas fa-chevron-right"></i></button>' : ''}
-                  <div class="zoom-panel" id="zoomPanel"><img id="zoomImg" src="${imgs[0] || ''}" alt="Zoom"></div>
-                </div>
-                <div class="gallery-thumbs">${imgs.map((img, i) => `<div class="gallery-thumb${i === 0 ? ' active' : ''}" data-idx="${i}"><img src="${img}" alt="Thumb ${i + 1}"></div>`).join('')}</div>
+    async function renderProductDetail(id){
+      app.innerHTML=`<div class="product-detail">${spinner()}</div>`
+      const{data:product,error}=await supabase.from('products').select('*').eq('id',id).single()
+      if(error||!product){app.innerHTML='<div class="product-detail"><p class="error-message">Product not found. <a href="#products" style="color:var(--accent2)">Back to all equipment</a></p></div>'+footerHTML();return}
+      const imgs=(product.images&&product.images.length)?product.images:['./placeholder.svg']
+      app.innerHTML=`
+        <div class="product-detail page">
+          <div class="breadcrumb"><a href="#home">Home</a><span class="sep">/</span><a href="#products">All Equipment</a><span class="sep">/</span><span>${product.name}</span></div>
+          <div class="detail-layout">
+            <div class="gallery">
+              <div class="gallery-main-wrap" id="mainWrap">
+                <img class="gallery-main-img" id="mainImg" src="${imgs[0]}" alt="${escapeAttr(product.name)}" onerror="this.onerror=null;this.src='./placeholder.svg'">
+                <button class="gallery-fullscreen-btn" id="fsBtn"><i class="fas fa-expand"></i></button>
+                ${imgs.length>1?'<button class="gallery-nav prev" id="imgPrev"><i class="fas fa-chevron-left"></i></button><button class="gallery-nav next" id="imgNext"><i class="fas fa-chevron-right"></i></button>':''}
+                <div class="zoom-panel" id="zoomPanel"><img id="zoomImg" src="${imgs[0]}" alt=""></div>
               </div>
-              <div class="detail-info">
-                <span class="category-badge" style="margin-bottom:1rem">${catLabel(product.category)}</span>
-                <h1>${product.name}</h1>
-                ${product.description ? `<div class="detail-description">${product.description}</div>` : ''}
-                <div class="share-section">
-                  <h4>Share this product</h4>
-                  <div class="share-buttons">
-                    <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(product.name + ' ' + location.href)}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a class="share-btn" href="https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-                    <button class="share-btn" id="copyLinkBtn" title="Copy Link"><i class="fas fa-link"></i></button>
-                    <a class="share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(product.name)}&url=${encodeURIComponent(location.href)}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-                    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                  </div>
-                </div>
-                <div class="product-nav" id="productNav"></div>
-              </div>
+              ${imgs.length>1?`<div class="gallery-thumbs">${imgs.map((img,i)=>`<div class="gallery-thumb${i===0?' active':''}" data-idx="${i}"><img src="${img}" alt=""></div>`).join('')}</div>`:''}
             </div>
-            <section class="related-section">
-              <h2 class="section-title" style="font-size:1.4rem;letter-spacing:-.5px">Related Products</h2>
-              <div class="related-grid" id="relatedGrid">${spinner()}</div>
-            </section>
+            <div class="detail-info">
+              <span class="category-badge">${catLabel(product.category)}</span>
+              <h1>${product.name}</h1>
+              ${product.description?`<div class="detail-description">${product.description}</div>`:`<div class="detail-description">Professional ${catLabel(product.category).toLowerCase()} available for rental from H2K Production. Contact us for availability, pricing and full specifications.</div>`}
+              <a href="#contact" class="btn-primary" style="display:inline-flex"><i class="fas fa-paper-plane"></i><span>Request This Item</span></a>
+              <div class="share-section">
+                <h4>Share this product</h4>
+                <div class="share-buttons">
+                  <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(product.name+' '+location.href)}" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                  <a class="share-btn" href="https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" rel="noopener" title="Telegram"><i class="fab fa-telegram"></i></a>
+                  <button class="share-btn" id="copyLinkBtn" title="Copy Link"><i class="fas fa-link"></i></button>
+                  <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+              </div>
+              <div class="product-nav" id="productNav"></div>
+            </div>
           </div>
-          ${footerHTML()}`
+          <section class="related-section"><div class="section-title">Related <span>Equipment</span></div><div class="related-grid" id="relatedGrid">${spinner()}</div></section>
+        </div>
+        ${footerHTML()}`
 
-        let currentIdx = 0
-        const mainImg = document.getElementById('mainImg')
-        const thumbs  = document.querySelectorAll('.gallery-thumb')
-        function setImage(idx) {
-          currentIdx = idx; mainImg.src = imgs[idx] || mainImg.src
-          thumbs.forEach((t, i) => t.classList.toggle('active', i === idx))
-          const zoomImg = document.getElementById('zoomImg'); if (zoomImg) zoomImg.src = imgs[idx] || ''
-        }
-        thumbs.forEach(t => t.addEventListener('click', () => setImage(parseInt(t.dataset.idx))))
-        if (document.getElementById('imgPrev')) {
-          document.getElementById('imgPrev').addEventListener('click', () => setImage((currentIdx - 1 + imgs.length) % imgs.length))
-          document.getElementById('imgNext').addEventListener('click', () => setImage((currentIdx + 1) % imgs.length))
-        }
-        document.getElementById('fsBtn').addEventListener('click', () => openLightbox(mainImg.src))
-
-        // Zoom
-        const mainWrap = document.getElementById('mainWrap')
-        const zoomPanel = document.getElementById('zoomPanel')
-        const zoomImg  = document.getElementById('zoomImg')
-        if (window.innerWidth > 1024) {
-          mainWrap.addEventListener('mouseenter', () => zoomPanel.classList.add('active'))
-          mainWrap.addEventListener('mouseleave', () => zoomPanel.classList.remove('active'))
-          mainWrap.addEventListener('mousemove', e => {
-            const rect = mainWrap.getBoundingClientRect()
-            const x = (e.clientX - rect.left) / rect.width
-            const y = (e.clientY - rect.top)  / rect.height
-            const zw = zoomPanel.offsetWidth, zh = zoomPanel.offsetHeight
-            const iw = rect.width * 2.5, ih = rect.height * 2.5
-            zoomImg.style.width  = iw + 'px'; zoomImg.style.height = ih + 'px'
-            zoomImg.style.left   = -(x * iw - zw / 2) + 'px'
-            zoomImg.style.top    = -(y * ih - zh / 2) + 'px'
-          })
-        }
-
-        document.getElementById('copyLinkBtn').addEventListener('click', () => {
-          navigator.clipboard.writeText(location.href); showToast('Link copied!')
-        })
-        loadProductNav(product)
-        loadRelated(product)
-      } catch(e) {
-        app.innerHTML = '<div class="product-detail"><p class="error-message">Product not found.</p></div>'
-        console.error(e)
+      let currentIdx=0
+      const mainImg=document.getElementById('mainImg')
+      const thumbs=document.querySelectorAll('.gallery-thumb')
+      function setImage(idx){currentIdx=idx;mainImg.src=imgs[idx];thumbs.forEach((t,i)=>t.classList.toggle('active',i===idx));const z=document.getElementById('zoomImg');if(z)z.src=imgs[idx]}
+      thumbs.forEach(t=>t.addEventListener('click',()=>setImage(parseInt(t.dataset.idx))))
+      if(document.getElementById('imgPrev')){
+        document.getElementById('imgPrev').addEventListener('click',()=>setImage((currentIdx-1+imgs.length)%imgs.length))
+        document.getElementById('imgNext').addEventListener('click',()=>setImage((currentIdx+1)%imgs.length))
       }
+      document.getElementById('fsBtn').addEventListener('click',()=>openLightbox(mainImg.src))
+      const mainWrap=document.getElementById('mainWrap'),zoomPanel=document.getElementById('zoomPanel'),zoomImg=document.getElementById('zoomImg')
+      if(window.innerWidth>1024){
+        mainWrap.addEventListener('mouseenter',()=>zoomPanel.classList.add('active'))
+        mainWrap.addEventListener('mouseleave',()=>zoomPanel.classList.remove('active'))
+        mainWrap.addEventListener('mousemove',e=>{const r=mainWrap.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;const zw=zoomPanel.offsetWidth,zh=zoomPanel.offsetHeight;const iw=r.width*2.2,ih=r.height*2.2;zoomImg.style.width=iw+'px';zoomImg.style.height=ih+'px';zoomImg.style.left=-(x*iw-zw/2)+'px';zoomImg.style.top=-(y*ih-zh/2)+'px'})
+      }
+      document.getElementById('copyLinkBtn').addEventListener('click',()=>{navigator.clipboard?.writeText(location.href);showToast('Link copied!')})
+      loadProductNav(product)
+      loadRelated(product)
     }
 
-    async function loadProductNav(product) {
-      const nav = document.getElementById('productNav')
-      try {
-        const { data: prev } = await supabase.from('products').select('id,name').eq('category', product.category).lt('created_at', product.created_at).order('created_at', { ascending: false }).limit(1)
-        const { data: next } = await supabase.from('products').select('id,name').eq('category', product.category).gt('created_at', product.created_at).order('created_at', { ascending: true }).limit(1)
-        let html = ''
-        if (prev?.length) html += `<button class="product-nav-btn" data-id="${prev[0].id}"><i class="fas fa-arrow-left"></i> ${prev[0].name}</button>`
-        else html += '<span></span>'
-        if (next?.length) html += `<button class="product-nav-btn" data-id="${next[0].id}">${next[0].name} <i class="fas fa-arrow-right"></i></button>`
-        nav.innerHTML = html
-        nav.querySelectorAll('.product-nav-btn').forEach(b => b.addEventListener('click', () => navigate('product/' + b.dataset.id)))
-      } catch(e) { console.error(e) }
+    async function loadProductNav(product){
+      const nav=document.getElementById('productNav')
+      const{data:prev}=await supabase.from('products').select('id,name').eq('category',product.category).lt('created_at',product.created_at).order('created_at',{ascending:false}).limit(1)
+      const{data:next}=await supabase.from('products').select('id,name').eq('category',product.category).gt('created_at',product.created_at).order('created_at',{ascending:true}).limit(1)
+      let html=''
+      if(prev?.length)html+=`<button class="product-nav-btn" data-id="${escapeAttr(prev[0].id)}"><i class="fas fa-arrow-left"></i> ${prev[0].name}</button>`;else html+='<span></span>'
+      if(next?.length)html+=`<button class="product-nav-btn" data-id="${escapeAttr(next[0].id)}">${next[0].name} <i class="fas fa-arrow-right"></i></button>`
+      nav.innerHTML=html
+      nav.querySelectorAll('.product-nav-btn').forEach(b=>b.addEventListener('click',()=>navigate('product/'+encodeURIComponent(b.dataset.id))))
     }
 
-    async function loadRelated(product) {
-      const grid = document.getElementById('relatedGrid')
-      try {
-        const { data, error } = await supabase.from('products').select('*').eq('category', product.category).neq('id', product.id).limit(4)
-        if (error) throw error
-        if (!data.length) { grid.innerHTML = '<p class="error-message">No related products.</p>'; return }
-        grid.innerHTML = data.map(p => productCardHTML(p)).join('')
-        grid.querySelectorAll('.product-card').forEach(c => c.addEventListener('click', () => navigate('product/' + c.dataset.id)))
-      } catch(e) { grid.innerHTML = '<p class="error-message">Error loading related products.</p>' }
+    async function loadRelated(product){
+      const grid=document.getElementById('relatedGrid')
+      const{data}=await supabase.from('products').select('*').eq('category',product.category).neq('id',product.id).limit(4)
+      if(!data||!data.length){grid.innerHTML='<p class="error-message">No related products.</p>';return}
+      grid.innerHTML=data.map(p=>productCardHTML(p)).join('')
+      grid.querySelectorAll('.product-card').forEach(c=>c.addEventListener('click',()=>navigate('product/'+encodeURIComponent(c.dataset.id))))
     }
 
-    // ── CONTACT PAGE ─────────────────────────────────────────────
-    function renderContact() {
-      app.innerHTML = `
+    function renderContact(){
+      app.innerHTML=`
         <div class="contact-page page">
-          <h1 class="section-title">Contact Us</h1>
+          <div class="section-label" style="justify-content:center">Get In Touch</div>
+          <h1 class="section-title">Contact <span>Us</span></h1>
           <div class="contact-card">
-            <h3><i class="fas fa-headset"></i> Get in Touch</h3>
-            <a href="mailto:info@h2kproduction.com" class="contact-info-item">
-              <div class="icon"><i class="fas fa-envelope"></i></div>
-              <span>info@h2kproduction.com</span>
-            </a>
-            <a href="tel:+37433107107" class="contact-info-item">
-              <div class="icon"><i class="fas fa-phone"></i></div>
-              <span>+374 33 107 107</span>
-            </a>
+            <h3><i class="fas fa-headset"></i> We're here 24/7</h3>
+            <a href="mailto:info@h2kproduction.com" class="contact-info-item"><div class="icon"><i class="fas fa-envelope"></i></div><div class="contact-text"><div class="label">Email</div><div class="value">info@h2kproduction.com</div></div></a>
+            <a href="tel:+37433107107" class="contact-info-item"><div class="icon"><i class="fas fa-phone"></i></div><div class="contact-text"><div class="label">Phone</div><div class="value">+374 33 107 107</div></div></a>
+            <div class="contact-info-item"><div class="icon"><i class="fas fa-location-dot"></i></div><div class="contact-text"><div class="label">Location</div><div class="value">Yerevan, Armenia</div></div></div>
           </div>
         </div>
         ${footerHTML()}`
     }
 
-    // ── INIT ──────────────────────────────────────────────────────
     route()
   </script>
 </body>

@@ -1,0 +1,26 @@
+{
+  "name": "h2k",
+  "version": "1.0.0",
+  "description": "H2K Production — premium film & photo equipment rental site",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build:catalog": "node merge_final.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martirosyanmiqayel/h2k_production.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martirosyanmiqayel/h2k_production/issues"
+  },
+  "homepage": "https://github.com/martirosyanmiqayel/h2k_production#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.0"
+  }
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="Image coming soon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f1f24"/>
+      <stop offset="1" stop-color="#141417"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <g fill="none" stroke="#3a3a42" stroke-width="2">
+    <rect x="210" y="150" width="180" height="130" rx="12"/>
+    <circle cx="300" cy="215" r="38"/>
+    <circle cx="300" cy="215" r="20"/>
+    <rect x="250" y="135" width="46" height="22" rx="6"/>
+  </g>
+  <circle cx="370" cy="172" r="6" fill="#e84b17"/>
+  <text x="300" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">h<tspan fill="#e84b17">2</tspan>k<tspan fill="#9a9aa2" font-size="16" font-weight="600"> PRODUCTION</tspan></text>
+  <text x="300" y="378" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#7a7a82">Image coming soon</text>
+</svg>
