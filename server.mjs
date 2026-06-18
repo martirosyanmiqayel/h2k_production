@@ -27,8 +27,79 @@ const MIME = {
   '.woff2':'font/woff2',
 }
 
+// ── Catalog API (admin panel) ────────────────────────────────────────────
+const PRODUCTS_FILE = path.join(ROOT, 'products.js')
+function readProducts() {
+  const t = fs.readFileSync(PRODUCTS_FILE, 'utf-8')
+  const a = t.indexOf('['), b = t.lastIndexOf(']')
+  return JSON.parse(t.slice(a, b + 1))
+}
+function writeProducts(arr) {
+  const banner = `// H2K Production - local product catalog\n// ${arr.length} products. Managed via the admin panel.\n`
+  fs.writeFileSync(PRODUCTS_FILE, banner + 'window.H2K_PRODUCTS = ' + JSON.stringify(arr, null, 2) + '\n')
+}
+function slugify(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) }
+function uniqueId(arr, name) {
+  const ids = new Set(arr.map(p => p.id)); const base = slugify(name) || 'product'
+  let id = base, n = 2; while (ids.has(id)) id = base + '-' + (n++); return id
+}
+function sendJson(res, code, obj) {
+  res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
+  res.end(JSON.stringify(obj))
+}
+function handleApi(req, res) {
+  const parts = req.url.split('?')[0].split('/').filter(Boolean) // ['api','products', id?]
+  let body = ''
+  req.on('data', c => { body += c; if (body.length > 25 * 1024 * 1024) req.destroy() })
+  req.on('end', () => {
+    let data = null
+    if (body) { try { data = JSON.parse(body) } catch { return sendJson(res, 400, { error: 'Invalid JSON' }) } }
+    try {
+      if (parts[1] === 'products') {
+        const id = parts[2] ? decodeURIComponent(parts[2]) : null
+        if (req.method === 'GET') return sendJson(res, 200, { products: readProducts() })
+        if (req.method === 'POST') {
+          const arr = readProducts()
+          const name = (data?.name || '').trim()
+          if (!name || !data.category) return sendJson(res, 400, { error: 'Name and category are required' })
+          const p = { id: uniqueId(arr, name), name, description: data.description || null, category: data.category, images: Array.isArray(data.images) ? data.images.filter(Boolean) : [], top_rated: !!data.top_rated, created_at: new Date().toISOString() }
+          arr.unshift(p); writeProducts(arr); return sendJson(res, 200, { product: p })
+        }
+        if (req.method === 'PUT') {
+          const arr = readProducts(); const i = arr.findIndex(p => p.id === id)
+          if (i < 0) return sendJson(res, 404, { error: 'Product not found' })
+          const p = arr[i]
+          if (data.name != null) p.name = data.name.trim()
+          if (data.category != null) p.category = data.category
+          if (data.description !== undefined) p.description = data.description || null
+          if (Array.isArray(data.images)) p.images = data.images.filter(Boolean)
+          if (data.top_rated != null) p.top_rated = !!data.top_rated
+          arr[i] = p; writeProducts(arr); return sendJson(res, 200, { product: p })
+        }
+        if (req.method === 'DELETE') {
+          let arr = readProducts(); const before = arr.length; arr = arr.filter(p => p.id !== id)
+          if (arr.length === before) return sendJson(res, 404, { error: 'Product not found' })
+          writeProducts(arr); return sendJson(res, 200, { ok: true })
+        }
+      }
+      if (parts[1] === 'upload' && req.method === 'POST') {
+        const m = /^data:(image\/[a-z0-9.+-]+);base64,(.+)$/i.exec(data?.dataUrl || '')
+        if (!m) return sendJson(res, 400, { error: 'Invalid image data' })
+        const ext = m[1].includes('png') ? 'png' : m[1].includes('webp') ? 'webp' : m[1].includes('gif') ? 'gif' : m[1].includes('svg') ? 'svg' : 'jpg'
+        const buf = Buffer.from(m[2], 'base64')
+        fs.mkdirSync(path.join(ROOT, 'product-images'), { recursive: true })
+        const fname = (slugify(data.name || '') || 'upload') + '-' + Date.now().toString(36) + '.' + ext
+        fs.writeFileSync(path.join(ROOT, 'product-images', fname), buf)
+        return sendJson(res, 200, { path: './product-images/' + fname })
+      }
+      sendJson(res, 404, { error: 'Unknown endpoint' })
+    } catch (e) { sendJson(res, 500, { error: String(e.message || e) }) }
+  })
+}
+
 const server = http.createServer((req, res) => {
   try {
+    if (req.url.startsWith('/api/')) return handleApi(req, res)
     let urlPath = decodeURIComponent(req.url.split('?')[0])
     if (urlPath === '/') urlPath = '/index.html'
 
@@ -73,6 +144,6 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(PORT, () => {
-  console.log(`\n  H2K Production — dev server running`)
+  console.log(`\n  H2K Production - dev server running`)
   console.log(`  ➜  http://localhost:${PORT}\n`)
 })

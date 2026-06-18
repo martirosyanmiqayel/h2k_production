@@ -1,7 +1,7 @@
 {
   "name": "h2k",
   "version": "1.0.0",
-  "description": "H2K Production — premium film & photo equipment rental site",
+  "description": "H2K Production - premium film & photo equipment rental site",
   "main": "server.mjs",
   "type": "module",
   "scripts": {

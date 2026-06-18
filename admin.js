@@ -1,225 +1,179 @@
-import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-const SUPABASE_URL='https://wojnxmeanoxinvorfift.supabase.co'
-const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDA2NjQsImV4cCI6MjA5NDUxNjY2NH0.-ASe3qBrlBZg3uWkOJ44wpAPcnbrqCN3pS6iO5aYy7o'
-// Replace with your service role key for write operations (Supabase → Settings → API)
-const SUPABASE_SERVICE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvam54bWVhbm94aW52b3JmaWZ0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3ODk0MDY2NCwiZXhwIjoyMDk0NTE2NjY0fQ.B1GLTikNpmn7Rv2zPc9zWTKgt0IhnhCqlZBx5XJfqD0'
-
-// Use service key if available, otherwise fall back to anon key
-const activeKey=SUPABASE_SERVICE_KEY==='YOUR_SERVICE_ROLE_KEY'?SUPABASE_ANON_KEY:SUPABASE_SERVICE_KEY
-const supabase=createClient(SUPABASE_URL,activeKey)
-
-const CATEGORY_LABELS={lights:'Lights',camera:'Camera',voice:'Voice','light-accessories':'Light Accessories',lenses:'Lenses',cargovan:'Cargo Van'}
-
-// Show warning if service key not set
-if(SUPABASE_SERVICE_KEY==='YOUR_SERVICE_ROLE_KEY'){
-  const alert=document.getElementById('serviceKeyAlert')
-  if(alert)alert.style.display='flex'
-}
-
-// --- TOAST ---
-function showToast(msg,isError=false){
-  const t=document.getElementById('toast')
-  t.innerHTML=msg;t.className='toast'+(isError?' error':'')+' active'
-  setTimeout(()=>t.classList.remove('active'),3500)
-}
-
-// --- CACHE FLAGS ---
-let dashboardLoaded = false;
-let manageLoaded = false;
-
-// --- SIDEBAR NAV ---
-document.querySelectorAll('.sidebar-nav a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.querySelectorAll('.sidebar-nav a').forEach(x=>x.classList.remove('active'))
-    a.classList.add('active')
-    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))
-    document.getElementById('panel-'+a.dataset.panel).classList.add('active')
-    if(a.dataset.panel==='manage' && !manageLoaded) loadManageTable()
-    if(a.dataset.panel==='dashboard' && !dashboardLoaded) loadDashboard()
-  })
-})
-
-// Refresh button
-document.getElementById('refreshBtn').addEventListener('click',()=>loadManageTable())
-
-// --- DASHBOARD ---
-async function loadDashboard(){
-  dashboardLoaded = true;
-  const el=document.getElementById('stats')
-  el.innerHTML='<div class="spinner"></div>'
-  try{
-    const[{count:total},{count:topRated}]=await Promise.all([
-      supabase.from('products').select('*',{count:'exact',head:true}),
-      supabase.from('products').select('*',{count:'exact',head:true}).eq('top_rated',true)
-    ])
-    const cats=Object.entries(CATEGORY_LABELS)
-    const catCounts=await Promise.all(cats.map(async([key,label])=>{
-      const{count}=await supabase.from('products').select('*',{count:'exact',head:true}).eq('category',key)
-      return{label,count:count||0}
-    }))
-    el.innerHTML=`
-      <div class="stat-card"><div class="num">${total||0}</div><div class="label">Total Products</div></div>
-      <div class="stat-card"><div class="num">${topRated||0}</div><div class="label">Top Rated</div></div>
-      ${catCounts.map(c=>`<div class="stat-card"><div class="num">${c.count}</div><div class="label">${c.label}</div></div>`).join('')}
-    `
-  }catch(e){el.innerHTML='<p style="color:#e74c3c;padding:1rem">Error loading stats</p>';console.error(e)}
-}
-
-// --- IMAGE PREVIEW ---
-document.getElementById('pImages').addEventListener('change',()=>{
-  const previews=document.getElementById('imgPreviews')
-  previews.innerHTML=''
-  Array.from(document.getElementById('pImages').files).slice(0,3).forEach(f=>{
-    const reader=new FileReader()
-    reader.onload=e=>{
-      const d=document.createElement('div');d.className='preview'
-      d.innerHTML=`<img src="${e.target.result}" alt="">`
-      previews.appendChild(d)
-    }
-    reader.readAsDataURL(f)
-  })
-})
-
-// --- ADD / EDIT PRODUCT ---
-let editMode=false
-const form=document.getElementById('productForm')
-
-document.getElementById('cancelEdit').addEventListener('click',resetForm)
-
-function resetForm(){
-  editMode=false;form.reset()
-  document.getElementById('editId').value=''
-  document.getElementById('imgPreviews').innerHTML=''
-  document.getElementById('formTitle').innerHTML='<i class="fas fa-plus-circle"></i> Add Product'
-  document.getElementById('submitBtn').innerHTML='<i class="fas fa-save"></i> Add Product'
-  document.getElementById('cancelEdit').style.display='none'
-}
-
-form.addEventListener('submit',async e=>{
-  e.preventDefault()
-  const name=document.getElementById('pName').value.trim()
-  const category=document.getElementById('pCategory').value
-  const description=document.getElementById('pDesc').value.trim()
-  const topRated=document.getElementById('pTopRated').checked
-  const editId=document.getElementById('editId').value
-  const files=Array.from(document.getElementById('pImages').files).slice(0,3)
-  if(!name||!category){showToast('<i class="fas fa-exclamation"></i> Name and category are required',true);return}
-
-  const btn=document.getElementById('submitBtn')
-  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Saving...'
-
-  try{
-    let imageUrls=[]
-
-    if(files.length>0){
-      for(const file of files){
-        const ext=file.name.split('.').pop()
-        const path=`${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`
-        const{error:upErr}=await supabase.storage.from('product-images').upload(path,file,{cacheControl:'3600',upsert:false})
-        if(upErr)throw new Error('Image upload failed: '+upErr.message)
-        const{data:urlData}=supabase.storage.from('product-images').getPublicUrl(path)
-        imageUrls.push(urlData.publicUrl)
-      }
-    }
-
-    const productData={name,category,description:description||null,top_rated:topRated}
-    if(imageUrls.length>0)productData.images=imageUrls
-
-    let dbError
-    if(editMode&&editId){
-      const{error}=await supabase.from('products').update(productData).eq('id',editId)
-      dbError=error
-      if(!error) { showToast('<i class="fas fa-check"></i> Product updated!'); dashboardLoaded=false; manageLoaded=false; }
-    }else{
-      if(!imageUrls.length)productData.images=[]
-      const{error}=await supabase.from('products').insert(productData)
-      dbError=error
-      if(!error) { showToast('<i class="fas fa-check"></i> Product added!'); dashboardLoaded=false; manageLoaded=false; }
-    }
-    if(dbError)throw dbError
-    resetForm()
-  }catch(e){
-    showToast('<i class="fas fa-times"></i> Error: '+e.message,true)
-    console.error(e)
-  }finally{
-    btn.disabled=false
-    btn.innerHTML=editMode?'<i class="fas fa-save"></i> Update Product':'<i class="fas fa-save"></i> Add Product'
+// H2K admin panel - talks to the local catalog API in server.mjs
+(function () {
+  const CATS = {
+    lights: 'Lights',
+    'light-accessories': 'Lights accessories',
+    camera: 'Camera',
+    lenses: 'Lenses',
+    voice: 'Voice',
+    cargovan: 'Cargo van',
   }
-})
+  const CAT_ICONS = {
+    lights: 'fa-lightbulb', 'light-accessories': 'fa-sliders', camera: 'fa-camera',
+    lenses: 'fa-circle-dot', voice: 'fa-microphone', cargovan: 'fa-truck',
+  }
+  const $ = id => document.getElementById(id)
+  const api = async (url, opts) => {
+    const r = await fetch(url, opts)
+    const j = await r.json().catch(() => ({}))
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status))
+    return j
+  }
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
 
-// --- MANAGE TABLE ---
-async function loadManageTable(){
-  manageLoaded = true;
-  const wrap=document.getElementById('productsTable')
-  wrap.innerHTML='<div class="spinner"></div>'
-  try{
-    const{data,error}=await supabase.from('products').select('*').order('created_at',{ascending:false})
-    if(error)throw error
-    if(!data.length){
-      wrap.innerHTML='<p style="color:var(--grey);padding:2rem;text-align:center">No products found. Add one!</p>'
-      return
+  function toast(msg, isError) {
+    const t = $('toast'); t.textContent = msg
+    t.className = 'toast' + (isError ? ' error' : '') + ' active'
+    clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('active'), 3200)
+  }
+
+  let cache = []          // all products
+  let currentImages = []  // images for the add/edit form
+  let editId = ''
+
+  // ── NAV ──────────────────────────────────────────────
+  function showPanel(name) {
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.toggle('active', a.dataset.panel === name))
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name))
+    if (name === 'dashboard') renderDashboard()
+    if (name === 'manage') renderTable()
+  }
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.addEventListener('click', () => showPanel(a.dataset.panel)))
+
+  async function load() {
+    try { cache = (await api('/api/products')).products || [] }
+    catch (e) { toast('Failed to load products: ' + e.message, true); cache = [] }
+  }
+
+  // ── DASHBOARD ────────────────────────────────────────
+  async function renderDashboard() {
+    const el = $('stats'); el.innerHTML = '<div class="spinner"></div>'
+    await load()
+    const total = cache.length
+    const top = cache.filter(p => p.top_rated).length
+    const noImg = cache.filter(p => !p.images || !p.images.length).length
+    let html = `
+      <div class="stat-card"><i class="fas fa-box ic"></i><div class="num">${total}</div><div class="label">Total Products</div></div>
+      <div class="stat-card"><i class="fas fa-star ic"></i><div class="num">${top}</div><div class="label">Top Rated</div></div>
+      <div class="stat-card"><i class="fas fa-image ic"></i><div class="num">${total - noImg}</div><div class="label">With Image</div></div>`
+    for (const [key, label] of Object.entries(CATS)) {
+      const c = cache.filter(p => p.category === key).length
+      html += `<div class="stat-card"><i class="fas ${CAT_ICONS[key]} ic"></i><div class="num">${c}</div><div class="label">${label}</div></div>`
     }
-    wrap.innerHTML=`<table>
-      <thead><tr>
-        <th>Image</th><th>Name</th><th>Category</th><th>Top Rated</th><th>Date</th><th>Actions</th>
-      </tr></thead>
-      <tbody>${data.map(p=>`<tr>
-        <td><img src="${p.images?.[0]||'https://picsum.photos/80/60?grayscale'}" loading="lazy" style="width:64px;height:46px;border-radius:4px;object-fit:cover;border:1px solid var(--border)" alt=""></td>
-        <td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</td>
-        <td><span class="badge badge-orange">${CATEGORY_LABELS[p.category]||p.category}</span></td>
-        <td>${p.top_rated?'<span class="badge badge-green">★ Yes</span>':'<span class="badge badge-grey">No</span>'}</td>
-        <td style="color:var(--grey);font-size:.75rem">${new Date(p.created_at).toLocaleDateString()}</td>
-        <td><div class="actions">
-          <button class="btn btn-edit btn-sm edit-btn" data-id="${p.id}"><i class="fas fa-pen"></i></button>
-          <button class="btn btn-danger btn-sm del-btn" data-id="${p.id}"><i class="fas fa-trash"></i></button>
+    el.innerHTML = html
+  }
+  $('dashRefresh').addEventListener('click', renderDashboard)
+
+  // ── IMAGE MANAGER ────────────────────────────────────
+  function renderImages() {
+    const grid = $('imgsGrid')
+    grid.innerHTML = currentImages.map((src, i) =>
+      `<div class="img-cell${i === 0 ? ' primary' : ''}"><img src="${esc(src)}" alt="" onerror="this.src='./placeholder.svg'"><button type="button" class="rm" data-i="${i}" title="Remove"><i class="fas fa-xmark"></i></button></div>`
+    ).join('')
+    grid.querySelectorAll('.rm').forEach(b => b.addEventListener('click', () => { currentImages.splice(+b.dataset.i, 1); renderImages() }))
+  }
+  $('addUrlBtn').addEventListener('click', () => {
+    const v = $('imgUrl').value.trim()
+    if (!v) return
+    currentImages.push(v); $('imgUrl').value = ''; renderImages()
+  })
+  $('imgUrl').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('addUrlBtn').click() } })
+  $('uploadBtn').addEventListener('click', () => $('fileInput').click())
+  $('fileInput').addEventListener('change', async () => {
+    const files = Array.from($('fileInput').files)
+    for (const f of files) {
+      try {
+        const dataUrl = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(f) })
+        const { path } = await api('/api/upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: $('pName').value || f.name, dataUrl }) })
+        currentImages.push(path); renderImages()
+      } catch (e) { toast('Upload failed: ' + e.message, true) }
+    }
+    $('fileInput').value = ''
+  })
+
+  // ── ADD / EDIT FORM ──────────────────────────────────
+  function resetForm() {
+    editId = ''; currentImages = []
+    $('productForm').reset(); $('editId').value = ''
+    renderImages()
+    $('formTitle').innerHTML = '<i class="fas fa-plus-circle"></i> Add Product'
+    $('submitBtn').innerHTML = '<i class="fas fa-save"></i> Add Product'
+    $('cancelEdit').style.display = 'none'
+  }
+  $('cancelEdit').addEventListener('click', () => { resetForm(); showPanel('manage') })
+
+  function startEdit(id) {
+    const p = cache.find(x => x.id === id); if (!p) return
+    editId = id
+    $('editId').value = id
+    $('pName').value = p.name
+    $('pCategory').value = p.category
+    $('pDesc').value = p.description || ''
+    $('pTopRated').checked = !!p.top_rated
+    currentImages = (p.images || []).slice(); renderImages()
+    $('formTitle').innerHTML = '<i class="fas fa-pen"></i> Edit Product'
+    $('submitBtn').innerHTML = '<i class="fas fa-save"></i> Update Product'
+    $('cancelEdit').style.display = 'inline-flex'
+    showPanel('add')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  $('productForm').addEventListener('submit', async e => {
+    e.preventDefault()
+    const name = $('pName').value.trim()
+    const category = $('pCategory').value
+    if (!name || !category) { toast('Name and category are required', true); return }
+    const payload = { name, category, description: $('pDesc').value.trim() || null, images: currentImages, top_rated: $('pTopRated').checked }
+    const btn = $('submitBtn'); btn.disabled = true; const old = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...'
+    try {
+      if (editId) { await api('/api/products/' + encodeURIComponent(editId), { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); toast('Product updated') }
+      else { await api('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); toast('Product added') }
+      await load(); resetForm(); showPanel('manage')
+    } catch (err) { toast('Error: ' + err.message, true) }
+    finally { btn.disabled = false; btn.innerHTML = old }
+  })
+
+  // ── MANAGE TABLE ─────────────────────────────────────
+  function renderTable() {
+    const wrap = $('productsTable')
+    const q = ($('searchInput').value || '').toLowerCase().trim()
+    const cat = $('filterCat').value
+    let rows = cache.slice()
+    if (cat) rows = rows.filter(p => p.category === cat)
+    if (q) rows = rows.filter(p => p.name.toLowerCase().includes(q))
+    if (!rows.length) { wrap.innerHTML = '<div class="empty">No products found.</div>'; return }
+    wrap.innerHTML = `<table>
+      <thead><tr><th>Image</th><th>Name</th><th>Category</th><th class="hide">Top Rated</th><th>Actions</th></tr></thead>
+      <tbody>${rows.map(p => `<tr>
+        <td><img class="thumb" src="${esc(p.images?.[0] || './placeholder.svg')}" loading="lazy" onerror="this.src='./placeholder.svg'" alt=""></td>
+        <td class="name">${esc(p.name)}</td>
+        <td><span class="badge badge-cat">${CATS[p.category] || p.category}</span></td>
+        <td class="hide">${p.top_rated ? '<span class="badge badge-green">★ Yes</span>' : '<span class="badge badge-grey">No</span>'}</td>
+        <td><div class="row-actions">
+          <button class="btn-icon edit" data-id="${esc(p.id)}" title="Edit"><i class="fas fa-pen"></i></button>
+          <button class="btn-icon del" data-id="${esc(p.id)}" title="Delete"><i class="fas fa-trash"></i></button>
         </div></td>
-      </tr>`).join('')}</tbody>
-    </table>`
-
-    // EDIT
-    wrap.querySelectorAll('.edit-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const p=data.find(x=>x.id===btn.dataset.id)
-        if(!p)return
-        editMode=true
-        document.getElementById('editId').value=p.id
-        document.getElementById('pName').value=p.name
-        document.getElementById('pCategory').value=p.category
-        document.getElementById('pDesc').value=p.description||''
-        document.getElementById('pTopRated').checked=p.top_rated
-        document.getElementById('imgPreviews').innerHTML=(p.images||[]).map(u=>`<div class="preview"><img src="${u}" alt=""></div>`).join('')
-        document.getElementById('formTitle').innerHTML='<i class="fas fa-pen"></i> Edit Product'
-        document.getElementById('submitBtn').innerHTML='<i class="fas fa-save"></i> Update Product'
-        document.getElementById('cancelEdit').style.display='inline-flex'
-        document.querySelectorAll('.sidebar-nav a').forEach(x=>x.classList.remove('active'))
-        document.querySelector('[data-panel="add"]').classList.add('active')
-        document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'))
-        document.getElementById('panel-add').classList.add('active')
-        window.scrollTo({top:0,behavior:'smooth'})
-      })
-    })
-
-    // DELETE
-    wrap.querySelectorAll('.del-btn').forEach(btn=>{
-      btn.addEventListener('click',async()=>{
-        const p=data.find(x=>x.id===btn.dataset.id)
-        if(!confirm(`Delete "${p?.name}"?`))return
-        btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>'
-        try{
-          const{error}=await supabase.from('products').delete().eq('id',btn.dataset.id)
-          if(error)throw error
-          showToast('<i class="fas fa-trash"></i> Product deleted')
-          dashboardLoaded=false
-          loadManageTable()
-        }catch(e){showToast('<i class="fas fa-times"></i> Delete failed: '+e.message,true);btn.disabled=false;btn.innerHTML='<i class="fas fa-trash"></i>'}
-      })
-    })
-  }catch(e){
-    wrap.innerHTML=`<p style="color:#e74c3c;padding:2rem;text-align:center"><i class="fas fa-exclamation-circle"></i> Error: ${e.message}</p>`
-    console.error(e)
+      </tr>`).join('')}</tbody></table>`
+    wrap.querySelectorAll('.edit').forEach(b => b.addEventListener('click', () => startEdit(b.dataset.id)))
+    wrap.querySelectorAll('.del').forEach(b => b.addEventListener('click', () => del(b.dataset.id)))
   }
-}
+  async function del(id) {
+    const p = cache.find(x => x.id === id)
+    if (!confirm(`Delete "${p?.name}"? This cannot be undone.`)) return
+    try { await api('/api/products/' + encodeURIComponent(id), { method: 'DELETE' }); toast('Product deleted'); await load(); renderTable() }
+    catch (e) { toast('Delete failed: ' + e.message, true) }
+  }
+  $('refreshBtn').addEventListener('click', async () => { await load(); renderTable() })
+  $('searchInput').addEventListener('input', renderTable)
+  $('filterCat').addEventListener('change', renderTable)
 
-// --- INIT ---
-loadDashboard()
+  // ── INIT (called after login) ────────────────────────
+  window.H2KAdmin = {
+    inited: false,
+    async init() {
+      if (this.inited) return; this.inited = true
+      renderImages()
+      await renderDashboard()
+    }
+  }
+})()

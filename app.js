@@ -118,7 +118,7 @@ function renderHome(){
     <div class="carousel-wrapper"><button class="carousel-btn prev" id="carPrev"><i class="fas fa-chevron-left"></i></button>
     <div class="carousel-track" id="carTrack">${spinnerHTML()}</div>
     <button class="carousel-btn next" id="carNext"><i class="fas fa-chevron-right"></i></button></div></section>
-  <footer class="footer"><div class="footer-content"><div class="footer-brand"><span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span><p>H2K Production — Professional gear for professional creators.</p>
+  <footer class="footer"><div class="footer-content"><div class="footer-brand"><span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span><p>H2K Production - Professional gear for professional creators.</p>
     <div class="footer-socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
     <div class="footer-links"><h4>Quick Links</h4><a href="#home">Home</a><a href="#products">Products</a><a href="#contact">Contact</a></div>
     <div class="footer-links"><h4>Contact</h4><a href="tel:+37433107107">+374 33 107 107</a><a href="mailto:info@h2kproduction.com">info@h2kproduction.com</a></div></div>

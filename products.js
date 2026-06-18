@@ -1,13 +1,14 @@
-// H2K Production — local product catalog
-// Auto-generated from H2K_FULL Excel + live-site images. 164 products.
-// Regenerate with: node merge_final.mjs
+// H2K Production - local product catalog
+// 164 products. Managed via the admin panel.
 window.H2K_PRODUCTS = [
   {
     "id": "aputure-infinimat-led-clear-softbox-pack-4-x-4",
     "name": "Aputure INFINIMAT LED & Clear Softbox Pack (4 x 4')",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-infinimat-led-clear-softbox-pack-4-x-4.png"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T12:00:00.000Z"
   },
@@ -27,7 +28,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure INFINIMAT LED with Clear Softbox & 400W Control Box Pack (2 x 4', V-Mount)",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-infinimat-led-with-clear-softbox-400w-control-box-pa.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:58:00.000Z"
   },
@@ -36,7 +39,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure Storm 80c LED Monolight 3-Light Kit (US)",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-storm-80c-led-monolight-3-light-kit-us.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:57:00.000Z"
   },
@@ -45,7 +50,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure INFINIMAT Tunable Color Light Mat with Inflatable Airbag (1 x 4', V-Mount)",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-infinimat-tunable-color-light-mat-with-inflatable-ai.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:56:00.000Z"
   },
@@ -54,7 +61,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Super Wind-up 40 Stand with Braked Wheels",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-super-wind-up-40-stand-with-braked-wheels.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:55:00.000Z"
   },
@@ -84,7 +93,7 @@ window.H2K_PRODUCTS = [
     "id": "aputure-spotlight-max-kit-with-36-lens",
     "name": "Aputure Spotlight Max Kit with 36° Lens",
     "description": null,
-    "category": "lenses",
+    "category": "light-accessories",
     "images": [
       "./product-images/aputure-spotlight-max-kit-with-36-lens.png"
     ],
@@ -96,7 +105,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Wind Up Stand 30 with Low Base and Braked Wheels (Chrome-plated, 9.7')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-wind-up-stand-30-with-low-base-and-braked-wheels-chr.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:51:00.000Z"
   },
@@ -105,7 +116,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Wind Up Stand 26 with Braked Wheels (Chrome-plated, 8.5')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-wind-up-stand-26-with-braked-wheels-chrome-plated-8-.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:50:00.000Z"
   },
@@ -125,7 +138,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure Accent B7C RGBWW LED 8-Light Kit with Charging Case",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-accent-b7c-rgbww-led-8-light-kit-with-charging-case.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:48:00.000Z"
   },
@@ -134,7 +149,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure STORM 80c BLAIR-CG LED Monolight (US)",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/aputure-storm-80c-blair-cg-led-monolight-us.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:47:00.000Z"
   },
@@ -154,7 +171,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Combo Steel Stand 45 with Leveling Leg (Chrome-plated, 14.7')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-combo-steel-stand-45-with-leveling-leg-chrome-plated.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:45:00.000Z"
   },
@@ -163,7 +182,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Combo Steel Stand 35 with Leveling Leg (Chrome-plated, 11.5')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-combo-steel-stand-35-with-leveling-leg-chrome-plated.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:44:00.000Z"
   },
@@ -171,7 +192,7 @@ window.H2K_PRODUCTS = [
     "id": "aputure-spotlight-mini-36-lens-kit",
     "name": "Aputure Spotlight Mini 36° Lens Kit",
     "description": null,
-    "category": "lenses",
+    "category": "light-accessories",
     "images": [
       "./product-images/aputure-spotlight-mini-36-lens-kit.png"
     ],
@@ -194,7 +215,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger C-Stand Grip Arm Kit (Chrome-Plated, 10.75')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-c-stand-grip-arm-kit-chrome-plated-10-75.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:41:00.000Z"
   },
@@ -203,7 +226,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Baby Stand 17 with Leveling Leg (Chrome-plated, 5.75')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-baby-stand-17-with-leveling-leg-chrome-plated-5-75.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:40:00.000Z"
   },
@@ -212,7 +237,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger Combo Steel Stand 10 with Leveling Leg (Chrome-plated, 3.3')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-combo-steel-stand-10-with-leveling-leg-chrome-plated.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:39:00.000Z"
   },
@@ -220,7 +247,7 @@ window.H2K_PRODUCTS = [
     "id": "matthews-set-of-four-apple-boxes",
     "name": "Matthews Set of Four Apple Boxes",
     "description": null,
-    "category": "lights",
+    "category": "light-accessories",
     "images": [
       "./product-images/matthews-set-of-four-apple-boxes.jpg"
     ],
@@ -232,7 +259,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger C-Stand 30 with Turtle Base (Chrome-plated, 9.8')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-c-stand-30-with-turtle-base-chrome-plated-9-8.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:37:00.000Z"
   },
@@ -241,7 +270,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger C-Stand 40 with Turtle Base (Chrome-plated, 12.8')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-c-stand-40-with-turtle-base-chrome-plated-12-8.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:36:00.000Z"
   },
@@ -250,7 +281,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger C-Stand (10.7', Chrome-plated)",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-c-stand-10-7-chrome-plated.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:35:00.000Z"
   },
@@ -270,7 +303,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger A2018F C-Stand (Chrome-plated, 5.7')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-a2018f-c-stand-chrome-plated-5-7.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:33:00.000Z"
   },
@@ -290,7 +325,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews 8x8' Overhead Fabric - Bleached Muslin",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-8x8-overhead-fabric-bleached-muslin.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:31:00.000Z"
   },
@@ -299,7 +336,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Mini Matthpole - Black",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-mini-matthpole-black.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:30:00.000Z"
   },
@@ -319,7 +358,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews C - Clamp, 2 Baby Pins - 8\"",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-c-clamp-2-baby-pins-8.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:28:00.000Z"
   },
@@ -328,7 +369,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews 8x8' Overhead Fabric - White 1/4 Stop Silk",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-8x8-overhead-fabric-white-1-4-stop-silk.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:27:00.000Z"
   },
@@ -381,7 +424,9 @@ window.H2K_PRODUCTS = [
     "name": "amaran Ace 25c RGB LED Light Panel All-in-One Creator Kit (Charcoal)",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/amaran-ace-25c-rgb-led-light-panel-all-in-one-creator-kit-ch.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:22:00.000Z"
   },
@@ -390,7 +435,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Matthpole - Black",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-matthpole-black.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:21:00.000Z"
   },
@@ -410,7 +457,9 @@ window.H2K_PRODUCTS = [
     "name": "amaran Ace 25c RGB LED Light Panel",
     "description": null,
     "category": "lights",
-    "images": [],
+    "images": [
+      "./product-images/amaran-ace-25c-rgb-led-light-panel.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:19:00.000Z"
   },
@@ -418,7 +467,7 @@ window.H2K_PRODUCTS = [
     "id": "aputure-quick-dome-40-for-storm-80c",
     "name": "Aputure Quick Dome 40 for STORM 80c",
     "description": null,
-    "category": "lights",
+    "category": "light-accessories",
     "images": [
       "./product-images/aputure-quick-dome-40-for-storm-80c.png"
     ],
@@ -429,7 +478,7 @@ window.H2K_PRODUCTS = [
     "id": "cargo-van-jmc",
     "name": "Cargo Van JMC",
     "description": null,
-    "category": "lights",
+    "category": "cargovan",
     "images": [
       "./product-images/cargo-van-jmc.jpg"
     ],
@@ -474,7 +523,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Vise Grip Plier",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-vise-grip-plier.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:13:00.000Z"
   },
@@ -482,8 +533,10 @@ window.H2K_PRODUCTS = [
     "id": "matthews-myway-matthellini-2-end-jaw-silver",
     "name": "Matthews MyWay Matthellini 2\" End Jaw (Silver)",
     "description": null,
-    "category": "lights",
-    "images": [],
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-myway-matthellini-2-end-jaw-silver.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:12:00.000Z"
   },
@@ -525,7 +578,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger MP Eye Coupler with Lifting Ring",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-mp-eye-coupler-with-lifting-ring.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:08:00.000Z"
   },
@@ -534,7 +589,9 @@ window.H2K_PRODUCTS = [
     "name": "Impact 2\" Steel Spring A-Clamp Kit (Red, 20-Pack)",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/impact-2-steel-spring-a-clamp-kit-red-20-pack.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:07:00.000Z"
   },
@@ -565,7 +622,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Open End Scrim - 12x18\" - White Artificial",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-open-end-scrim-12x18-white-artificial.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:04:00.000Z"
   },
@@ -585,7 +644,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Super Mafer Clamp with Baby (5/8\") Pin",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-super-mafer-clamp-with-baby-5-8-pin.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:02:00.000Z"
   },
@@ -594,7 +655,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Super Mafer Clamp with 5/8\" Snap-In Pin Kit",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-super-mafer-clamp-with-5-8-snap-in-pin-kit.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T11:01:00.000Z"
   },
@@ -614,7 +677,9 @@ window.H2K_PRODUCTS = [
     "name": "Impact 3\" Center Jaw Vise Grip",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/impact-3-center-jaw-vise-grip.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:59:00.000Z"
   },
@@ -623,7 +688,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Hollywood Grip Head - 2-1/2\"",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-hollywood-grip-head-2-1-2.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:58:00.000Z"
   },
@@ -643,7 +710,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger C4462 MP Coupler with 5/8\" (16 mm) Spigot",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-c4462-mp-coupler-with-5-8-16-mm-spigot.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:56:00.000Z"
   },
@@ -707,7 +776,9 @@ window.H2K_PRODUCTS = [
     "name": "Matthews Stainless Steel Diffusion - 3\" Set of 5",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/matthews-stainless-steel-diffusion-3-set-of-5.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:50:00.000Z"
   },
@@ -837,7 +908,9 @@ window.H2K_PRODUCTS = [
     "name": "Aputure Baby Pin Adapter to Back Clamp for MT Pro-1",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/aputure-baby-pin-adapter-to-back-clamp-for-mt-pro-1.png"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:38:00.000Z"
   },
@@ -845,8 +918,10 @@ window.H2K_PRODUCTS = [
     "id": "aputure-1-4-20-screw-adapter-absorption-part-for-mt-pro-1",
     "name": "Aputure 1/4\"-20 Screw Adapter Absorption Part for MT Pro-1",
     "description": null,
-    "category": "lights",
-    "images": [],
+    "category": "light-accessories",
+    "images": [
+      "./product-images/aputure-1-4-20-screw-adapter-absorption-part-for-mt-pro-1.webp"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:37:00.000Z"
   },
@@ -877,7 +952,9 @@ window.H2K_PRODUCTS = [
     "name": "Kupo Stand Adapter, Junior 1-1/8\" Stud to Baby 5/8\" Stud",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/kupo-stand-adapter-junior-1-1-8-stud-to-baby-5-8-stud.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:34:00.000Z"
   },
@@ -885,8 +962,10 @@ window.H2K_PRODUCTS = [
     "id": "aputure-waterproof-pouch-for-mt-pro-1",
     "name": "Aputure Waterproof Pouch for MT Pro-1",
     "description": null,
-    "category": "lights",
-    "images": [],
+    "category": "light-accessories",
+    "images": [
+      "./product-images/aputure-waterproof-pouch-for-mt-pro-1.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:33:00.000Z"
   },
@@ -895,7 +974,9 @@ window.H2K_PRODUCTS = [
     "name": "Impact Small Clip Clamp with Rubber Rivet Jaw",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/impact-small-clip-clamp-with-rubber-rivet-jaw.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:32:00.000Z"
   },
@@ -904,7 +985,9 @@ window.H2K_PRODUCTS = [
     "name": "Impact 6\" Baby Pin Wall Plate",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/impact-6-baby-pin-wall-plate.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:31:00.000Z"
   },
@@ -1133,7 +1216,9 @@ window.H2K_PRODUCTS = [
     "name": "Impact 3\" Baby Pin Wall Plate",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/impact-3-baby-pin-wall-plate.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T10:10:00.000Z"
   },
@@ -1141,7 +1226,7 @@ window.H2K_PRODUCTS = [
     "id": "amaran-ace-30-light-control-grid",
     "name": "amaran Ace 30° Light Control Grid",
     "description": null,
-    "category": "lights",
+    "category": "light-accessories",
     "images": [
       "./product-images/amaran-ace-30-light-control-grid.jpg"
     ],
@@ -1262,7 +1347,7 @@ window.H2K_PRODUCTS = [
     "id": "motorized-f14-fresnel",
     "name": "Motorized F14 Fresnel",
     "description": null,
-    "category": "lights",
+    "category": "light-accessories",
     "images": [
       "https://h2kproduction.com/wp-content/uploads/2025/11/Pre-Order_DepositforMotorizedF14Fresnel-2.webp"
     ],
@@ -1384,7 +1469,9 @@ window.H2K_PRODUCTS = [
     "name": "Avenger A8030CS Junior Offset Low Boy Stand (Chrome-plated, 10')",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/avenger-a8030cs-junior-offset-low-boy-stand-chrome-plated-10.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T09:47:00.000Z"
   },
@@ -1393,7 +1480,9 @@ window.H2K_PRODUCTS = [
     "name": "KUPO KS-403TBK TANK STAND 370 Black",
     "description": null,
     "category": "light-accessories",
-    "images": [],
+    "images": [
+      "./product-images/kupo-ks-403tbk-tank-stand-370-black.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T09:46:00.000Z"
   },
@@ -1468,7 +1557,9 @@ window.H2K_PRODUCTS = [
     "name": "Anton Bauer Titon Base 90 V-Mount Battery",
     "description": null,
     "category": "camera",
-    "images": [],
+    "images": [
+      "./product-images/anton-bauer-titon-base-90-v-mount-battery.jpg"
+    ],
     "top_rated": false,
     "created_at": "2026-06-17T09:39:00.000Z"
   },

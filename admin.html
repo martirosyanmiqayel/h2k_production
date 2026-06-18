@@ -3,212 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H2K Admin Panel</title>
+  <meta name="theme-color" content="#050506">
+  <title>H2K Production - Admin</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--black:#0a0a0a;--black2:#111;--black3:#1a1a1a;--orange:#e84b17;--orange-dark:#c23d0f;--white:#fff;--grey:#888;--border:#2a2a2a;--radius:10px}
-    body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);display:flex;min-height:100vh}
-    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
-    .logo-text{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:900;color:var(--white);letter-spacing:-1px;display:flex;align-items:baseline;gap:1px}
-    .logo-2{color:var(--orange);font-size:1.6rem}
-    .logo-sub{font-size:.4rem;font-weight:700;letter-spacing:3px;color:var(--grey);margin-left:4px;text-transform:uppercase;align-self:flex-end;margin-bottom:1px}
+    :root{
+      --bg:#050506;--bg2:#0a0a0c;--surface:#0e0e11;--surface2:#141418;--surface3:#1b1b21;
+      --line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+      --accent:#ff5a1f;--accent2:#ff8a3d;--accent-soft:rgba(255,90,31,.14);
+      --white:#fff;--text:#e7e7ea;--muted:#9a9aa2;--muted2:#6a6a72;
+      --green:#34d399;--red:#f05252;
+      --r:14px;--r-sm:10px;--ease:cubic-bezier(.4,0,.2,1);
+    }
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(800px 480px at 85% -10%,rgba(255,90,31,.10),transparent 60%),var(--bg)}
+    h1,h2,h3,h4{font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.02em;color:var(--white)}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+    input,select,textarea{font-family:inherit;outline:none}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--accent);color:#fff}
+    ::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:#26262d;border-radius:9px;border:2px solid var(--bg)}::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
-    /* ── LOGIN SCREEN ───────────────────────────────────────── */
-    #loginScreen {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--black);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .login-box {
-      background: var(--black3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      width: 100%; max-width: 380px;
-      box-shadow: 0 24px 80px rgba(0,0,0,.8);
-    }
-    .login-logo { text-align: center; margin-bottom: 2rem; }
-    .login-logo .logo-text { justify-content: center; font-size: 1.7rem; }
-    .login-logo .logo-2 { font-size: 1.9rem; }
-    .login-logo p { font-size: .68rem; color: var(--grey); letter-spacing: 3px; text-transform: uppercase; margin-top: .5rem; }
-    .login-box h2 { font-family: 'Montserrat',sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--white); text-align: center; }
-    .login-field { margin-bottom: 1rem; }
-    .login-field label { display: block; font-size: .68rem; font-weight: 700; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: .5rem; }
-    .login-field-wrap { position: relative; }
-    .login-field input {
-      width: 100%; padding: .85rem 2.8rem .85rem 1rem;
-      background: var(--black2); border: 1px solid var(--border);
-      border-radius: 8px; color: var(--white); font-size: .9rem;
-      font-family: 'Inter',sans-serif; transition: border-color .25s;
-    }
-    .login-field input:focus { border-color: var(--orange); outline: none; }
-    .toggle-pw {
-      position: absolute; right: .85rem; top: 50%; transform: translateY(-50%);
-      background: none; border: none; color: var(--grey); cursor: pointer; font-size: .9rem;
-      transition: color .2s;
-    }
-    .toggle-pw:hover { color: var(--white); }
-    .login-error {
-      display: none;
-      background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.3);
-      border-radius: 6px; padding: .7rem 1rem;
-      font-size: .8rem; color: #e74c3c;
-      margin-bottom: 1rem;
-      align-items: center; gap: .5rem;
-    }
-    .login-error.show { display: flex; animation: shake .4s ease; }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)}
-      20%{transform:translateX(-8px)}
-      40%{transform:translateX(8px)}
-      60%{transform:translateX(-5px)}
-      80%{transform:translateX(5px)}
-    }
-    .login-btn {
-      width: 100%; padding: .9rem;
-      background: var(--orange); color: var(--white);
-      border: none; border-radius: 8px;
-      font-weight: 800; font-size: .85rem;
-      font-family: 'Inter',sans-serif;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      cursor: pointer; transition: background .2s, transform .2s;
-      margin-top: .25rem;
-    }
-    .login-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
-    .login-btn:active { transform: translateY(0); }
+    .logo-text{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:-1px;display:flex;align-items:baseline;line-height:1}
+    .logo-2{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:1.6rem}
+    .logo-sub{font-size:.4rem;font-weight:700;letter-spacing:3px;color:var(--muted);margin-left:5px;text-transform:uppercase;align-self:flex-end;margin-bottom:2px}
 
-    /* ── ADMIN PANEL (hidden until logged in) ───────────────── */
-    #adminWrap { display: none; width: 100%; }
+    /* LOGIN */
+    #loginScreen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+    .login-box{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:2.6rem 2.2rem;width:100%;max-width:390px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+    .login-logo{text-align:center;margin-bottom:1.8rem}
+    .login-logo .logo-text{justify-content:center;font-size:1.8rem}
+    .login-logo p{font-size:.66rem;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:.6rem}
+    .login-box h2{font-size:1.05rem;margin-bottom:1.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.5rem}
+    .login-box h2 i{color:var(--accent2)}
+    .field{margin-bottom:1.1rem}
+    .field label{display:block;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+    .field-wrap{position:relative}
+    .field input{width:100%;padding:.85rem 2.8rem .85rem 1rem;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--white);font-size:.9rem;transition:border-color .25s}
+    .field input:focus{border-color:var(--accent)}
+    .toggle-pw{position:absolute;right:.85rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;transition:color .2s}
+    .toggle-pw:hover{color:var(--white)}
+    .login-error{display:none;background:rgba(240,82,82,.1);border:1px solid rgba(240,82,82,.3);border-radius:8px;padding:.7rem 1rem;font-size:.8rem;color:var(--red);margin-bottom:1rem;align-items:center;gap:.5rem}
+    .login-error.show{display:flex;animation:shake .4s ease}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+    .login-btn{width:100%;padding:.95rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:1.5px;transition:transform .2s,box-shadow .2s;margin-top:.4rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+    .login-btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -14px var(--accent)}
 
-    /* SIDEBAR */
-    .sidebar{width:240px;background:var(--black2);border-right:1px solid var(--border);padding:0;flex-shrink:0;position:fixed;top:0;bottom:0;display:flex;flex-direction:column}
-    .sidebar-header{padding:1.5rem;border-bottom:1px solid var(--border)}
-    .sidebar-header .subtitle{font-size:.65rem;color:var(--grey);text-transform:uppercase;letter-spacing:2px;margin-top:.4rem;font-weight:600}
-    .sidebar-nav{flex:1;padding:1rem 0}
-    .sidebar-nav a{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.5rem;color:var(--grey);font-size:.82rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;cursor:pointer;border-left:3px solid transparent;text-decoration:none}
-    .sidebar-nav a:hover{background:rgba(255,255,255,.03);color:var(--white)}
-    .sidebar-nav a.active{color:var(--orange);border-left-color:var(--orange);background:rgba(232,75,23,.05)}
-    .sidebar-nav a i{width:16px;text-align:center}
-    .sidebar-footer{padding:1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-    .sidebar-footer p{font-size:.7rem;color:var(--grey)}
-    .logout-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--grey);font-size:.7rem;padding:.35rem .7rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:.4rem}
-    .logout-btn:hover{border-color:rgba(231,76,60,.4);color:#e74c3c}
+    /* LAYOUT */
+    #adminWrap{display:none;min-height:100vh}
+    .sidebar{width:248px;background:var(--bg2);border-right:1px solid var(--line);position:fixed;top:0;bottom:0;display:flex;flex-direction:column;z-index:20}
+    .sidebar-header{padding:1.6rem 1.5rem;border-bottom:1px solid var(--line)}
+    .sidebar-header .subtitle{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-top:.5rem;font-weight:600}
+    .sidebar-nav{flex:1;padding:1rem .8rem;display:flex;flex-direction:column;gap:.3rem}
+    .sidebar-nav a{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;color:var(--muted);font-size:.85rem;font-weight:500;border-radius:10px;transition:all .2s;cursor:pointer}
+    .sidebar-nav a i{width:18px;text-align:center;font-size:.95rem}
+    .sidebar-nav a:hover{background:rgba(255,255,255,.04);color:var(--white)}
+    .sidebar-nav a.active{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 10px 24px -12px var(--accent)}
+    .sidebar-footer{padding:1.2rem 1.5rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+    .sidebar-footer a{font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;transition:color .2s}
+    .sidebar-footer a:hover{color:var(--accent2)}
+    .logout-btn{border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:.72rem;padding:.4rem .7rem;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+    .logout-btn:hover{border-color:rgba(240,82,82,.4);color:var(--red)}
 
-    /* MAIN */
-    .main{margin-left:240px;flex:1;padding:2.5rem}
-    .page-header{margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between}
-    .page-header h1{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:.5rem}
-    .page-header h1 i{color:var(--orange);font-size:1.1rem}
+    .main{margin-left:248px;padding:2.4rem clamp(1.2rem,3vw,2.8rem)}
+    .page-header{margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .page-header h1{font-size:1.55rem;font-weight:800;display:flex;align-items:center;gap:.6rem}
+    .page-header h1 i{color:var(--accent2);font-size:1.1rem}
     .panel{display:none}
-    .panel.active{display:block;animation:fadeIn .3s ease}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .panel.active{display:block;animation:fade .35s var(--ease)}
+    @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
     /* STATS */
-    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2.5rem}
-    .stat-card{background:var(--black3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;transition:border-color .2s}
-    .stat-card:hover{border-color:rgba(232,75,23,.4)}
-    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange)}
-    .stat-card .num{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--orange);line-height:1}
-    .stat-card .label{font-size:.7rem;color:var(--grey);margin-top:.4rem;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1rem}
+    .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+    .stat-card:hover{transform:translateY(-4px);border-color:var(--line2)}
+    .stat-card .num{font-family:'Sora',sans-serif;font-size:2.1rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-card .label{font-size:.74rem;color:var(--muted);margin-top:.45rem;letter-spacing:.04em}
+    .stat-card .ic{position:absolute;right:1rem;top:1rem;color:var(--surface3);font-size:1.6rem}
 
-    /* FORM CARD */
-    .form-card{background:var(--black3);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;max-width:680px}
-    .form-row{margin-bottom:1.25rem}
-    .form-row label{display:block;font-size:.7rem;font-weight:700;color:var(--grey);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:1px}
-    .form-row input,.form-row select,.form-row textarea{width:100%;padding:.7rem 1rem;background:var(--black);border:1px solid var(--border);border-radius:6px;color:var(--white);font-size:.88rem;font-family:'Inter',sans-serif;transition:border-color .2s}
-    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--orange);outline:none}
-    .form-row select{cursor:pointer}
-    .form-row select option{background:var(--black)}
-    .form-row textarea{resize:vertical;min-height:100px}
-    .checkbox-row{display:flex;align-items:center;gap:.75rem;padding:.5rem 0}
-    .checkbox-row input[type="checkbox"]{width:18px;height:18px;accent-color:var(--orange);cursor:pointer}
-    .checkbox-row label{font-size:.88rem;color:var(--white);text-transform:none;letter-spacing:0;font-weight:500;margin:0;cursor:pointer}
+    /* FORM */
+    .form-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:2rem;max-width:760px}
+    .form-row{margin-bottom:1.3rem}
+    .form-row label{display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.55rem;text-transform:uppercase;letter-spacing:1px}
+    .form-row input[type=text],.form-row select,.form-row textarea{width:100%;padding:.8rem 1rem;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--white);font-size:.9rem;transition:border-color .2s}
+    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--accent)}
+    .form-row select{cursor:pointer}.form-row select option{background:var(--bg2)}
+    .form-row textarea{resize:vertical;min-height:96px}
+    .hint{font-size:.72rem;color:var(--muted2);margin-top:.4rem}
+    .checkbox-row{display:flex;align-items:center;gap:.7rem}
+    .checkbox-row input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+    .checkbox-row label{font-size:.9rem;color:var(--text);text-transform:none;letter-spacing:0;margin:0;cursor:pointer}
 
-    /* IMAGE PREVIEWS */
-    .image-previews{display:flex;gap:.75rem;margin-top:.75rem;flex-wrap:wrap}
-    .preview{width:100px;height:76px;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
-    .preview img{width:100%;height:100%;object-fit:cover}
+    /* IMAGE MANAGER */
+    .img-tools{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+    .img-tools input[type=text]{flex:1;min-width:200px}
+    .imgs-grid{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.9rem}
+    .img-cell{position:relative;width:96px;height:96px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff}
+    .img-cell img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .img-cell .rm{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:.7rem;display:grid;place-items:center}
+    .img-cell .rm:hover{background:var(--red)}
+    .img-cell.primary::after{content:'Main';position:absolute;left:4px;bottom:4px;background:var(--accent);color:#fff;font-size:.58rem;font-weight:700;padding:.1rem .35rem;border-radius:4px;letter-spacing:.04em}
 
     /* BUTTONS */
-    .btn{padding:.7rem 1.5rem;border-radius:4px;font-weight:700;font-size:.82rem;font-family:'Inter',sans-serif;transition:all .2s;cursor:pointer;border:none;text-transform:uppercase;letter-spacing:.5px}
-    .btn-orange{background:var(--orange);color:var(--white)}
-    .btn-orange:hover{background:var(--orange-dark);transform:translateY(-1px)}
-    .btn-danger{background:transparent;color:#e74c3c;border:1px solid rgba(231,76,60,.3)}
-    .btn-danger:hover{background:rgba(231,76,60,.1)}
-    .btn-edit{background:transparent;color:var(--orange);border:1px solid rgba(232,75,23,.3)}
-    .btn-edit:hover{background:rgba(232,75,23,.1)}
-    .btn-cancel{background:var(--border);color:var(--white)}
-    .btn-sm{padding:.4rem .8rem;font-size:.72rem}
-    .btn-group{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.25rem}
+    .btn{padding:.8rem 1.5rem;border-radius:10px;font-weight:600;font-size:.85rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;justify-content:center}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px var(--accent)}
+    .btn-ghost{background:var(--surface2);border:1px solid var(--line);color:var(--text)}
+    .btn-ghost:hover{border-color:var(--line2)}
+    .btn-sm{padding:.5rem .85rem;font-size:.78rem;border-radius:8px}
+    .btn-icon{width:36px;height:36px;padding:0;border-radius:8px;background:var(--surface2);border:1px solid var(--line);color:var(--muted)}
+    .btn-icon.edit:hover{color:var(--accent2);border-color:var(--accent)}
+    .btn-icon.del:hover{color:var(--red);border-color:rgba(240,82,82,.5)}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+    .btn-group{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+
+    /* TOOLBAR */
+    .toolbar{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.3rem}
+    .toolbar .search{position:relative;flex:1;min-width:200px}
+    .toolbar .search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted2);font-size:.85rem}
+    .toolbar .search input{width:100%;padding:.7rem 1rem .7rem 2.4rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;color:#fff;font-size:.86rem}
+    .toolbar .search input:focus{border-color:var(--accent)}
+    .toolbar select{padding:.7rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;color:#fff;font-size:.86rem;cursor:pointer}
+    .toolbar select option{background:var(--surface)}
 
     /* TABLE */
-    .table-wrap{overflow-x:auto}
-    table{width:100%;border-collapse:collapse;background:var(--black3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;font-size:.82rem}
-    thead{background:var(--black2)}
-    th{text-align:left;padding:.9rem 1rem;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--grey);font-weight:700;border-bottom:1px solid var(--border)}
-    td{padding:.8rem 1rem;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--white)}
+    .table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    table{width:100%;border-collapse:collapse;font-size:.85rem}
+    thead{background:var(--bg2)}
+    th{text-align:left;padding:.9rem 1.1rem;font-size:.66rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+    td{padding:.7rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:middle}
     tr:last-child td{border-bottom:none}
-    tr:hover td{background:rgba(255,255,255,.02)}
-    .badge{display:inline-block;padding:.2rem .55rem;border-radius:3px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-    .badge-orange{background:rgba(232,75,23,.12);color:var(--orange);border:1px solid rgba(232,75,23,.2)}
-    .badge-green{background:rgba(46,204,113,.1);color:#2ecc71;border:1px solid rgba(46,204,113,.2)}
-    .badge-grey{background:rgba(255,255,255,.05);color:var(--grey);border:1px solid var(--border)}
-    .actions{display:flex;gap:.4rem;align-items:center}
+    tbody tr{transition:background .15s}
+    tbody tr:hover{background:rgba(255,255,255,.025)}
+    td .thumb{width:58px;height:58px;border-radius:8px;object-fit:contain;background:#fff;padding:4px;border:1px solid var(--line)}
+    td.name{font-weight:600;color:var(--white);max-width:340px}
+    .badge{display:inline-block;padding:.25rem .6rem;border-radius:100px;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+    .badge-cat{background:var(--accent-soft);color:var(--accent2);border:1px solid rgba(255,90,31,.22)}
+    .badge-green{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25)}
+    .badge-grey{background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--line)}
+    .row-actions{display:flex;gap:.4rem}
+    .empty{padding:3rem 1rem;text-align:center;color:var(--muted)}
 
-    /* ALERT BANNER */
-    .alert{padding:1rem 1.25rem;border-radius:6px;font-size:.82rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
-    .alert-warning{background:rgba(232,75,23,.08);border:1px solid rgba(232,75,23,.25);color:var(--orange)}
-
-    /* TOAST */
-    .toast{position:fixed;bottom:24px;right:24px;background:var(--black3);border-left:3px solid var(--orange);border-radius:6px;padding:.85rem 1.5rem;color:var(--white);font-size:.85rem;box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:5000;transform:translateX(200px);opacity:0;transition:all .3s}
-    .toast.active{transform:translateX(0);opacity:1}
-    .toast.error{border-left-color:#e74c3c}
-    .spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin 1s linear infinite;margin:2rem auto}
+    /* TOAST + SPINNER */
+    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(140px);background:var(--surface3);border:1px solid var(--line2);border-radius:100px;padding:.85rem 1.5rem;color:#fff;font-size:.86rem;box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:5000;transition:transform .35s var(--ease);display:flex;align-items:center;gap:.55rem}
+    .toast::before{content:'\f058';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--accent2)}
+    .toast.active{transform:translateX(-50%) translateY(0)}
+    .toast.error::before{content:'\f057';color:var(--red)}
+    .spinner{width:30px;height:30px;border:3px solid var(--line2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:2.5rem auto}
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    @media(max-width:768px){.sidebar{width:56px}.sidebar-header .logo-sub,.sidebar-header .subtitle,.sidebar-nav a span,.sidebar-footer p{display:none}.sidebar-header{padding:1rem .75rem}.main{margin-left:56px;padding:1.5rem}.logout-btn span{display:none}}
+    @media(max-width:820px){
+      .sidebar{width:62px}
+      .sidebar-header .logo-sub,.sidebar-header .subtitle,.sidebar-nav a span,.sidebar-footer a span{display:none}
+      .sidebar-header{padding:1.1rem .8rem}.sidebar-footer{flex-direction:column}
+      .main{margin-left:62px;padding:1.4rem}
+    }
+    @media(max-width:560px){
+      td.hide,th.hide{display:none}
+    }
   </style>
 </head>
 <body>
 
-  <!-- ══ LOGIN SCREEN ══════════════════════════════════════════ -->
   <div id="loginScreen">
     <div class="login-box">
       <div class="login-logo">
         <span class="logo-text">h<span class="logo-2">2</span>k<span class="logo-sub">PRODUCTION</span></span>
         <p>Admin Access</p>
       </div>
-      <h2><i class="fas fa-lock" style="color:var(--orange);margin-right:.5rem"></i>Sign In</h2>
-      <div class="login-error" id="loginError">
-        <i class="fas fa-exclamation-circle"></i>
-        <span>Incorrect username or password.</span>
-      </div>
+      <h2><i class="fas fa-lock"></i> Sign In</h2>
+      <div class="login-error" id="loginError"><i class="fas fa-exclamation-circle"></i><span>Incorrect username or password.</span></div>
       <form id="loginForm">
-        <div class="login-field">
-          <label>Username</label>
-          <div class="login-field-wrap">
-            <input type="text" id="loginUser" placeholder="Enter username" autocomplete="username" required>
-          </div>
-        </div>
-        <div class="login-field">
-          <label>Password</label>
-          <div class="login-field-wrap">
-            <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password" required>
-            <button type="button" class="toggle-pw" id="togglePw" tabindex="-1">
-              <i class="fas fa-eye" id="eyeIcon"></i>
-            </button>
-          </div>
-        </div>
-        <button type="submit" class="login-btn">
-          <i class="fas fa-sign-in-alt"></i> Sign In
-        </button>
+        <div class="field"><label>Username</label><div class="field-wrap"><input type="text" id="loginUser" placeholder="Enter username" autocomplete="username" required></div></div>
+        <div class="field"><label>Password</label><div class="field-wrap"><input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password" required><button type="button" class="toggle-pw" id="togglePw" tabindex="-1"><i class="fas fa-eye" id="eyeIcon"></i></button></div></div>
+        <button type="submit" class="login-btn"><i class="fas fa-right-to-bracket"></i> Sign In</button>
       </form>
     </div>
   </div>
 
-  <!-- ══ ADMIN PANEL ═══════════════════════════════════════════ -->
   <div id="adminWrap">
     <aside class="sidebar">
       <div class="sidebar-header">
@@ -216,58 +196,58 @@
         <div class="subtitle">Admin Panel</div>
       </div>
       <nav class="sidebar-nav">
-        <a class="active" data-panel="dashboard"><i class="fas fa-chart-bar"></i><span>Dashboard</span></a>
+        <a class="active" data-panel="dashboard"><i class="fas fa-gauge-high"></i><span>Dashboard</span></a>
         <a data-panel="add"><i class="fas fa-plus-circle"></i><span>Add Product</span></a>
-        <a data-panel="manage"><i class="fas fa-list"></i><span>Manage</span></a>
+        <a data-panel="manage"><i class="fas fa-box-open"></i><span>Manage</span></a>
       </nav>
       <div class="sidebar-footer">
-        <p>H2K Production © 2026</p>
-        <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
+        <a href="index.html" target="_blank"><i class="fas fa-arrow-up-right-from-square"></i><span>View Site</span></a>
+        <button class="logout-btn" id="logoutBtn"><i class="fas fa-power-off"></i><span>Logout</span></button>
       </div>
     </aside>
 
     <div class="main">
       <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="page-header"><h1><i class="fas fa-chart-bar"></i> Dashboard</h1></div>
+        <div class="page-header"><h1><i class="fas fa-gauge-high"></i> Dashboard</h1><button class="btn btn-ghost btn-sm" id="dashRefresh"><i class="fas fa-rotate"></i> Refresh</button></div>
         <div class="stats" id="stats"><div class="spinner"></div></div>
       </div>
 
-      <!-- ADD / EDIT PRODUCT -->
+      <!-- ADD / EDIT -->
       <div class="panel" id="panel-add">
-        <div class="page-header">
-          <h1 id="formTitle"><i class="fas fa-plus-circle"></i> Add Product</h1>
-        </div>
-        <div class="alert alert-warning" id="serviceKeyAlert" style="display:none">
-          <i class="fas fa-exclamation-triangle"></i>
-          Service Role Key not set. Open admin.js and replace <strong>YOUR_SERVICE_ROLE_KEY</strong>.
-        </div>
+        <div class="page-header"><h1 id="formTitle"><i class="fas fa-plus-circle"></i> Add Product</h1></div>
         <div class="form-card">
           <form id="productForm">
             <input type="hidden" id="editId">
-            <div class="form-row"><label>Product Name *</label><input type="text" id="pName" required placeholder="e.g. ARRI SkyPanel S60-C"></div>
+            <div class="form-row"><label>Product Name *</label><input type="text" id="pName" required placeholder="e.g. Aputure LS 600c Pro II"></div>
             <div class="form-row">
               <label>Category *</label>
               <select id="pCategory" required>
-                <option value="">— Select category —</option>
+                <option value="">- Select category -</option>
                 <option value="lights">Lights</option>
+                <option value="light-accessories">Lights accessories</option>
                 <option value="camera">Camera</option>
-                <option value="voice">Voice</option>
-                <option value="light-accessories">Light Accessories</option>
                 <option value="lenses">Lenses</option>
-                <option value="cargovan">Cargo Van</option>
+                <option value="voice">Voice</option>
+                <option value="cargovan">Cargo van</option>
               </select>
             </div>
-            <div class="form-row"><label>Description (optional)</label><textarea id="pDesc" placeholder="Product description..."></textarea></div>
+            <div class="form-row"><label>Description (optional)</label><textarea id="pDesc" placeholder="Short product description..."></textarea></div>
             <div class="form-row">
-              <label>Images (up to 3)</label>
-              <input type="file" id="pImages" accept="image/*" multiple>
-              <div class="image-previews" id="imgPreviews"></div>
+              <label>Images</label>
+              <div class="img-tools">
+                <input type="text" id="imgUrl" placeholder="Paste image URL and press Add">
+                <button type="button" class="btn btn-ghost btn-sm" id="addUrlBtn"><i class="fas fa-link"></i> Add URL</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="uploadBtn"><i class="fas fa-upload"></i> Upload</button>
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+              </div>
+              <div class="hint">First image is used as the main photo. Add a URL or upload from your device.</div>
+              <div class="imgs-grid" id="imgsGrid"></div>
             </div>
-            <div class="form-row"><div class="checkbox-row"><input type="checkbox" id="pTopRated"><label for="pTopRated">Mark as Top Rated</label></div></div>
+            <div class="form-row"><div class="checkbox-row"><input type="checkbox" id="pTopRated"><label for="pTopRated">Mark as Top Rated (featured)</label></div></div>
             <div class="btn-group">
-              <button type="submit" class="btn btn-orange" id="submitBtn"><i class="fas fa-save"></i> Add Product</button>
-              <button type="button" class="btn btn-cancel" id="cancelEdit" style="display:none"><i class="fas fa-times"></i> Cancel</button>
+              <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-save"></i> Add Product</button>
+              <button type="button" class="btn btn-ghost" id="cancelEdit" style="display:none"><i class="fas fa-xmark"></i> Cancel</button>
             </div>
           </form>
         </div>
@@ -275,9 +255,18 @@
 
       <!-- MANAGE -->
       <div class="panel" id="panel-manage">
-        <div class="page-header">
-          <h1><i class="fas fa-list"></i> Manage Products</h1>
-          <button class="btn btn-orange btn-sm" id="refreshBtn"><i class="fas fa-refresh"></i> Refresh</button>
+        <div class="page-header"><h1><i class="fas fa-box-open"></i> Manage Products</h1><button class="btn btn-ghost btn-sm" id="refreshBtn"><i class="fas fa-rotate"></i> Refresh</button></div>
+        <div class="toolbar">
+          <div class="search"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Search products..."></div>
+          <select id="filterCat">
+            <option value="">All categories</option>
+            <option value="lights">Lights</option>
+            <option value="light-accessories">Lights accessories</option>
+            <option value="camera">Camera</option>
+            <option value="lenses">Lenses</option>
+            <option value="voice">Voice</option>
+            <option value="cargovan">Cargo van</option>
+          </select>
         </div>
         <div class="table-wrap" id="productsTable"><div class="spinner"></div></div>
       </div>
@@ -285,71 +274,18 @@
   </div>
 
   <div class="toast" id="toast"></div>
-  <script type="module" src="admin.js"></script>
-
+  <script src="admin.js"></script>
   <script>
-    // ── LOGIN GATE ────────────────────────────────────────────
-    const AUTH_KEY = 'h2k_admin_auth'
-    const CORRECT_USER = 'admin'
-    const CORRECT_PASS = 'h2k$admin$'
-
-    const loginScreen = document.getElementById('loginScreen')
-    const adminWrap   = document.getElementById('adminWrap')
-    const loginForm   = document.getElementById('loginForm')
-    const loginError  = document.getElementById('loginError')
-    const loginUser   = document.getElementById('loginUser')
-    const loginPass   = document.getElementById('loginPass')
-    const togglePw    = document.getElementById('togglePw')
-    const eyeIcon     = document.getElementById('eyeIcon')
-    const logoutBtn   = document.getElementById('logoutBtn')
-
-    // Check if already authenticated this session
-    if (sessionStorage.getItem(AUTH_KEY) === '1') {
-      loginScreen.style.display = 'none'
-      adminWrap.style.display   = 'flex'
-    }
-
-    // Login submit
-    loginForm.addEventListener('submit', e => {
-      e.preventDefault()
-      const u = loginUser.value.trim()
-      const p = loginPass.value
-      if (u === CORRECT_USER && p === CORRECT_PASS) {
-        sessionStorage.setItem(AUTH_KEY, '1')
-        loginScreen.style.display = 'none'
-        adminWrap.style.display   = 'flex'
-        loginError.classList.remove('show')
-      } else {
-        loginError.classList.remove('show')
-        void loginError.offsetWidth // reflow to restart animation
-        loginError.classList.add('show')
-        loginPass.value = ''
-        loginPass.focus()
-      }
-    })
-
-    // Toggle password visibility
-    togglePw.addEventListener('click', () => {
-      const isPass = loginPass.type === 'password'
-      loginPass.type = isPass ? 'text' : 'password'
-      eyeIcon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye'
-    })
-
-    // Logout
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        sessionStorage.removeItem(AUTH_KEY)
-        location.reload()
-      })
-    }
-
-    // Prevent going back to admin after logout via browser back button
-    window.addEventListener('pageshow', e => {
-      if (!sessionStorage.getItem(AUTH_KEY)) {
-        loginScreen.style.display = 'flex'
-        adminWrap.style.display   = 'none'
-      }
-    })
+    const AUTH_KEY='h2k_admin_auth',CORRECT_USER='admin',CORRECT_PASS='h2k$admin$'
+    const loginScreen=document.getElementById('loginScreen'),adminWrap=document.getElementById('adminWrap')
+    const loginForm=document.getElementById('loginForm'),loginError=document.getElementById('loginError')
+    const loginUser=document.getElementById('loginUser'),loginPass=document.getElementById('loginPass')
+    const togglePw=document.getElementById('togglePw'),eyeIcon=document.getElementById('eyeIcon'),logoutBtn=document.getElementById('logoutBtn')
+    function enterAdmin(){loginScreen.style.display='none';adminWrap.style.display='block';if(window.H2KAdmin)window.H2KAdmin.init()}
+    if(sessionStorage.getItem(AUTH_KEY)==='1')enterAdmin()
+    loginForm.addEventListener('submit',e=>{e.preventDefault();if(loginUser.value.trim()===CORRECT_USER&&loginPass.value===CORRECT_PASS){sessionStorage.setItem(AUTH_KEY,'1');loginError.classList.remove('show');enterAdmin()}else{loginError.classList.remove('show');void loginError.offsetWidth;loginError.classList.add('show');loginPass.value='';loginPass.focus()}})
+    togglePw.addEventListener('click',()=>{const p=loginPass.type==='password';loginPass.type=p?'text':'password';eyeIcon.className=p?'fas fa-eye-slash':'fas fa-eye'})
+    logoutBtn.addEventListener('click',()=>{sessionStorage.removeItem(AUTH_KEY);location.reload()})
   </script>
 </body>
 </html>

@@ -49,11 +49,13 @@ const base = Date.parse('2026-06-17T12:00:00Z')
 const FEATURED = ['sony fx6', 'aputure storm xt52', 'lightstar luxed 9']
 // Best-effort images fetched from the web for items absent on the live site
 const manualImages = fs.existsSync('manual_images.json') ? JSON.parse(fs.readFileSync('manual_images.json', 'utf-8')) : {}
+// Manual category corrections by product id
+const catOverrides = fs.existsSync('category_overrides.json') ? JSON.parse(fs.readFileSync('category_overrides.json', 'utf-8')) : {}
 const out = unique.map((p, idx) => {
   let id = slugify(p.name); let n = 2; while (seen.has(id)) id = slugify(p.name) + '-' + n++; seen.add(id)
   let img = p.image || manualImages[id] || null
   return {
-    id, name: p.name, description: null, category: p.category,
+    id, name: p.name, description: null, category: catOverrides[id] || p.category,
     images: img ? [img] : [],
     top_rated: FEATURED.some(k => { const n = norm(p.name); return n === k || n.startsWith(k + ' ') }),
     created_at: new Date(base - idx * 60000).toISOString(),
@@ -62,7 +64,7 @@ const out = unique.map((p, idx) => {
 fs.writeFileSync('catalog_final.json', JSON.stringify(out, null, 1))
 
 // Emit products.js consumed by the site (classic script -> window.H2K_PRODUCTS)
-const banner = `// H2K Production — local product catalog\n// Auto-generated from H2K_FULL Excel + live-site images. ${out.length} products.\n// Regenerate with: node merge_final.mjs\n`
+const banner = `// H2K Production - local product catalog\n// Auto-generated from H2K_FULL Excel + live-site images. ${out.length} products.\n// Regenerate with: node merge_final.mjs\n`
 fs.writeFileSync('products.js', banner + 'window.H2K_PRODUCTS = ' + JSON.stringify(out, null, 2) + '\n')
 
 const wi = out.filter(p => p.images.length).length

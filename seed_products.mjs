@@ -174,7 +174,7 @@ async function getImageUrl(product) {
       console.log(`  ✓ Uploaded to Supabase Storage`)
       return [publicUrl]
     } catch (e) {
-      console.log(`  ✗ Image error: ${e.message} — using fallback`)
+      console.log(`  ✗ Image error: ${e.message} - using fallback`)
       return getFallbackImage(product)
     }
   }
