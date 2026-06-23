@@ -1,6 +1,424 @@
 // H2K Production - local product catalog
-// 164 products. Managed via the admin panel.
+// 202 products. Managed via the admin panel.
 window.H2K_PRODUCTS = [
+  {
+    "id": "smallhd-indie-7",
+    "name": "SmallHD INDIE 7",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/smallhd-indie-7.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:11.611Z"
+  },
+  {
+    "id": "elvid-coiled-sdi-cable-2",
+    "name": "Elvid Coiled SDI Cable (2')",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/elvid-coiled-sdi-cable-2.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:12.611Z"
+  },
+  {
+    "id": "canare-male-to-right-angle-male-hd-sdi-video-cable-black-6",
+    "name": "Canare Male to Right Angle Male HD-SDI Video Cable (Black, 6')",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/canare-male-to-right-angle-male-hd-sdi-video-cable-black-6.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:13.611Z"
+  },
+  {
+    "id": "canare-male-to-right-angle-male-hd-sdi-video-cable-black-3",
+    "name": "Canare Male to Right Angle Male HD-SDI Video Cable (Black, 3')",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/canare-male-to-right-angle-male-hd-sdi-video-cable-black-3.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:14.611Z"
+  },
+  {
+    "id": "canare-male-to-right-angle-male-hd-sdi-video-cable-blue-1",
+    "name": "Canare Male to Right Angle Male HD-SDI Video Cable (Blue, 1')",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/canare-male-to-right-angle-male-hd-sdi-video-cable-blue-1.webp"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:15.611Z"
+  },
+  {
+    "id": "canare-male-to-right-angle-male-hd-sdi-video-cable-black-2",
+    "name": "Canare Male to Right Angle Male HD-SDI Video Cable (Black, 2')",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/canare-male-to-right-angle-male-hd-sdi-video-cable-black-2.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:16.611Z"
+  },
+  {
+    "id": "osee-22-mega-22s-production-monitor",
+    "name": "OSEE 22\" Mega 22S Production Monitor",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/osee-22-mega-22s-production-monitor.png"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:17.611Z"
+  },
+  {
+    "id": "smallhd-sun-hood-for-smart-7",
+    "name": "SmallHD Sun Hood for Smart 7",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/smallhd-sun-hood-for-smart-7.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:18.611Z"
+  },
+  {
+    "id": "smallhd-cine-7-touchscreen",
+    "name": "SmallHD Cine 7 Touchscreen",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/smallhd-cine-7-touchscreen.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:19.611Z"
+  },
+  {
+    "id": "teradek-bolt-6-lt-750-3g-sdi-hdmi-receiver",
+    "name": "Teradek Bolt 6 LT 750 3G-SDI/HDMI Receiver",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/teradek-bolt-6-lt-750-3g-sdi-hdmi-receiver.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:20.611Z"
+  },
+  {
+    "id": "teradek-bolt-6-rx-750-monitor-module",
+    "name": "Teradek Bolt 6 RX 750 Monitor Module",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/teradek-bolt-6-rx-750-monitor-module.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:21.611Z"
+  },
+  {
+    "id": "teradek-bolt-6-lt-750",
+    "name": "Teradek Bolt 6 LT 750",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/teradek-bolt-6-lt-750.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:22.611Z"
+  },
+  {
+    "id": "magic-arm-5-5",
+    "name": "Magic arm 5,5\"",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/magic-arm-5-5.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:23.611Z"
+  },
+  {
+    "id": "magic-arm-9-5",
+    "name": "Magic arm 9,5\"",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/magic-arm-9-5.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:24.611Z"
+  },
+  {
+    "id": "neewer-v-mount-v-lock-dual-channel-battery-charger-with-dc-1",
+    "name": "Neewer V-Mount/V Lock Dual Channel Battery Charger with DC 16.5V",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/neewer-v-mount-v-lock-dual-channel-battery-charger-with-dc-1.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:25.611Z"
+  },
+  {
+    "id": "watson-pro-dual-position-li-ion-battery-charger-v-mount",
+    "name": "Watson Pro Dual Position Li-Ion Battery Charger (V-Mount)",
+    "description": null,
+    "category": "camera",
+    "images": [
+      "./product-images/watson-pro-dual-position-li-ion-battery-charger-v-mount.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:26.611Z"
+  },
+  {
+    "id": "kupo-kt-1824k-18-x24-open-end-flag-kit",
+    "name": "KUPO KT-1824K 18''X24'' OPEN END FLAG KIT",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/kupo-kt-1824k-18-x24-open-end-flag-kit.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:27.611Z"
+  },
+  {
+    "id": "kupo-kcp-700b-convi-clamp-black",
+    "name": "KUPO KCP-700B CONVI CLAMP BLACK",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/kupo-kcp-700b-convi-clamp-black.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:28.611Z"
+  },
+  {
+    "id": "kupo-kcp-500-large-gaffer-grip",
+    "name": "KUPO KCP-500 LARGE GAFFER GRIP",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/kupo-kcp-500-large-gaffer-grip.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:29.611Z"
+  },
+  {
+    "id": "impact-super-clamp-with-ratchet-handle-black",
+    "name": "Impact Super Clamp with Ratchet Handle (Black)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/impact-super-clamp-with-ratchet-handle-black.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:30.611Z"
+  },
+  {
+    "id": "impact-c-stnd-w-turt-base-grip-head-arm-bl",
+    "name": "Impact C Stnd W/Turt Base/Grip Head/ARM-BL",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/impact-c-stnd-w-turt-base-grip-head-arm-bl.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:31.611Z"
+  },
+  {
+    "id": "matthews-apple-box-quarter-full",
+    "name": "Matthews Apple Box (Quarter Full)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-apple-box-quarter-full.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:32.611Z"
+  },
+  {
+    "id": "matthews-apple-box-half-full",
+    "name": "Matthews Apple Box (Half Full)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-apple-box-half-full.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:33.611Z"
+  },
+  {
+    "id": "matthews-apple-box-full",
+    "name": "Matthews Apple Box (Full)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-apple-box-full.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:34.611Z"
+  },
+  {
+    "id": "avenger-a9000nb-wheel-set-with-brakes-black",
+    "name": "Avenger A9000NB Wheel Set with Brakes (Black)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/avenger-a9000nb-wheel-set-with-brakes-black.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:35.611Z"
+  },
+  {
+    "id": "avenger-turtle-base-c-stand-chrome-plated-5-0",
+    "name": "Avenger Turtle Base C-Stand (Chrome-plated, 5.0')",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/avenger-turtle-base-c-stand-chrome-plated-5-0.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:36.611Z"
+  },
+  {
+    "id": "neewer-118-3m-stainless-steel-light-stand",
+    "name": "Neewer 118\"/3m Stainless Steel Light Stand",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/neewer-118-3m-stainless-steel-light-stand.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:37.611Z"
+  },
+  {
+    "id": "neewer-extension-grip-arm-boom-arm-with-2-pieces-grip-heads",
+    "name": "Neewer Extension Grip Arm Boom Arm with 2 Pieces Grip Heads",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/neewer-extension-grip-arm-boom-arm-with-2-pieces-grip-heads.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:38.611Z"
+  },
+  {
+    "id": "turtle-base-and-grip-arm-kit",
+    "name": "Turtle Base and Grip Arm Kit",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/turtle-base-and-grip-arm-kit.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:39.611Z"
+  },
+  {
+    "id": "impact-turtle-base-c-stand-kit-10-75-black",
+    "name": "Impact Turtle Base C-Stand Kit (10.75', Black)",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/impact-turtle-base-c-stand-kit-10-75-black.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:40.611Z"
+  },
+  {
+    "id": "matthews-digital-combo-stand",
+    "name": "Matthews Digital Combo Stand",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-digital-combo-stand.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:41.611Z"
+  },
+  {
+    "id": "matthews-double-riser-hollywood-combo-stand-silver-11-3",
+    "name": "Matthews Double Riser Hollywood Combo Stand (Silver, 11.3')",
+    "description": null,
+    "category": "light-accessories",
+    "images": [
+      "./product-images/matthews-double-riser-hollywood-combo-stand-silver-11-3.webp"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:42.611Z"
+  },
+  {
+    "id": "aputure-storm-1200x-tunable-white-led-monolight",
+    "name": "Aputure STORM 1200x Tunable White LED Monolight",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/aputure-storm-1200x-tunable-white-led-monolight.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:43.611Z"
+  },
+  {
+    "id": "aputure-quick-dome-90",
+    "name": "Aputure Quick Dome 90",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/aputure-quick-dome-90.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:44.611Z"
+  },
+  {
+    "id": "nanlite-lantern-softbox-lt-80-31",
+    "name": "Nanlite Lantern Softbox LT-80 (31\")",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/nanlite-lantern-softbox-lt-80-31.jpg"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:45.611Z"
+  },
+  {
+    "id": "aputure-light-dome-iii",
+    "name": "Aputure Light Dome III",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/aputure-light-dome-iii.webp"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:46.611Z"
+  },
+  {
+    "id": "aputure-light-dome-150",
+    "name": "Aputure Light Dome 150",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/aputure-light-dome-150.png"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:47.611Z"
+  },
+  {
+    "id": "aputure-storm-400x",
+    "name": "Aputure STORM 400x",
+    "description": null,
+    "category": "lights",
+    "images": [
+      "./product-images/aputure-storm-400x.png"
+    ],
+    "top_rated": false,
+    "created_at": "2026-06-23T10:40:48.611Z"
+  },
   {
     "id": "aputure-infinimat-led-clear-softbox-pack-4-x-4",
     "name": "Aputure INFINIMAT LED & Clear Softbox Pack (4 x 4')",
